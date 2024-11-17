@@ -51,7 +51,7 @@ class Header extends BaseView
                     <div class="container">
                         <!-- Nhãn hiệu và nút điều chỉnh cho hiển thị tốt hơn trên thiết bị di động -->
                         <a class="navbar-brand logo_h" href="index.html"><img
-                                src="img/logo.png" alt></a>
+                                src="../img/logo.png" alt></a>
                         <button class="navbar-toggler" type="button"
                             data-toggle="collapse"
                             data-target="#navbarSupportedContent"
