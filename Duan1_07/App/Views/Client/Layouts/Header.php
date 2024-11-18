@@ -75,18 +75,16 @@ class Header extends BaseView
                                         aria-expanded="false">Cửa hàng</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link"
-                                                href="/products">Danh mục sản phẩm</a></li>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="single-product.html">Chi tiết sản phẩm</a></li>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="checkout.html">Thanh toán</a></li>
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="/">Giỏ hàng</a></li>
+                                                href="/products">Sản phẩm</a></li>
                                         <li class="nav-item"><a class="nav-link"
                                                 href="/">Xác nhận đơn hàng</a></li>
+                                        <li class="nav-item"><a class="nav-link"
+                                                href="/">Theo dỗi đơn hàng</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item submenu dropdown">
+                                <li class="nav-item active"><a class="nav-link"
+                                        href="/blog">Bài Viết</a></li>
+                                <!-- <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle"
                                         data-toggle="dropdown" role="button"
                                         aria-haspopup="true"
@@ -94,11 +92,11 @@ class Header extends BaseView
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link"
                                                 href="/blog">Bài viết</a></li>
-                                        <!-- <li class="nav-item"><a class="nav-link"
+                                         <li class="nav-item"><a class="nav-link"
                                                 href="single-blog.html">Chi tiết
-                                                Blog</a></li> -->
+                                                Blog</a></li> 
                                     </ul>
-                                </li>
+                                </li> -->
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle"
                                         data-toggle="dropdown" role="button"
@@ -119,7 +117,7 @@ class Header extends BaseView
                                 <li class="nav-item"><a class="nav-link" href="/contact">Liên hệ</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+                                <li class="nav-item"><a href="/cart" class="cart"><span class="ti-bag"></span></a></li>
                                 <li class="nav-item"><button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
                                 </li>
                             </ul>
