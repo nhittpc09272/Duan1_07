@@ -102,6 +102,8 @@ class Index extends BaseView
                     <!-- End Product List -->
 
                 </div>
+
+
             </div>
         </div>
 
