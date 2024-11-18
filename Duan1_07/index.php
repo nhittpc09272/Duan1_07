@@ -25,6 +25,9 @@ Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 // Chuyển đến trang Blog
 Route::get('/blog', controllerMethod: 'App\Controllers\Client\BlogController@blog');
 
+// Chuyển đến trang Contact
+Route::get('/contact', controllerMethod: 'App\Controllers\Client\ContactController@contact');
+
 
 // *** Admin
 
