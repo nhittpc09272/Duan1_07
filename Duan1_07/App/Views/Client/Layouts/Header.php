@@ -32,17 +32,17 @@ class Header extends BaseView
             <!--
 		CSS
 		============================================= -->
-            <link rel="stylesheet" href="/App/Views/Client/css/linearicons.css">
-            <link rel="stylesheet" href="/App/Views/Client/css/font-awesome.min.css">
-            <link rel="stylesheet" href="/App/Views/Client/css/themify-icons.css">
-            <link rel="stylesheet" href="/App/Views/Client/css/bootstrap.css">
-            <link rel="stylesheet" href="/App/Views/Client/css/owl.carousel.css">
-            <link rel="stylesheet" href="/App/Views/Client/css/nice-select.css">
-            <link rel="stylesheet" href="/App/Views/Client/css/nouislider.min.css">
-            <link rel="stylesheet" href="/App/Views/Client/css/ion.rangeSlider.css" />
-            <link rel="stylesheet" href="/App/Views/Client/css/ion.rangeSlider.skinFlat.css" />
-            <link rel="stylesheet" href="/App/Views/Client/css/magnific-popup.css">
-            <link rel="stylesheet" href="/App/Views/Client/css/main.css">
+            <link rel="stylesheet" href="/public/assets/client/css/linearicons.css">
+            <link rel="stylesheet" href="/public/assets/client/css/font-awesome.min.css">
+            <link rel="stylesheet" href="/public/assets/client/css/themify-icons.css">
+            <link rel="stylesheet" href="/public/assets/client/css/bootstrap.css">
+            <link rel="stylesheet" href="/public/assets/client/css/owl.carousel.css">
+            <link rel="stylesheet" href="/public/assets/client/css/nice-select.css">
+            <link rel="stylesheet" href="/public/assets/client/css/nouislider.min.css">
+            <link rel="stylesheet" href="/public/assets/client/css/ion.rangeSlider.css" />
+            <link rel="stylesheet" href="/public/assets/client/css/ion.rangeSlider.skinFlat.css" />
+            <link rel="stylesheet" href="/public/assets/client/css/magnific-popup.css">
+            <link rel="stylesheet" href="/public/assets/client/css/main.css">
         </head>
 
         <header class="header_area sticky-header">
@@ -151,20 +151,20 @@ class Header extends BaseView
             </div>
         </header>
 
-        <script src="/App/Views/Client/js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="/public/assets/client/js/vendor/jquery-2.2.4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
             integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
             crossorigin="anonymous"></script>
-        <script src="/App/Views/Client/js/vendor/bootstrap.min.js"></script>
-        <script src="/App/Views/Client/js/jquery.ajaxchimp.min.js"></script>
-        <script src="/App/Views/Client/js/jquery.nice-select.min.js"></script>
-        <script src="/App/Views/Client/js/jquery.sticky.js"></script>
-        <script src="/App/Views/Client/js/nouislider.min.js"></script>
-        <script src="/App/Views/Client/js/countdown.js"></script>
-        <script src="/App/Views/Client/js/jquery.magnific-popup.min.js"></script>
-        <script src="/App/Views/Client/js/owl.carousel.min.js"></script>
-        <script src="/App/Views/Client/js/gmaps.min.js"></script>
-        <script src="/App/Views/Client/js/main.js"></script>
+        <script src="/public/assets/client/js/vendor/bootstrap.min.js"></script>
+        <script src="/public/assets/client/js/jquery.ajaxchimp.min.js"></script>
+        <script src="/public/assets/client/js/jquery.nice-select.min.js"></script>
+        <script src="/public/assets/client/js/jquery.sticky.js"></script>
+        <script src="/public/assets/client/js/nouislider.min.js"></script>
+        <script src="/public/assets/client/js/countdown.js"></script>
+        <script src="/public/assets/client/js/jquery.magnific-popup.min.js"></script>
+        <script src="/public/assets/client/js/owl.carousel.min.js"></script>
+        <script src="/public/assets/client/js/gmaps.min.js"></script>
+        <script src="/public/assets/client/js/main.js"></script>
 
 
 <?php

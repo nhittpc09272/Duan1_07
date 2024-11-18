@@ -45,7 +45,7 @@ class Home extends BaseView
                                 <div class="col-lg-7">
                                     <div class="banner-img">
                                         <img class="img-fluid"
-                                            src="/App/Views/Client/img/banner/banner-img.png" alt>
+                                            src="/public/assets/client/img/banner/banner-img.png" alt>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@ class Home extends BaseView
                                 <div class="col-lg-7">
                                     <div class="banner-img">
                                         <img class="img-fluid"
-                                            src="/App/Views/Client/img/banner/banner-img.png" alt>
+                                            src="/public/assets/client/img/banner/banner-img.png" alt>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ class Home extends BaseView
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-features">
                             <div class="f-icon">
-                                <img src="/App/Views/Client/img/features/f-icon1.png" alt>
+                                <img src="/public/assets/client/img/features/f-icon1.png" alt>
                             </div>
                             <h6>Vận Chuyển Miễn Phí</h6>
                             <p>Miễn phí vận chuyển cho tất cả các đơn hàng</p>
@@ -105,7 +105,7 @@ class Home extends BaseView
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-features">
                             <div class="f-icon">
-                                <img src="/App/Views/Client/img/features/f-icon2.png" alt>
+                                <img src="/public/assets/client/img/features/f-icon2.png" alt>
                             </div>
                             <h6>Chính Sách Đổi Trả</h6>
                             <p>Miễn phí vận chuyển cho tất cả các đơn hàng</p>
@@ -115,7 +115,7 @@ class Home extends BaseView
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-features">
                             <div class="f-icon">
-                                <img src="/App/Views/Client/img/features/f-icon3.png" alt>
+                                <img src="/public/assets/client/img/features/f-icon3.png" alt>
                             </div>
                             <h6>Hỗ Trợ 24/7</h6>
                             <p>Miễn phí vận chuyển cho tất cả các đơn hàng</p>
@@ -125,7 +125,7 @@ class Home extends BaseView
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-features">
                             <div class="f-icon">
-                                <img src="/App/Views/Client/img/features/f-icon4.png" alt>
+                                <img src="/public/assets/client/img/features/f-icon4.png" alt>
                             </div>
                             <h6>Thanh Toán An Toàn</h6>
                             <p>Miễn phí vận chuyển cho tất cả các đơn hàng</p>
@@ -147,8 +147,8 @@ class Home extends BaseView
                                 <div class="single-deal">
                                     <div class="overlay"></div>
                                     <img class="img-fluid w-100"
-                                        src="/App/Views/Client/img/category/c1.jpg" alt>
-                                    <a href="/App/Views/Client/img/category/c1.jpg"
+                                        src="/public/assets/client/img/category/c1.jpg" alt>
+                                    <a href="/public/assets/client/img/category/c1.jpg"
                                         class="img-pop-up" target="_blank">
                                         <div class="deal-details">
                                             <h6 class="deal-title">Giày thể thao
@@ -161,8 +161,8 @@ class Home extends BaseView
                                 <div class="single-deal">
                                     <div class="overlay"></div>
                                     <img class="img-fluid w-100"
-                                        src="/App/Views/Client/img/category/c2.jpg" alt>
-                                    <a href="/App/Views/Client/img/category/c2.jpg"
+                                        src="/public/assets/client/img/category/c2.jpg" alt>
+                                    <a href="/public/assets/client/img/category/c2.jpg"
                                         class="img-pop-up" target="_blank">
                                         <div class="deal-details">
                                             <h6 class="deal-title">Giày thể thao
@@ -175,8 +175,8 @@ class Home extends BaseView
                                 <div class="single-deal">
                                     <div class="overlay"></div>
                                     <img class="img-fluid w-100"
-                                        src="/App/Views/Client/img/category/c3.jpg" alt>
-                                    <a href="/App/Views/Client/img/category/c3.jpg"
+                                        src="/public/assets/client/img/category/c3.jpg" alt>
+                                    <a href="/public/assets/client/img/category/c3.jpg"
                                         class="img-pop-up" target="_blank">
                                         <div class="deal-details">
                                             <h6 class="deal-title">Sản phẩm cho
@@ -189,8 +189,8 @@ class Home extends BaseView
                                 <div class="single-deal">
                                     <div class="overlay"></div>
                                     <img class="img-fluid w-100"
-                                        src="/App/Views/Client/img/category/c4.jpg" alt>
-                                    <a href="/App/Views/Client/img/category/c4.jpg"
+                                        src="/public/assets/client/img/category/c4.jpg" alt>
+                                    <a href="/public/assets/client/img/category/c4.jpg"
                                         class="img-pop-up" target="_blank">
                                         <div class="deal-details">
                                             <h6 class="deal-title">Giày thể thao
@@ -205,8 +205,8 @@ class Home extends BaseView
                         <div class="single-deal">
                             <div class="overlay"></div>
                             <img class="img-fluid w-100"
-                                src="/App/Views/Client/img/category/c5.jpg" alt>
-                            <a href="/App/Views/Client/img/category/c5.jpg" class="img-pop-up"
+                                src="/public/assets/client/img/category/c5.jpg" alt>
+                            <a href="/public/assets/client/img/category/c5.jpg" class="img-pop-up"
                                 target="_blank">
                                 <div class="deal-details">
                                     <h6 class="deal-title">Giày thể thao cho thể
@@ -243,7 +243,7 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p1.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p1.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>addidas New Hammer sole cho vận động
@@ -278,7 +278,7 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p2.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p2.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>addidas New Hammer sole cho vận động
@@ -313,7 +313,7 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p3.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p3.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>addidas New Hammer sole cho vận động
@@ -348,7 +348,7 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p4.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p4.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>addidas New Hammer sole cho vận động
@@ -383,7 +383,7 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p5.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p5.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>addidas New Hammer sole cho vận động
@@ -418,7 +418,7 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p6.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p6.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>addidas New Hammer sole cho vận động
@@ -453,7 +453,7 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p7.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p7.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>addidas New Hammer sole cho vận động
@@ -488,7 +488,7 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p8.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p8.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>addidas New Hammer sole cho vận động
@@ -546,7 +546,7 @@ class Home extends BaseView
                         <!-- single product -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p6.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p6.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>Đế giày New Hammer của addidas dành cho
@@ -582,7 +582,7 @@ class Home extends BaseView
                         <!-- single product -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p8.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p8.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>Đế giày New Hammer của addidas dành cho
@@ -618,7 +618,7 @@ class Home extends BaseView
                         <!-- single product -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p3.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p3.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>Đế giày New Hammer của addidas dành cho
@@ -654,7 +654,7 @@ class Home extends BaseView
                         <!-- single product -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p5.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p5.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>Đế giày New Hammer của addidas dành cho
@@ -690,7 +690,7 @@ class Home extends BaseView
                         <!-- single product -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p1.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p1.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>Đế giày New Hammer của addidas dành cho
@@ -726,7 +726,7 @@ class Home extends BaseView
                         <!-- single product -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/App/Views/Client/img/product/p4.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/product/p4.jpg"
                                     alt>
                                 <div class="product-details">
                                     <h6>Đế giày New Hammer của addidas dành cho
@@ -786,7 +786,7 @@ class Home extends BaseView
                     <!-- single product -->
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="/App/Views/Client/img/product/p6.jpg" alt>
+                            <img class="img-fluid" src="/public/assets/client/img/product/p6.jpg" alt>
                             <div class="product-details">
                                 <h6>Đế giày New Hammer của addidas dành cho vận
                                     động viên</h6>
@@ -821,7 +821,7 @@ class Home extends BaseView
                     <!-- single product -->
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="/App/Views/Client/img/product/p8.jpg" alt>
+                            <img class="img-fluid" src="/public/assets/client/img/product/p8.jpg" alt>
                             <div class="product-details">
                                 <h6>Đế giày New Hammer của addidas dành cho vận
                                     động viên</h6>
@@ -856,7 +856,7 @@ class Home extends BaseView
                     <!-- single product -->
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="/App/Views/Client/img/product/p3.jpg" alt>
+                            <img class="img-fluid" src="/public/assets/client/img/product/p3.jpg" alt>
                             <div class="product-details">
                                 <h6>Đế giày New Hammer của addidas dành cho vận
                                     động viên</h6>
@@ -891,7 +891,7 @@ class Home extends BaseView
                     <!-- single product -->
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="/App/Views/Client/img/product/p5.jpg" alt>
+                            <img class="img-fluid" src="/public/assets/client/img/product/p5.jpg" alt>
                             <div class="product-details">
                                 <h6>Đế giày New Hammer của addidas dành cho vận
                                     động viên</h6>
@@ -926,7 +926,7 @@ class Home extends BaseView
                     <!-- single product -->
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="/App/Views/Client/img/product/p1.jpg" alt>
+                            <img class="img-fluid" src="/public/assets/client/img/product/p1.jpg" alt>
                             <div class="product-details">
                                 <h6>Đế giày New Hammer của addidas dành cho vận
                                     động viên</h6>
@@ -961,7 +961,7 @@ class Home extends BaseView
                     <!-- single product -->
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="/App/Views/Client/img/product/p4.jpg" alt>
+                            <img class="img-fluid" src="/public/assets/client/img/product/p4.jpg" alt>
                             <div class="product-details">
                                 <h6>Đế giày New Hammer của addidas dành cho vận
                                     động viên</h6>
@@ -1005,23 +1005,23 @@ class Home extends BaseView
                 <div class="row">
                     <a class="col single-img" href="#">
                         <img class="img-fluid d-block mx-auto"
-                            src="/App/Views/Client/img/brand/1.png" alt>
+                            src="/public/assets/client/img/brand/1.png" alt>
                     </a>
                     <a class="col single-img" href="#">
                         <img class="img-fluid d-block mx-auto"
-                            src="/App/Views/Client/img/brand/2.png" alt>
+                            src="/public/assets/client/img/brand/2.png" alt>
                     </a>
                     <a class="col single-img" href="#">
                         <img class="img-fluid d-block mx-auto"
-                            src="/App/Views/Client/img/brand/3.png" alt>
+                            src="/public/assets/client/img/brand/3.png" alt>
                     </a>
                     <a class="col single-img" href="#">
                         <img class="img-fluid d-block mx-auto"
-                            src="/App/Views/Client/img/brand/4.png" alt>
+                            src="/public/assets/client/img/brand/4.png" alt>
                     </a>
                     <a class="col single-img" href="#">
                         <img class="img-fluid d-block mx-auto"
-                            src="/App/Views/Client/img/brand/5.png" alt>
+                            src="/public/assets/client/img/brand/5.png" alt>
                     </a>
                 </div>
             </div>
@@ -1050,7 +1050,7 @@ class Home extends BaseView
                             <!-- product 1 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r1.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r1.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1065,7 +1065,7 @@ class Home extends BaseView
                             <!-- product 2 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r2.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r2.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1080,7 +1080,7 @@ class Home extends BaseView
                             <!-- product 3 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r3.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r3.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1095,7 +1095,7 @@ class Home extends BaseView
                             <!-- product 4 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r5.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r5.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1110,7 +1110,7 @@ class Home extends BaseView
                             <!-- product 5 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r6.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r6.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1125,7 +1125,7 @@ class Home extends BaseView
                             <!-- product 6 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r7.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r7.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1140,7 +1140,7 @@ class Home extends BaseView
                             <!-- product 7 -->
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r9.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r9.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1155,7 +1155,7 @@ class Home extends BaseView
                             <!-- product 8 -->
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r10.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r10.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1170,7 +1170,7 @@ class Home extends BaseView
                             <!-- product 9 -->
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/App/Views/Client/img/r11.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/r11.jpg" alt></a>
                                     <div class="desc">
                                         <a href="#" class="title">Giày cao gót
                                             đen dây ren</a>
@@ -1188,7 +1188,7 @@ class Home extends BaseView
                         <div class="ctg-right">
                             <a href="#" target="_blank">
                                 <img class="img-fluid d-block mx-auto"
-                                    src="//App/Views/Client/img/category/c5.jpg" alt>
+                                    src="//public/assets/client/img/category/c5.jpg" alt>
                             </a>
                         </div>
                     </div>
