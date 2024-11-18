@@ -31,14 +31,10 @@ class Home extends BaseView
                                             sự đổi mới và khám phá nhiều mẫu
                                             giày nổi bật phù hợp với mọi phong
                                             cách.</p>
-                                        <div
-                                            class="add-bag d-flex align-items-center">
-                                            <a class="add-btn" href><span
-                                                    class="lnr lnr-cross"></span></a>
-                                            <span
-                                                class="add-text text-uppercase">Thêm
-                                                vào túi</span>
-                                        </div>
+                                        <!-- <div class="add-bag d-flex align-items-center">
+                                            <a class="add-btn" href><span class="lnr lnr-cross"></span></a>
+                                            <span class="add-text text-uppercase">Thêm vào túi</span>
+                                        </div> -->
                                     </div>
 
                                 </div>
