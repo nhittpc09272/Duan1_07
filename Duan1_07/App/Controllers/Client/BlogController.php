@@ -11,7 +11,7 @@ use App\Views\Client\Layouts\Header;
 class BlogController 
 {
     // hiển thị danh sách
-    public static function Blog()
+    public static function blog()
     {
         Header::render();
         Blog::render();

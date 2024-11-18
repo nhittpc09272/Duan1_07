@@ -23,7 +23,7 @@ Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 
 // Chuyển đến trang Blog
-Route::get('/Blog', controllerMethod: 'App\Controllers\Client\BlogController@blog');
+Route::get('/blog', controllerMethod: 'App\Controllers\Client\BlogController@blog');
 
 
 // *** Admin
