@@ -104,7 +104,7 @@ class Header extends BaseView
                                         aria-expanded="false">Trang</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item"><a class="nav-link"
-                                                href="login.html">Đăng
+                                                href="/login">Đăng
                                                 nhập</a></li>
                                         <li class="nav-item"><a class="nav-link"
                                                 href="tracking.html">Theo dõi

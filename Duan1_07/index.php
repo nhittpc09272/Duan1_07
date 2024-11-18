@@ -28,6 +28,9 @@ Route::get('/blog', controllerMethod: 'App\Controllers\Client\BlogController@blo
 // Chuyển đến trang Contact
 Route::get('/contact', controllerMethod: 'App\Controllers\Client\ContactController@contact');
 
+// Chuyển đến đăng nhập
+Route::get('/login', controllerMethod: 'App\Controllers\Client\LoginController@login');
+
 
 // *** Admin
 
