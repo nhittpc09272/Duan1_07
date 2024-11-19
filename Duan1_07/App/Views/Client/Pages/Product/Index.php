@@ -165,10 +165,6 @@ class Index extends BaseView
                                                 <p class="hover-text">Danh sách yêu thích</p>
                                             </a>
                                             <a href="" class="social-info">
-                                                <span class="lnr lnr-sync"></span>
-                                                <p class="hover-text">So sánh</p>
-                                            </a>
-                                            <a href="" class="social-info">
                                                 <span class="lnr lnr-move"></span>
                                                 <p class="hover-text">Xem thêm</p>
                                             </a>
@@ -195,10 +191,6 @@ class Index extends BaseView
                                             <a href="" class="social-info">
                                                 <span class="lnr lnr-heart"></span>
                                                 <p class="hover-text">Danh sách yêu thích</p>
-                                            </a>
-                                            <a href="" class="social-info">
-                                                <span class="lnr lnr-sync"></span>
-                                                <p class="hover-text">So sánh</p>
                                             </a>
                                             <a href="" class="social-info">
                                                 <span class="lnr lnr-move"></span>
@@ -229,10 +221,6 @@ class Index extends BaseView
                                                 <p class="hover-text">Danh sách yêu thích</p>
                                             </a>
                                             <a href="" class="social-info">
-                                                <span class="lnr lnr-sync"></span>
-                                                <p class="hover-text">So sánh</p>
-                                            </a>
-                                            <a href="" class="social-info">
                                                 <span class="lnr lnr-move"></span>
                                                 <p class="hover-text">Xem thêm</p>
                                             </a>
@@ -259,10 +247,6 @@ class Index extends BaseView
                                             <a href="" class="social-info">
                                                 <span class="lnr lnr-heart"></span>
                                                 <p class="hover-text">Danh sách yêu thích</p>
-                                            </a>
-                                            <a href="" class="social-info">
-                                                <span class="lnr lnr-sync"></span>
-                                                <p class="hover-text">So sánh</p>
                                             </a>
                                             <a href="" class="social-info">
                                                 <span class="lnr lnr-move"></span>
@@ -293,10 +277,6 @@ class Index extends BaseView
                                                 <p class="hover-text">Danh sách yêu thích</p>
                                             </a>
                                             <a href="" class="social-info">
-                                                <span class="lnr lnr-sync"></span>
-                                                <p class="hover-text">So sánh</p>
-                                            </a>
-                                            <a href="" class="social-info">
                                                 <span class="lnr lnr-move"></span>
                                                 <p class="hover-text">Xem thêm</p>
                                             </a>
@@ -323,10 +303,6 @@ class Index extends BaseView
                                             <a href="" class="social-info">
                                                 <span class="lnr lnr-heart"></span>
                                                 <p class="hover-text">Danh sách yêu thích</p>
-                                            </a>
-                                            <a href="" class="social-info">
-                                                <span class="lnr lnr-sync"></span>
-                                                <p class="hover-text">So sánh</p>
                                             </a>
                                             <a href="" class="social-info">
                                                 <span class="lnr lnr-move"></span>
