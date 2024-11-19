@@ -31,6 +31,8 @@ class Header extends BaseView
             <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
             <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
             <link href="/public/assets/client/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         </head>
         <style>
             :root {
@@ -375,7 +377,7 @@ class Header extends BaseView
                         <div class="d-inline-flex align-items-center justify-content-center">
                             <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
                             <div class="text-start">
-                                <h6 class="text-uppercase mb-1">Phone</h6>
+                                <h6 class="text-uppercase mb-1">Số điện thoại</h6>
                                 <span>084 395 6969</span>
                             </div>
                         </div>
@@ -395,18 +397,18 @@ class Header extends BaseView
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto mx-lg-auto py-0">
-                        <a href="/home" class="nav-item nav-link">TRANG CHỦ</a>
-                        <a href="about.html" class="nav-item nav-link">SẢN PHẨM</a>
-                        <a href="menu.html" class="nav-item nav-link">GIỚI THIỆU</a>
-                        <a href="/blog" class="nav-item nav-link">TIN TỨC</a>
+                        <a href="/" class="nav-item nav-link">TRANG CHỦ</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <div class="dropdown-menu m-0">
-                                <a href="service.html" class="dropdown-item">Our Service</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="/product" class="dropdown-item">DANH MỤC</a>
+                                <a href="/" class="dropdown-item">THEO DÕI ĐƠN HÀNG</a>
                             </div>
                         </div>
-                        <a href="/App/Views/Client/Pages/Contacts/Contact.php" class="nav-item nav-link">LIÊN HỆ</a>
+                        <a href="/about" class="nav-item nav-link">GIỚI THIỆU</a>
+                        <a href="/blog" class="nav-item nav-link">TIN TỨC</a>
+                        
+                        <a href="/contact" class="nav-item nav-link">LIÊN HỆ</a>
                     </div>
                 </div>
             </nav>

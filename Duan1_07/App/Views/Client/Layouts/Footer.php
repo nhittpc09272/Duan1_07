@@ -386,17 +386,16 @@ class Footer extends BaseView
                                 <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                                     <h4 class="text-primary text-uppercase mb-4">LIÊN KẾT</h4>
                                     <div class="d-flex flex-column justify-content-start">
-                                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>TRANG CHỦ</a>
-                                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>SẢN PHẨM</a>
-                                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>GIỚI THIỆU</a>
-                                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>TIN TỨC</a>
-                                        <a class="text-secondary mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Pages</a>
-                                        <a class="text-secondary" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>LIÊN HỆ</a>
+                                        <a class="text-secondary mb-2" href="/"><i class="bi bi-arrow-right text-primary me-2"></i>TRANG CHỦ</a>
+                                        <a class="text-secondary mb-2" href="/product"><i class="bi bi-arrow-right text-primary me-2"></i>SẢN PHẨM</a>
+                                        <a class="text-secondary mb-2" href="/about"><i class="bi bi-arrow-right text-primary me-2"></i>GIỚI THIỆU</a>
+                                        <a class="text-secondary mb-2" href="/blog"><i class="bi bi-arrow-right text-primary me-2"></i>TIN TỨC</a>
+                                        <a class="text-secondary" href="/contact"><i class="bi bi-arrow-right text-primary me-2"></i>LIÊN HỆ</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                                     <h4 class="text-primary text-uppercase mb-4">TIN TỨC</h4>
-                                    <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+                                    <p>Cập nhật thông tin mới nhất liên tục</p>
                                     <form action="">
                                         <div class="input-group">
                                             <input type="text" class="form-control border-white p-3" placeholder="">
