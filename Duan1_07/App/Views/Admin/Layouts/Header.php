@@ -161,8 +161,8 @@ class Header extends BaseView
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="/admin/products"> sản phẩm </a></li>
-          <li class="nav-item"> <a class="nav-link" href="/admin/products/create"> thêm sản phẩm </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Đăng nhập </a></li>
+          <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Đăng ký </a></li>
         </ul>
       </div>
     </li>
