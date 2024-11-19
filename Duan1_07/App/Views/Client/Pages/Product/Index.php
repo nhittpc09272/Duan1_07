@@ -14,8 +14,8 @@ class Index extends BaseView
         <!-- Start Banner Area -->
         <section class="banner-area organic-breadcrumb">
             <div class="container">
-                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
-                    <h1 class="text-white font-weight-bold">Trang Danh Mục Sản Phẩm</h1>
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <h1>Trang Danh Mục Sản Phẩm</h1>
                 </div>
             </div>
         </section>
@@ -40,7 +40,7 @@ class Index extends BaseView
                 <div class="col-xl-9 col-lg-8 col-md-7">
                     <div class="filter-bar d-flex justify-content-between align-items-center mb-4">
                         <div class="sorting">
-                            <select class="form-control">
+                            <select>
                                 <option value="1">Sắp xếp theo mặc định</option>
                                 <option value="2">Sắp xếp theo giá: Thấp đến Cao</option>
                                 <option value="3">Sắp xếp theo giá: Cao đến Thấp</option>
@@ -48,8 +48,8 @@ class Index extends BaseView
                                 <option value="5">Sắp xếp theo phổ biến</option>
                             </select>
                         </div>
-                        <div class="sorting">
-                            <select class="form-control">
+                        <div class="sorting mr-auto">
+                            <select>
                                 <option value="12">Hiển thị 12 sản phẩm</option>
                                 <option value="24">Hiển thị 24 sản phẩm</option>
                                 <option value="36">Hiển thị 36 sản phẩm</option>

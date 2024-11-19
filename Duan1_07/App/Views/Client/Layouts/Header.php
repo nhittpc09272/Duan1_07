@@ -31,6 +31,16 @@ class Header extends BaseView
             <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
             <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
             <link href="/public/assets/client/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <link rel="stylesheet" href="/public/assets/client/css/linearicons.css">
+            <link rel="stylesheet" href="/public/assets/client/css/owl.carousel.css">
+            <link rel="stylesheet" href="/public/assets/client/css/font-awesome.min.css">
+            <link rel="stylesheet" href="/public/assets/client/css/themify-icons.css">
+            <link rel="stylesheet" href="/public/assets/client/css/nice-select.css">
+            <link rel="stylesheet" href="/public/assets/client/css/nouislider.min.css">
+            <link rel="stylesheet" href="/public/assets/client/css/bootstrap.css">
+            <link rel="stylesheet" href="/public/assets/client/css/main.css">
         </head>
         <style>
             :root {
@@ -399,8 +409,8 @@ class Header extends BaseView
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <div class="dropdown-menu m-0">
-                                <a href="service.html" class="dropdown-item">Our Service</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="/products" class="dropdown-item">DANH MỤC</a>
+                                <a href="/" class="dropdown-item">THEO DÕI ĐƠN HÀNG</a>
                             </div>
                         </div>
                         <a href="/about" class="nav-item nav-link">GIỚI THIỆU</a>
