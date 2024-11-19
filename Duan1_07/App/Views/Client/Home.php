@@ -9,80 +9,18 @@ class Home extends BaseView
     public static function render($data = null)
     {
 ?>
-
-        <section class="banner-area">
-            <div class="container">
-                <div
-                    class="row fullscreen align-items-center justify-content-start">
-                    <div class="col-lg-12">
-                        <div class="active-banner-slider owl-carousel">
-                            <!-- Slide đơn -->
-                            <div
-                                class="row single-slide align-items-center d-flex">
-                                <div class="col-lg-5 col-md-6">
-                                    <div class="banner-content">
-                                        <h1>Bộ sưu tập <br>mới của Nike!</h1>
-                                        <p>Khám phá bộ sưu tập giày dép mới nhất
-                                            của Nike với thiết kế hiện đại, thời
-                                            trang và đầy tính năng. Chúng tôi
-                                            cam kết mang lại cho bạn sự thoải
-                                            mái tối ưu và phong cách ấn tượng
-                                            trong từng bước đi. Cùng trải nghiệm
-                                            sự đổi mới và khám phá nhiều mẫu
-                                            giày nổi bật phù hợp với mọi phong
-                                            cách.</p>
-                                        <!-- <div class="add-bag d-flex align-items-center">
-                                            <a class="add-btn" href><span class="lnr lnr-cross"></span></a>
-                                            <span class="add-text text-uppercase">Thêm vào túi</span>
-                                        </div> -->
-                                    </div>
-
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="banner-img">
-                                        <img class="img-fluid"
-                                            src="/public/assets/client/img/banner/banner-img.png" alt>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slide đơn -->
-                            <div class="row single-slide">
-                                <div class="col-lg-5">
-                                    <div class="banner-content">
-                                        <h1>Bộ sưu tập <br>mới của Nike!</h1>
-                                        <p>Khám phá bộ sưu tập giày dép mới nhất
-                                            của Nike với thiết kế hiện đại, thời
-                                            trang và đầy tính năng. Chúng tôi
-                                            cam kết mang lại cho bạn sự thoải
-                                            mái tối ưu và phong cách ấn tượng
-                                            trong từng bước đi. Cùng trải nghiệm
-                                            sự đổi mới và khám phá nhiều mẫu
-                                            giày nổi bật phù hợp với mọi phong
-                                            cách.</p>
-                                        <div
-                                            class="add-bag d-flex align-items-center">
-                                            <a class="add-btn" href><span
-                                                    class="lnr lnr-cross"></span></a>
-                                            <span
-                                                class="add-text text-uppercase">Thêm
-                                                vào túi</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7">
-                                    <div class="banner-img">
-                                        <img class="img-fluid"
-                                            src="/public/assets/client/img/banner/banner-img.png" alt>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Kết thúc Khu vực Banner -->
-
+        <link href="/public/assets/client/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/public/assets/client/css/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="/public/assets/client/css/linearicons.css">
+        <link rel="stylesheet" href="/public/assets/client/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/assets/client/css/themify-icons.css">
+        <link rel="stylesheet" href="/public/assets/client/css/bootstrap.css">
+        <link rel="stylesheet" href="/public/assets/client/css/owl.carousel.css">
+        <link rel="stylesheet" href="/public/assets/client/css/nice-select.css">
+        <link rel="stylesheet" href="/public/assets/client/css/nouislider.min.css">
+        <link rel="stylesheet" href="/public/assets/client/css/ion.rangeSlider.css" />
+        <link rel="stylesheet" href="/public/assets/client/css/ion.rangeSlider.skinFlat.css" />
+        <link rel="stylesheet" href="/public/assets/client/css/magnific-popup.css">
         <!-- start features Area -->
         <section class="features-area section_gap">
             <div class="container">

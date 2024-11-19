@@ -1,3 +1,14 @@
+<?php
+
+namespace App\Views\Client\Pages\Contacts;
+
+use App\Views\BaseView;
+
+class Contact extends BaseView
+{
+    public static function render($data = null)
+    {
+?>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -137,3 +148,8 @@
 </body>
 
 </html>
+<?php
+    }
+}
+
+?>

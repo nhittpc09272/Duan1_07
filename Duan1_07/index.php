@@ -18,13 +18,12 @@ require_once 'config.php';
 
 
 // *** Client
-Route::get('/', controllerMethod: 'App\Controllers\Client\HomeController@index');
+Route::get('/home', controllerMethod: 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 
 // Chuyển đến trang Blog
 Route::get('/blog', controllerMethod: 'App\Controllers\Client\BlogController@blog');
-
 
 // *** Admin
 
@@ -48,7 +47,6 @@ Route::put('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@u
 
 // DELETE /categories/{id} (delete loại sản phẩm với id cụ thể)
 Route::delete('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@delete');
-
 
 
 

@@ -395,10 +395,10 @@ class Header extends BaseView
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto mx-lg-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">TRANG CHỦ</a>
+                        <a href="/home" class="nav-item nav-link">TRANG CHỦ</a>
                         <a href="about.html" class="nav-item nav-link">SẢN PHẨM</a>
                         <a href="menu.html" class="nav-item nav-link">GIỚI THIỆU</a>
-                        <a href="team.html" class="nav-item nav-link">TIN TỨC</a>
+                        <a href="/blog" class="nav-item nav-link">TIN TỨC</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
@@ -406,7 +406,7 @@ class Header extends BaseView
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">LIÊN HỆ</a>
+                        <a href="/App/Views/Client/Pages/Contacts/Contact.php" class="nav-item nav-link">LIÊN HỆ</a>
                     </div>
                 </div>
             </nav>
