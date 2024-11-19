@@ -17,7 +17,7 @@ require_once 'config.php';
 
 
 
-// **** Client
+// *** Client
 Route::get('/', controllerMethod: 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
