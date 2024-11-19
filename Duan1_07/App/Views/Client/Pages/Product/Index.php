@@ -11,7 +11,6 @@ class Index extends BaseView
     {
 ?>
 
-
         <!-- Start Banner Area -->
         <section class="banner-area organic-breadcrumb">
             <div class="container">
@@ -36,7 +35,6 @@ class Index extends BaseView
                         </ul>
                     </div>
                 </div>
-
 
                 <!-- Product Display Area -->
                 <div class="col-xl-9 col-lg-8 col-md-7">
@@ -98,7 +96,7 @@ class Index extends BaseView
                             endforeach;
                         else :
                             ?>
-                            <h3 class="text-center text-danger">Không có sản phẩm nào</h3>
+                            <h3 class="text-center text-danger">Không có sản phẩm</h3>
                         <?php endif; ?>
                     </div>
                     <!-- End Product List -->

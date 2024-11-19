@@ -31,11 +31,11 @@ class Product extends BaseModel
     }
 
     public function getAllProductByCategoryAndStatus(int $id)
-{
-    $result = [];
-    try {
-        // Truy vấn SQL
-        $sql = "SELECT 
+    {
+        $result = [];
+        try {
+            // Truy vấn SQL
+            $sql = "SELECT 
                     products.*, 
                     categories.category_name 
                 FROM products 
@@ -44,24 +44,24 @@ class Product extends BaseModel
                 WHERE products.status = ? 
                 AND categories.status = ? 
                 AND products.category_id = ?";
-        
-        // Kết nối và chuẩn bị câu lệnh
-        $conn = $this->_conn->MySQLi();
-        $stmt = $conn->prepare($sql);
-        
-        // Gán tham số
-        $status = self::STATUS_ENABLE;
-        $stmt->bind_param('iii', $status, $status, $id);
-        
-        // Thực thi truy vấn và trả về kết quả
-        $stmt->execute();
-        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    } catch (\Throwable $th) {
-        // Ghi log lỗi
-        error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
-        return $result;
+
+            // Kết nối và chuẩn bị câu lệnh
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            // Gán tham số
+            $status = self::STATUS_ENABLE;
+            $stmt->bind_param('iii', $status, $status, $id);
+
+            // Thực thi truy vấn và trả về kết quả
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            // Ghi log lỗi
+            error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
     }
-}
 
 
 
