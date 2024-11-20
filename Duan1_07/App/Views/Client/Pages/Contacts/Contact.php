@@ -149,7 +149,6 @@ class Contact extends BaseView
 
 </html>
 <?php
+
     }
 }
-
-?>
