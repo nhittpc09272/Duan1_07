@@ -410,7 +410,7 @@ class Header extends BaseView
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">SẢN PHẨM</a>
                             <div class="dropdown-menu m-0">
                                 <a href="/products" class="dropdown-item">DANH MỤC</a>
-                                <a href="/" class="dropdown-item">THEO DÕI ĐƠN HÀNG</a>
+                                <a href="/products" class="dropdown-item">SẢN PHẨM</a>
                             </div>
                         </div>
                         <a href="/about" class="nav-item nav-link">GIỚI THIỆU</a>
@@ -438,7 +438,7 @@ class Header extends BaseView
                             style="border-color: orange;"
                             onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
                             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            Đăng Nhập.
+                            Đăng Nhập
                         </a>
                     </div>
                 </div>
