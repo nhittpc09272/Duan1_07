@@ -37,6 +37,9 @@ Route::get('/checkout', controllerMethod: 'App\Controllers\Client\CheckoutContro
 // Chuyển đến trang Order tracking
 Route::get('/tracking', controllerMethod: 'App\Controllers\Client\TrackingController@tracking');
 
+// Chuyển đến trang Order tracking
+Route::get('/confirm', controllerMethod: 'App\Controllers\Client\ConfirmController@confirm');
+
 
 // Chuyển đến trang Cart
 Route::get('/cart', controllerMethod: 'App\Controllers\Client\CartController@cart');
