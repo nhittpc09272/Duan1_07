@@ -33,28 +33,11 @@ class Contact extends BaseView
 </head>
 
 <body>
-	<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>Contact Us</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Contact</a>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Banner Area -->
-
 	<!--================Contact Area =================-->
 	<section class="contact_area section_gap_bottom">
 		<div class="container">
-			<div id="mapBox" class="mapBox" data-lat="40.701083" data-lon="-74.1522848" data-zoom="13" data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
-			 data-mlat="40.701083" data-mlon="-74.1522848">
-			</div>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15717.681978491186!2d105.7391729871582!3d9.982081500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08906415c355f%3A0x416815a99ebd841e!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1732118700915!5m2!1svi!2s" 
+			width="1300" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			<div class="row">
 				<div class="col-lg-3">
 					<div class="contact_info">
