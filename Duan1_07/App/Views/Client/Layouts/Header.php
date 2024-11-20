@@ -428,7 +428,7 @@ class Header extends BaseView
                             style="border-color: orange;"
                             onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
                             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            Đăng Nhập
+                            Đăng Nhập.
                         </a>
                     </div>
                 </div>
