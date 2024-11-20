@@ -403,8 +403,35 @@ class Header extends BaseView
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="/App/Views/Client/Pages/Contacts/Contact.php" class="nav-item nav-link">LIÊN HỆ</a>
+                        <a href="/about" class="nav-item nav-link">GIỚI THIỆU</a>
+                        <a href="/blog" class="nav-item nav-link">TIN TỨC</a>
+
+                        <a href="/contact" class="nav-item nav-link">LIÊN HỆ</a>
                     </div>
+                    <div class="d-flex align-items-center">
+                        <a href="/cart"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            <i class="fa fa-shopping-cart me-2"></i>Giỏ Hàng
+                        </a>
+                        <a href="/register"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Ký
+                        </a>
+                        <a href="/login"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Nhập
+                        </a>
+                    </div>
+                </div>
                 </div>
             </nav>
             <!-- Navbar End -->
