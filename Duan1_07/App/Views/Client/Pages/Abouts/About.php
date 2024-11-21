@@ -159,7 +159,7 @@ class About extends BaseView
             </div>
             <div class="team-member">
                 <img src="https://via.placeholder.com/100" alt="Team Member">
-                <h4>Phan Thị Thanh Trúc</h4>
+                <h4>Phan Ngọc Thanh Trúc</h4>
                 <p>PC09380</p>
             </div>
             
