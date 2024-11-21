@@ -45,10 +45,17 @@ Route::get('/confirm', controllerMethod: 'App\Controllers\Client\ConfirmControll
 Route::get('/cart', controllerMethod: 'App\Controllers\Client\CartController@cart');
 
 // Chuyển đến trang Login
-Route::get('/login', controllerMethod: 'App\Controllers\Client\AccountController@login');
+// Route::get('/login', controllerMethod: 'App\Controllers\Client\AccountController@login');
 
 // Chuyển đến trang Register
-Route::get('/register', controllerMethod: 'App\Controllers\Client\AccountController@register');
+// Route::get('/register', controllerMethod: 'App\Controllers\Client\AccountController@register');
+
+//register
+Route::get('/register', 'App\Controllers\Client\AuthController@register');
+Route::post('/register', 'App\Controllers\Client\AuthController@registerAction');
+//login
+Route::get('/login', 'App\Controllers\Client\AuthController@login');
+Route::post('/login', 'App\Controllers\Client\AuthController@loginAction');
 
 
 
