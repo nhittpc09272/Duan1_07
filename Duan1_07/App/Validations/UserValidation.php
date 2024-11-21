@@ -43,7 +43,11 @@ class UserValidation {
             $is_valid = false;
         }
 
-        
+        // Kiểm tra name
+        if (!isset($_POST['name']) || ($_POST['name']) === '') {
+            NotificationHelper::error('name', 'Họ và tên không được để trống');
+            $is_valid = false;
+        }
 
         // trang thai
          if (!isset($_POST['status']) || ($_POST['status']) === '') {
@@ -83,7 +87,11 @@ class UserValidation {
             $is_valid = false;
         }
 
-        
+        // Kiểm tra name
+        if (!isset($_POST['name']) || ($_POST['name']) === '') {
+            NotificationHelper::error('name', 'Họ và tên không được để trống');
+            $is_valid = false;
+        }
 
         // trang thai
          if (!isset($_POST['status']) || ($_POST['status']) === '') {

@@ -43,7 +43,11 @@ class AuthValidation
             $is_valid = false;
         }
 
-
+        // Kiểm tra name
+        // if (!isset($_POST['name']) || ($_POST['name']) === '') {
+        //     NotificationHelper::error('name', 'Họ và tên không được để trống');
+        //     $is_valid = false;
+        // }
 
         return $is_valid;
     }
@@ -78,7 +82,11 @@ class AuthValidation
             $is_valid = false;
         }
 
-
+        // Kiểm tra name
+        if (!isset($_POST['name']) || ($_POST['name']) === '') {
+            NotificationHelper::error('name', 'Họ và tên không được để trống');
+            $is_valid = false;
+        }
 
         return $is_valid;
     }
@@ -110,18 +118,18 @@ class AuthValidation
             NotificationHelper::error('upload_avatar', 'Upload ảnh thất bại');
             return false;
         }
-
+    
         return $nameImage;
     }
 
-    public static function changePassword(): bool
+    public static function changePassword(): bool 
     {
-        
         $is_valid = true;
-
+        
         // Kiểm tra old_password
         if (!isset($_POST['old_password']) || ($_POST['old_password']) === '') {
             NotificationHelper::error('old_password', 'Mật khẩu cũ không được để trống');
+            $is_valid = false;
         }
         // Kiểm tra new_password
         if (!isset($_POST['new_password']) || ($_POST['new_password']) === '') {

@@ -59,6 +59,13 @@ Route::post('/register', 'App\Controllers\Client\AuthController@registerAction')
 Route::get('/login', 'App\Controllers\Client\AuthController@login');
 Route::post('/login', 'App\Controllers\Client\AuthController@loginAction');
 
+//register
+Route::get('/register', 'App\Controllers\Client\AuthController@register');
+Route::post('/register', 'App\Controllers\Client\AuthController@registerAction');
+//login
+Route::get('/login', 'App\Controllers\Client\AuthController@login');
+Route::post('/login', 'App\Controllers\Client\AuthController@loginAction');
+
 //logout
 Route::get('/logout', 'App\Controllers\Client\AuthController@logout');
 //users
