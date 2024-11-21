@@ -44,6 +44,12 @@ Route::get('/confirm', controllerMethod: 'App\Controllers\Client\ConfirmControll
 // Chuyển đến trang Cart
 Route::get('/cart', controllerMethod: 'App\Controllers\Client\CartController@cart');
 
+// Chuyển đến trang Login
+Route::get('/login', controllerMethod: 'App\Controllers\Client\AccountController@login');
+
+// Chuyển đến trang Register
+Route::get('/register', controllerMethod: 'App\Controllers\Client\AccountController@register');
+
 
 
 // *** Admin
