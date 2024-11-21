@@ -716,218 +716,198 @@ class Home extends BaseView
 
                     </div>
                 </div>
-                <div class="row">
-                    <!-- single product -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="/public/assets/client/img/product/p6.jpg" alt>
-                            <div class="product-details">
-                                <h6>Đế giày New Hammer của addidas dành cho vận
-                                    động viên</h6>
-                                <div class="price">
-                                    <h6>₫3,450,000</h6>
-                                    <h6 class="l-through">₫4,830,000</h6>
+                 <!-- Bắt đầu sản phẩm bán chạy -->
+                 <section class="lattest-product-area pb-40 category-list">
+                        <div class="row">
+                            <!-- sản phẩm đơn -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <img class="img-fluid" src="https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/682ac73599d94dbe93e5de76e30ae858_9366/Giay_Cloudfoam_Comfy_Hong_IH6049_01_standard.jpg" alt="">
+                                    <div class="product-details">
+                                        <h6>Giày Cloudfoam Comfy</h6>
+                                        <div class="price">
+                                            <h6>Giá giảm: 3,600,000 VND</h6>
+                                            <h6><del>Giá gốc: 5,040,000 VND</del></h6>
+                                        </div>
+                                        <div class="prd-bottom">
+                                            <a href="" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">Thêm vào giỏ</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-heart"></span>
+                                                <p class="hover-text">Danh sách yêu thích</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-sync"></span>
+                                                <p class="hover-text">So sánh</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">Xem thêm</p>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="prd-bottom">
-
-                                    <a href class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Thêm vào giỏ
-                                            hàng</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Danh sách yêu
-                                            thích</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">So sánh</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">Xem thêm</p>
-                                    </a>
+                            </div>
+                            <!-- sản phẩm đơn -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/e5783cc3b92d4eb08feeff8f1b7f3399_9366/Giay_Cloudfoam_Comfy_trang_IH3612_01_standard.jpg" alt="">
+                                    <div class="product-details">
+                                        <h6>Giày Cloudfoam Comfy</h6>
+                                        <div class="price">
+                                            <h6>Giá giảm: 3,900,000 VND</h6>
+                                            <h6 class="l-through"><del>Giá gốc: 4,040,000 VND</del></h6>
+                                        </div>
+                                        <div class="prd-bottom">
+                                            <a href="" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">Thêm vào giỏ</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-heart"></span>
+                                                <p class="hover-text">Danh sách yêu thích</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-sync"></span>
+                                                <p class="hover-text">So sánh</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">Xem thêm</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- sản phẩm đơn -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/260eb2a54e394aa3ba3367008ab82c31_9366/Giay_Chay_Bo_Pureboost_5_Mau_xanh_da_troi_IF9194_01_00_standard.jpg" alt="">
+                                    <div class="product-details">
+                                        <h6>Giày Chạy Bộ Pureboost 5</h6>
+                                        <div class="price">
+                                            <h6>Giá giảm: 2,500,000 VND</h6>
+                                            <h6 class="l-through"><del>Giá gốc: 3,800,000 VND</del></h6>
+                                        </div>
+                                        <div class="prd-bottom">
+                                            <a href="" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">Thêm vào giỏ</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-heart"></span>
+                                                <p class="hover-text">Danh sách yêu thích</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-sync"></span>
+                                                <p class="hover-text">So sánh</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">Xem thêm</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- sản phẩm đơn -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/980edbe553334c3db661505b91ba0742_9366/Giay_Chay_Bo_Questar_3_DJen_ID6320_01_standard.jpg" alt="">
+                                    <div class="product-details">
+                                        <h6>Giày Chạy Bộ Questar 3</h6>
+                                        <div class="price">
+                                            <h6>Giá giảm: 3,300,000 VND</h6>
+                                            <h6 class="l-through"><del>Giá gốc: 4,400,000 VND</del></h6>
+                                        </div>
+                                        <div class="prd-bottom">
+                                            <a href="" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">Thêm vào giỏ</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-heart"></span>
+                                                <p class="hover-text">Danh sách yêu thích</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-sync"></span>
+                                                <p class="hover-text">So sánh</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">Xem thêm</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- sản phẩm đơn -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/28e6310b7f2b4733a1c26858e14e0e00_9366/Giay_Chay_Bo_Ultrarun_5_Nu_Hong_IE8802_01_standard.jpg" alt="">
+                                    <div class="product-details">
+                                        <h6>Giày Chạy Bộ Ultrarun 5 Nữ</h6>
+                                        <div class="price">
+                                            <h6>Giá giảm: 2,900,000 VND</h6>
+                                            <h6 class="l-through"><del>Giá gốc: 3,660,000 VND</del></h6>
+                                        </div>
+                                        <div class="prd-bottom">
+                                            <a href="" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">Thêm vào giỏ</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-heart"></span>
+                                                <p class="hover-text">Danh sách yêu thích</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-sync"></span>
+                                                <p class="hover-text">So sánh</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">Xem thêm</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- sản phẩm đơn -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="single-product">
+                                    <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c8d44dde09d84475b4b3cb7b098798f5_9366/Giay_Chay_Bo_adidas_Switch_Fwd_2_Hong_IE5887_01_standard.jpg" alt="">
+                                    <div class="product-details">
+                                        <h6>Giày Chạy Bộ adidas Switch Fwd 2</h6>
+                                        <div class="price">
+                                            <h6>Giá giảm: 2,290,000 VND</h6>
+                                            <h6 class="l-through"><del>Giá gốc: 3,330,000 VND</del></h6>
+                                        </div>
+                                        <div class="prd-bottom">
+                                            <a href="" class="social-info">
+                                                <span class="ti-bag"></span>
+                                                <p class="hover-text">Thêm vào giỏ</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-heart"></span>
+                                                <p class="hover-text">Danh sách yêu thích</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-sync"></span>
+                                                <p class="hover-text">So sánh</p>
+                                            </a>
+                                            <a href="" class="social-info">
+                                                <span class="lnr lnr-move"></span>
+                                                <p class="hover-text">Xem thêm</p>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- single product -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="/public/assets/client/img/product/p8.jpg" alt>
-                            <div class="product-details">
-                                <h6>Đế giày New Hammer của addidas dành cho vận
-                                    động viên</h6>
-                                <div class="price">
-                                    <h6>₫3,450,000</h6>
-                                    <h6 class="l-through">₫4,830,000</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-                                    <a href class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Thêm vào giỏ
-                                            hàng</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Danh sách yêu
-                                            thích</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">So sánh</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">Xem thêm</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single product -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="/public/assets/client/img/product/p3.jpg" alt>
-                            <div class="product-details">
-                                <h6>Đế giày New Hammer của addidas dành cho vận
-                                    động viên</h6>
-                                <div class="price">
-                                    <h6>₫3,450,000</h6>
-                                    <h6 class="l-through">₫4,830,000</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-                                    <a href class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Thêm vào giỏ
-                                            hàng</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Danh sách yêu
-                                            thích</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">So sánh</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">Xem thêm</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single product -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="/public/assets/client/img/product/p5.jpg" alt>
-                            <div class="product-details">
-                                <h6>Đế giày New Hammer của addidas dành cho vận
-                                    động viên</h6>
-                                <div class="price">
-                                    <h6>₫3,450,000</h6>
-                                    <h6 class="l-through">₫4,830,000</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-                                    <a href class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Thêm vào giỏ
-                                            hàng</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Danh sách yêu
-                                            thích</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">So sánh</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">Xem thêm</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single product -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="/public/assets/client/img/product/p1.jpg" alt>
-                            <div class="product-details">
-                                <h6>Đế giày New Hammer của addidas dành cho vận
-                                    động viên</h6>
-                                <div class="price">
-                                    <h6>₫3,450,000</h6>
-                                    <h6 class="l-through">₫4,830,000</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-                                    <a href class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Thêm vào giỏ
-                                            hàng</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Danh sách yêu
-                                            thích</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">So sánh</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">Xem thêm</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single product -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-product">
-                            <img class="img-fluid" src="/public/assets/client/img/product/p4.jpg" alt>
-                            <div class="product-details">
-                                <h6>Đế giày New Hammer của addidas dành cho vận
-                                    động viên</h6>
-                                <div class="price">
-                                    <h6>₫3,450,000</h6>
-                                    <h6 class="l-through">₫4,830,000</h6>
-                                </div>
-                                <div class="prd-bottom">
-
-                                    <a href class="social-info">
-                                        <span class="ti-bag"></span>
-                                        <p class="hover-text">Thêm vào giỏ
-                                            hàng</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-heart"></span>
-                                        <p class="hover-text">Danh sách yêu
-                                            thích</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">So sánh</p>
-                                    </a>
-                                    <a href class="social-info">
-                                        <span class="lnr lnr-move"></span>
-                                        <p class="hover-text">Xem thêm</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </section>
+                    <!-- Kết thúc sản phẩm bán chạy -->
             </div>
         </div>
 
