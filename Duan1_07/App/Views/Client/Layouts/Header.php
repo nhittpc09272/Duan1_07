@@ -444,7 +444,7 @@ class Header extends BaseView
                     </div>
                 </div>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <!-- <div class="d-flex align-items-center">
                         <a href="/cart"
                             class="btn btn-outline-light me-2"
                             style="border-color: orange;"
@@ -466,7 +466,7 @@ class Header extends BaseView
                             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
                             Đăng Nhập.
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 </div>
             </nav>
