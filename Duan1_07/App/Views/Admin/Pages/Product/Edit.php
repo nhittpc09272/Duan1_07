@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\Admin\Pages\Category;
+namespace App\Views\Admin\Pages\Product;
 
 use App\Views\BaseView;
 
@@ -10,7 +10,8 @@ class Edit extends BaseView
     {
 ?>
 
-<div class="page-wrapper" style="width: 100%;">
+        <!-- Page wrapper  -->
+        <div class="page-wrapper" style="width: 100%;">
     <!-- ============================================================== -->
     <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
@@ -33,7 +34,7 @@ class Edit extends BaseView
     <!-- End Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
-    <!-- Container fluid  -->
+    <!-- Container fluid -->
     <!-- ============================================================== -->
     <div class="container-fluid">
         <!-- ============================================================== -->
@@ -110,6 +111,7 @@ class Edit extends BaseView
     <!-- End Container fluid -->
     <!-- ============================================================== -->
 </div>
+
 
     <?php
     }
