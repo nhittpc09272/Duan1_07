@@ -35,30 +35,71 @@ class Header extends BaseView
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a class="navbar-brand" href="/">Client</a>
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/products">Sản phẩm</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Giỏ hàng</a>
-                        </li>
-            
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Đăng nhập</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Đăng ký</a>
-                            </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
-                    </form>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto mx-lg-auto py-0">
+                        <a href="/" class="nav-item nav-link">TRANG CHỦ</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">SẢN PHẨM</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="/products" class="dropdown-item">DANH MỤC</a>
+                                <a href="/products" class="dropdown-item">SẢN PHẨM</a>
+                            </div>
+                        </div>
+                        <a href="/about" class="nav-item nav-link">GIỚI THIỆU</a>
+                        <a href="/blog" class="nav-item nav-link">TIN TỨC</a>
+
+
+                        <a href="/contact" class="nav-item nav-link">LIÊN HỆ</a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <a href="/cart"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            <i class="fa fa-shopping-cart me-2"></i>Giỏ Hàng
+                        </a>
+                        <a href="/register"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Ký
+                        </a>
+                        <a href="/login"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Nhập
+                        </a>
+                    </div>
+                </div>
+                    </div>
+                    <!-- <div class="d-flex align-items-center">
+                        <a href="/cart"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            <i class="fa fa-shopping-cart me-2"></i>Giỏ Hàng
+                        </a>
+                        <a href="/register"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Ký
+                        </a>
+                        <a href="/login"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Nhập.
+                        </a>
+                    </div> -->
+                </div>
                 </div>
             </nav>
 
