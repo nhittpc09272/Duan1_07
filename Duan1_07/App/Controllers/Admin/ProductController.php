@@ -7,11 +7,11 @@ use App\Models\Category;
 use App\Views\Admin\Layouts\Footer;
 use App\Views\Admin\Layouts\Header;
 use App\Views\Admin\Components\Notification;
-use App\Views\Admin\Pages\Category\Create;
-use App\Views\Admin\Pages\Category\Edit;
-use App\Views\Admin\Pages\Category\Index;
+use App\Views\Admin\Pages\Product\Create;
+use App\Views\Admin\Pages\Product\Edit;
+use App\Views\Admin\Pages\Product\Index;
 
-class CategoryController
+class ProductController
 {
 
 
@@ -22,21 +22,47 @@ class CategoryController
         $data = [
             [
                 'id' => 1,
-                'name' => 'giầy thể thao',
+                'name' => 'Giày Nike Air Force 1',
+                'image' => 'https://example.com/images/nike-air-force-1.jpg',
+                'price' => 3500000,
+                'quantity' => 20,
                 'status' => 1
             ],
             [
                 'id' => 2,
-                'name' => 'giầy da',
+                'name' => 'Giày Adidas Ultraboost 22',
+                'image' => 'https://example.com/images/adidas-ultraboost-22.jpg',
+                'price' => 4500000,
+                'quantity' => 15,
                 'status' => 1
             ],
             [
                 'id' => 3,
-                'name' => 'dài đế cao',
-                'status' => 0
+                'name' => 'Giày Converse Chuck Taylor All Star',
+                'image' => 'https://example.com/images/converse-chuck-taylor.jpg',
+                'price' => 1200000,
+                'quantity' => 30,
+                'status' => 1
             ],
-
+            [
+                'id' => 4,
+                'name' => 'Giày Vans Old Skool',
+                'image' => 'https://example.com/images/vans-old-skool.jpg',
+                'price' => 1600000,
+                'quantity' => 25,
+                'status' => 1
+            ],
+            [
+                'id' => 5,
+                'name' => 'Giày Puma Suede Classic',
+                'image' => 'https://example.com/images/puma-suede-classic.jpg',
+                'price' => 2000000,
+                'quantity' => 10,
+                'status' => 0
+            ]
         ];
+        
+        
 
         Header::render();
         // hiển thị giao diện danh sách
@@ -83,7 +109,7 @@ class CategoryController
             Edit::render($data);
             Footer::render();
         } else {
-            header('location: /admin/categories');
+            header('location: /admin/products');
         }
     }
 

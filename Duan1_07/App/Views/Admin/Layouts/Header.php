@@ -41,8 +41,8 @@ class Header extends BaseView
       <!-- phần:partials/_navbar.html -->
       <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-    <a class="navbar-brand brand-logo me-5" href="/"><img src="/public/assets/client/images/Shoes store.png" class="me-2" alt="logo" /></a>
-    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+    <a class="navbar-brand brand-logo me-5" href="/admin"><img src="../../../../public/assets/admin/images/logo1.jpg" class="me-2" alt="logo" /></a>
+    <a class="navbar-brand brand-logo-mini" href="/admin"><img src="../../../../public/assets/admin/images/logo1.jpg" alt="logo" /></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -133,7 +133,7 @@ class Header extends BaseView
     <li class="nav-item">
       <a class="nav-link" href="/admin">
         <i class="icon-grid menu-icon"></i>
-        <span class="menu-title">Bảng điều khiển</span>
+        <span class="menu-title">admin</span>
       </a>
     </li>
     
@@ -142,12 +142,12 @@ class Header extends BaseView
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
         <i class="icon-grid-2 menu-icon"></i>
-        <span class="menu-title">Bảng</span>
+        <span class="menu-title">loại sản phẩm</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="tables">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="/admin/categories">Danh sách</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/admin/categories">Danh sách loại </a></li>
           <li class="nav-item"> <a class="nav-link" href="/admin/categories/create">Thêm mới</a></li>
         </ul>
       </div>
@@ -155,22 +155,22 @@ class Header extends BaseView
     
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-        <i class="icon-head menu-icon"></i>
-        <span class="menu-title">Trang người dùng</span>
+        <i class="icon-grid-2 menu-icon"></i>
+        <span class="menu-title">quản lý sản phẩm </span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Đăng nhập </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Đăng ký </a></li>
+          <li class="nav-item"> <a class="nav-link" href="/admin/products"> sản phẩm </a></li>
+          <li class="nav-item"> <a class="nav-link" href="/admin/products/create"> thêm sản phẩm </a></li>
         </ul>
       </div>
     </li>
     
     <li class="nav-item">
       <a class="nav-link" href="../../../docs/documentation.html">
-        <i class="icon-paper menu-icon"></i>
-        <span class="menu-title">Tài liệu</span>
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">quản lý tài khoản</span>
       </a>
     </li>
   </ul>
