@@ -9,7 +9,7 @@ class Index extends BaseView
     public static function render($data = null)
     {
 ?>
-        <div class="page-wrapper" style="width: 100%;">
+        <div class="page-wrapper" >
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -62,12 +62,12 @@ class Index extends BaseView
                                                 foreach ($data as $item) :
                                                 ?>
                                                     <tr>
-                                                        <td><?= $item['id'] ?></td>
-                                                        <td><?= $item['name'] ?></td>
+                                                        <td><?= $item['categories_id'] ?></td>
+                                                        <td><?= $item['category_name'] ?></td>
                                                         <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                                         <td>
-                                                            <a href="/admin/categories/<?= $item['id'] ?>" class="btn btn-primary ">Sửa</a>
-                                                            <form action="/admin/categories/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
+                                                            <a href="/admin/categories/<?= $item['categories_id'] ?>" class="btn btn-primary ">Sửa</a>
+                                                            <form action="/admin/categories/<?= $item['categories_id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
                                                                 <input type="hidden" name="method" value="DELETE" id="">
                                                                 <button type="submit" class="btn btn-danger text-white">Xoá</button>
                                                             </form>
