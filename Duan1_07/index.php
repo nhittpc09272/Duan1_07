@@ -10,17 +10,40 @@ use App\Route;
 
 require_once 'vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+// $dotenv->load();
 
 require_once 'config.php';
 
 
 
 // *** Client
-Route::get('/', 'App\Controllers\Client\HomeController@index');
+Route::get('/', controllerMethod: 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
+
+// Chuyển đến trang Blog
+Route::get('/blog', controllerMethod: 'App\Controllers\Client\BlogController@blog');
+
+// Chuyển đến trang Contact
+Route::get('/contact', controllerMethod: 'App\Controllers\Client\ContactController@contact');
+
+// Chuyển đến trang About
+Route::get('/about', controllerMethod: 'App\Controllers\Client\AboutController@about');
+
+// Chuyển đến trang Checkout
+Route::get('/checkout', controllerMethod: 'App\Controllers\Client\CheckoutController@checkout');
+
+// Chuyển đến trang Order tracking
+Route::get('/tracking', controllerMethod: 'App\Controllers\Client\TrackingController@tracking');
+
+// Chuyển đến trang Order tracking
+Route::get('/confirm', controllerMethod: 'App\Controllers\Client\ConfirmController@confirm');
+
+
+// Chuyển đến trang Cart
+Route::get('/cart', controllerMethod: 'App\Controllers\Client\CartController@cart');
+
 
 
 // *** Admin
@@ -45,7 +68,6 @@ Route::put('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@u
 
 // DELETE /categories/{id} (delete loại sản phẩm với id cụ thể)
 Route::delete('/admin/categories/{id}', 'App\Controllers\Admin\CategoryController@delete');
-
 
 
 
