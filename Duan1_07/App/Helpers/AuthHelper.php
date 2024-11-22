@@ -4,130 +4,155 @@ namespace App\Helpers;
 
 use App\Models\User;
 
-class AuthHelper{
+class AuthHelper
+{
 
-    public static function register($data){
+    // public static function register($data){
 
-        // bắt lỗi tồn tại username
+    //     // bắt lỗi tồn tại username
 
+    //     $user = new User();
+
+    //     $is_exist=$user->getOneUserByUsername($data['username']);
+
+    //     if($is_exist){
+    //         NotificationHelper::error('exist_register', 'Tên đăng nhập đã tồn tại');
+    //         return false;
+    //     }
+
+    //     $result = $user->createUser($data);
+
+    //     if($result){
+    //         NotificationHelper::success('register', 'Đăng ký thành công');
+    //         return true;
+    //     }
+    //     NotificationHelper::error('register', 'Đăng ký thất bại');
+
+    //     return false;
+    // }
+    public static function register($data)
+    {
+        // Kiểm tra xem tên đăng nhập có tồn tại trong cơ sở dữ liệu hay không
         $user = new User();
-
-        $is_exist=$user->getOneUserByUsername($data['username']);
-
-        if($is_exist){
-            NotificationHelper::error('exist_register', 'Tên đăng nhập đã tồn tại');
-            return false;
-        }
-
-        $result = $user->createUser($data);
-
-        if($result){
-            NotificationHelper::success('register', 'Đăng ký thành công');
-            return true;
-        }
-        NotificationHelper::error('register', 'Đăng ký thất bại');
-
-        return false;
-    }
-
-    public static function login($data){
-        
-        // Kiểm tra username có tồn tại ở db ==> nếu kh: thông báo, trả về false 
-        $user = new User();
-        // bắt lỗi tại username
         $is_exist = $user->getOneUserByUsername($data['username']);
 
-        if(!$is_exist){
+        if ($is_exist) {
+            return false;  // Tên đăng nhập đã tồn tại, trả về false
+        }
+
+        // Nếu 'phone' không có giá trị, có thể đặt một giá trị mặc định (ví dụ: rỗng)
+        if (empty($data['phone'])) {
+            $data['phone'] = ''; // Giá trị mặc định nếu không có số điện thoại
+        }
+
+        // Tạo người dùng mới
+        $result = $user->createUser($data);
+
+        return $result;  // Trả về true nếu thành công, false nếu thất bại
+    }
+
+
+    public static function login($data)
+    {
+        $user = new User();
+        $is_exist = $user->getOneUserByUsername($data['username']);
+
+        // Kiểm tra nếu người dùng không tồn tại
+        if (empty($is_exist) || !isset($is_exist['user_id'])) {
             NotificationHelper::error('username', 'Tên đăng nhập không tồn tại');
             return false;
         }
 
-        // nếu có, kiểm tra password có trùng kh => nếu kh: thông báo, trả về false 
-        // password người dùng nhập: $data['password']
-        // password trong db: $is_exisr['password']
-
-        if(!password_verify($data['password'], $is_exist['password'])){
+        // Kiểm tra mật khẩu
+        if (!password_verify($data['password'], $is_exist['password'])) {
             NotificationHelper::error('password', 'Mật khẩu không đúng');
             return false;
         }
 
-        // nếu có, kiểm tra status ==> 1 ==> nếu có: thông báo, trả về false
-        if($is_exist['status'] == 0){
+        // Kiểm tra trạng thái người dùng
+        if ($is_exist['status'] == 0) {
             NotificationHelper::error('status', 'Tài khoản đã bị khóa');
             return false;
         }
 
-        // nếu có, kiểm tra remember => lưu session/ cookie => thông báo thành công, trả về true
-        if($data['remember']){
-            // lưu cookie, lưu session
-            self::updateCookie($is_exist['id']);
-           
-        }else{
-            //lưu session
-            self::updateSession($is_exist['id']);
+        // Kiểm tra xem người dùng có muốn "remember me" hay không
+        if ($data['remember']) {
+            // Kiểm tra nếu user_id là hợp lệ trước khi gọi updateCookie
+            if (isset($is_exist['user_id']) && is_int($is_exist['user_id'])) {
+                self::updateCookie($is_exist['user_id']);
+            } 
+        } else {
+            // Lưu session
+            self::updateSession($is_exist['user_id']);
         }
 
         NotificationHelper::success('login', 'Đăng nhập thành công');
         return true;
     }
-    
-    public static function updateCookie(int $id){
+
+
+
+    public static function updateCookie(int $id)
+    {
         $user = new User();
         $result = $user->getOneUser($id);
-        
-        if($result){
-            // chuyển array thành string json để lưu vào cookie user
-            $user_data = json_encode($result);
 
-            // lưu cookie
-            setcookie('user', $user_data, time() + 3600 * 24 * 30 * 12, '/');
+        if (!$result || !isset($result['id'])) {
+            // Nếu không có dữ liệu hoặc không có trường 'id'
+            error_log("Lỗi: Không tìm thấy người dùng với ID: $id");
             
-            // lưu session
-            $_SESSION['user'] = $result;
+            return;  // Dừng lại nếu không tìm thấy dữ liệu hợp lệ
         }
+
+        // Tiến hành lưu cookie và session nếu dữ liệu hợp lệ
+        $user_data = json_encode($result);
+        setcookie('user', $user_data, time() + 3600 * 24 * 30 * 12, '/');
+        $_SESSION['user'] = $result;
     }
 
-    public static function updateSession(int $id){
+
+    public static function updateSession(int $id)
+    {
         $user = new User();
         $result = $user->getOneUser($id);
-        
-        if($result){
+
+        if ($result) {
             // lưu session
             $_SESSION['user'] = $result;
         }
     }
 
-    // public static function checkLogin(): bool{
-    //     if(isset($_COOKIE['user'])){
-    //         $user = $_COOKIE['user'];
-    //         $user_data = (array) json_decode($user);
+    public static function checkLogin(): bool{
+        if(isset($_COOKIE['user'])){
+            $user = $_COOKIE['user'];
+            $user_data = (array) json_decode($user);
 
-    //         self::updateCookie($user_data['id']);
+            self::updateCookie($user_data['id']);
 
-    //         // $_SESSION['user'] = (array) $user_data;
+            // $_SESSION['user'] = (array) $user_data;
 
-    //         return true;
-    //     }
+            return true;
+        }
 
-    //     if(isset($_SESSION['user'])){
-    //         self::updateSession($_SESSION['user']['id']);
-    //         return true;
-    //     }   
+        if(isset($_SESSION['user'])){
+            self::updateSession($_SESSION['user']['id']);
+            return true;
+        }   
 
-    //     return false;
-    // }
-    
-    
-    // public static function logout(){
-    //     // xóa cookie
-    //     if(isset($_SESSION['user'])){
-    //         unset($_SESSION['user']);
-    //     }
+        return false;
+    }
 
-    //     if(!isset($_SESSION['user'])){
-    //         setcookie('user', '', time() - 3600 * 24 * 30 * 12, '/' );
-    //     }
-    // }
+
+    public static function logout(){
+        // xóa cookie
+        if(isset($_SESSION['user'])){
+            unset($_SESSION['user']);
+        }
+
+        if(!isset($_SESSION['user'])){
+            setcookie('user', '', time() - 3600 * 24 * 30 * 12, '/' );
+        }
+    }
 
     // public static function edit($id): bool{
     //     if(!self::checkLogin()){
@@ -202,9 +227,9 @@ class AuthHelper{
     //         return false;
     //     }
     // }
-    
+
     // public static function forgotPassword($data){
-        
+
     //     $user = new User();
     //     $result = $user->getOneUserByUsername($data['username']);
 
@@ -214,7 +239,7 @@ class AuthHelper{
     // public static function resetPassword($data){
     //     $user = new User();
     //     $result = $user->updateUserByUsernameAndEmail($data);
-        
+
     //     return $result;
     // }
 
