@@ -67,13 +67,7 @@ class User extends BaseModel
             error_log('Lỗi khi truy vấn cơ sở dữ liệu: ' . $th->getMessage());
             return null;
         }
-    } catch (\Throwable $th) {
-        error_log('Lỗi khi hiển thị chi tiết dữ liệu: ' . $th->getMessage());
-        return $result; // Trả về mảng rỗng nếu có lỗi
     }
-}
-
-
 
     public function updateUserByUsernameAndEmail(array $data)
     {
