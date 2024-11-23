@@ -10,6 +10,20 @@ class Edit extends BaseView
   public static function render($data = null)
   {
 ?>
+    <!-- Kiểm tra và hiển thị thông báo -->
+    <?php if (isset($_SESSION['notification'])): ?>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        Swal.fire({
+          icon: '<?php echo $_SESSION['notification']['type']; ?>',
+          title: '<?php echo $_SESSION['notification']['message']; ?>',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      </script>
+      <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
+      ?>
+    <?php endif; ?>
     <im class="container my-5">
       <i class="row">
         <div class="offset-md-1 col-md-3">
@@ -30,19 +44,27 @@ class Edit extends BaseView
         <div class="col-md-7">
           <div class="card card-body">
             <h4 class="text-center text-danger">Thông tin tài khoản</h4>
-            <form action="/users/<?= $data['id'] ?>" method="post" enctype="multipart/form-data">
+            <form action="/users/<?= $data['user_id'] ?>" method="post" enctype="multipart/form-data">
               <input type="hidden" name="method" value="PUT" id="">
               <div class="form-group">
                 <label for="username">Tên đăng nhập</label>
-                <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tên đăng nhập" value="<?= $data['username'] ?>" disabled>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tên đăng nhập" value="<?= $data['username'] ?>">
               </div>
               <div class="form-group">
                 <label for="email">Nhập Email</label>
-                <input type="" name="email" id="email" class="form-control" placeholder="Nhập Email" value="<?= $data['email'] ?>">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Nhập Email" value="<?= $data['email'] ?>">
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="name">Họ và Tên</label>
                 <input type="name" name="name" id="name" class="form-control" placeholder="Nhập Ho và Tên" value="<?= $data['name'] ?>">
+              </div> -->
+              <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="text" name="phone" id="phone" class="form-control" placeholder="Nhập số điện thoại" value="<?= $data['phone'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="address">Địa chỉ</label>
+                <input type="text" name="address" id="address" class="form-control" placeholder="Nhập địa chỉ" value="<?= $data['address'] ?>">
               </div>
               <div class="form-group">
                 <label for="avatar">Ảnh đại diện</label>

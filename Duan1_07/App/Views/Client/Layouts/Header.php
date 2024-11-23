@@ -10,11 +10,11 @@ class Header extends BaseView
     public static function render($data = null)
     {
 
+        unset($_SESSION['user']);
+        $is_login = AuthHelper::checkLogin();
+
 
 ?>
-
-        <!DOCTYPE html>
-        <html lang="en">
 
         <head>
             <meta charset="utf-8">
@@ -79,9 +79,9 @@ class Header extends BaseView
             }
 
             /* 
-.btn-primary {
-    color: #FFFFFF;
-} */
+            .btn-primary {
+                color: #FFFFFF;
+            } */
 
             .border-inner {
                 position: relative;
@@ -426,6 +426,28 @@ class Header extends BaseView
                             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
                             <i class="fa fa-shopping-cart me-2"></i>Giỏ Hàng
                         </a>
+
+                    </div>
+                    <?php if ($is_login):
+                    ?>
+                        <li class="nav-item bg-light-pink">
+                            <div class="dropdown show">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-color: orange;">
+                                    Tài khoản
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+
+                                    <a class="dropdown-item" href="/users/<?= $_SESSION['user']['user_id'] ?>">
+                                        <i class="bi bi-person-circle me-2"></i><?= $_SESSION['user']['username'] ?>
+                                    </a>
+                                    <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a>
+                                </div>
+                            </div>
+
+                        </li>
+                    <?php
+                    else:
+                    ?>
                         <a href="/register"
                             class="btn btn-outline-light me-2"
                             style="border-color: orange;"
@@ -440,7 +462,10 @@ class Header extends BaseView
                             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
                             Đăng Nhập
                         </a>
-                    </div>
+                    <?php
+                    endif;
+                    ?>
+
                 </div>
                 </div>
             </nav>
