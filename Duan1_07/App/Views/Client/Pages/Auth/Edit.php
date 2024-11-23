@@ -54,10 +54,6 @@ class Edit extends BaseView
                 <label for="email">Nhập Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="Nhập Email" value="<?= $data['email'] ?>">
               </div>
-              <!-- <div class="form-group">
-                <label for="name">Họ và Tên</label>
-                <input type="name" name="name" id="name" class="form-control" placeholder="Nhập Ho và Tên" value="<?= $data['name'] ?>">
-              </div> -->
               <div class="form-group">
                 <label for="phone">Số điện thoại</label>
                 <input type="text" name="phone" id="phone" class="form-control" placeholder="Nhập số điện thoại" value="<?= $data['phone'] ?>">

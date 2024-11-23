@@ -435,46 +435,46 @@ class Header extends BaseView
                     </div>
                     <?php if ($is_login):
                     ?>
-                    <li class="nav-item bg-light-pink">
-                        <div class="dropdown show">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-color: orange;">
-                                Tài khoản
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-
-                                <a class="dropdown-item" href="/users/<?= $_SESSION['user']['user_id'] ?>">
-                                    <i class="bi bi-person-circle me-2"></i><?= $_SESSION['user']['username'] ?>
+                        <div class="nav-item bg-light-pink">
+                            <div class="dropdown show">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-color: orange;">
+                                    Tài khoản
                                 </a>
-                                <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+
+                                    <a class="dropdown-item" href="/users/<?= $_SESSION['user']['user_id'] ?>">
+                                        <i class="bi bi-person-circle me-2"></i><?= $_SESSION['user']['username'] ?>
+                                    </a>
+                                    <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a>
+                                </div>
                             </div>
+
                         </div>
+                    <?php
+                    else:
+                    ?>
+                        <a href="/register"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Ký
+                        </a>
+                        <a href="/login"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Nhập
+                        </a>
+                    <?php
+                    endif;
+                    ?>
 
-                    </li>
-                <?php
-                else:
-                ?>
-                    <a href="/register"
-                        class="btn btn-outline-light me-2"
-                        style="border-color: orange;"
-                        onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
-                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                        Đăng Ký
-                    </a>
-                    <a href="/login"
-                        class="btn btn-outline-light me-2"
-                        style="border-color: orange;"
-                        onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
-                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                        Đăng Nhập
-                    </a>
-                <?php
-                endif;
-                ?>
-
-            </div>
-            </div>
-        </nav>
-        <!-- Navbar End -->
+                </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
 
 
         <!-- Hero Start -->
