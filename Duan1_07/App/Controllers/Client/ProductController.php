@@ -19,84 +19,70 @@ class ProductController
     // hiển thị danh sách
     public static function index()
     {
-        // giả sử data là mảng dữ liệu lấy được từ database
-        $categories = [
-            [
-                'id' => 1,
-                'name' => 'Category 1',
-                'status' => 1
-            ],
-            [
-                'id' => 2,
-                'name' => 'Category 2',
-                'status' => 1
-            ],
-            [
-                'id' => 3,
-                'name' => 'Category 3',
-                'status' => 0
-            ],
+        $category = new Category();
+        $categories = $category->getAllCategoryByStatus();
+        //$category và $product là các đối tượng của lớp Category và Product
+        $product = new Product();
+        $products = $product->getAllProductByStatus();
 
-        ];
-        $products = [
-            [
-                'id' => 1,
-                'name' => 'Product 1',
-                'description' => 'Description Product 1',
-                'price' => 100000,
-                'discount_price' => 10000,
-                'image' => 'product.jpg',
-                'status' => 1
-            ],
-            [
-                'id' => 2,
-                'name' => 'Product 2',
-                'description' => 'Description Product 2',
-                'price' => 200000,
-                'discount_price' => 20000,
-                'image' => 'product.jpg',
-                'status' => 1
-            ],
-            [
-                'id' => 3,
-                'name' => 'Product 3',
-                'description' => 'Description Product 3',
-                'price' => 300000,
-                'discount_price' => 30000,
-                'image' => 'product.jpg',
-                'status' => 1
-            ],
-
-        ];
+        // Dữ liệu này được lưu trữ trong mảng $data và được chuyển tới view Index để hiển thị trên trang web.
         $data = [
             'products' => $products,
             'categories' => $categories
         ];
         Header::render();
-
+        Notification::render();
+        NotificationHelper::unset();
         Index::render($data);
         Footer::render();
     }
-    public static function detail($id)
-    {
-        $product_detail = [
-            'id' => $id,
-            'name' => 'Product 1',
-            'description' => 'Description Product 1',
-            'price' => 100000,
-            'discount_price' => 10000,
-            'image' => 'product.jpg',
-            'status' => 1
-        ];
-        $data = [
-            'product' => $product_detail
-        ];
-        Header::render();
 
-        Detail::render($data);
-        Footer::render();
+    // Phương thức này hiển thị chi tiết của một sản phẩm cụ thể dựa trên ID và cũng hiển thị các bình luận mới nhất cho sản phẩm đó.
+    public static function detail($id)
+{
+    $product = new Product();
+    $product_detail = $product->getOneProductByStatus($id);
+
+    // Nếu không tìm thấy sản phẩm, hiển thị thông báo và chuyển hướng về trang danh sách sản phẩm
+    if (!$product_detail) {
+        NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này');
+        header('location: /products');
+        exit;
     }
+
+    // Lấy bình luận mới nhất cho sản phẩm (nếu cần)
+    // $comment = new Comment();
+    // $comments = $comment->get5CommentNewestByProductAndStatus($id);
+
+    // Dữ liệu để truyền vào view
+    $data = [
+        'product' => $product_detail,
+    //     'comments' => $comments
+    ];
+
+    Header::render();
+    Notification::render();
+    NotificationHelper::unset();
+    Detail::render($data); // Truyền dữ liệu vào đây
+    Footer::render();
+}
+
+
     public static function getProductByCategory($id)
     {
+        $category = new Category();
+        $categories = $category->getAllCategoryByStatus();
+
+        $product = new Product();
+        $products = $product->getAllProductByCategoryAndStatus($id);
+
+        $data = [
+            'products' => $products,
+            'categories' => $categories
+        ];
+
+        Header::render();
+        ProductCategory::render($data);
+        Footer::render();
     }
 }
