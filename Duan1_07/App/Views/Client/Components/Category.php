@@ -17,13 +17,13 @@ class Category extends BaseView
                 if ($data && count($data)) {
                     foreach ($data as $item) :
                         $id = $item['categories_id'] ?? '#';
-                        $name = $item['category_name'] ?? 'Tên không xác định được';
+                        $name = $item['category_name'] ?? 'Tên không xác định';
                 ?>
                         <li><a href="/products/categories/<?= htmlspecialchars($id) ?>" class="text-decoration-none"><?= htmlspecialchars($name) ?></a></li>
                 <?php
                     endforeach;
                 } else {
-                    echo "<li><p class='text-muted'>Không có danh mục nào</p></li>";
+                    echo "<li><p class='text-muted'>Không có danh mục</p></li>";
                 }
                 ?>
             </ul>

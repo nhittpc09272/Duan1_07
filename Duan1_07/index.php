@@ -23,7 +23,6 @@ Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
 
-
 // Chuyển đến trang Blog
 Route::get('/blog', controllerMethod: 'App\Controllers\Client\BlogController@blog');
 

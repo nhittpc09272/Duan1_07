@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Product extends BaseModel
 {
-    protected $table = 'products'; // Xác định tên bảng trong database là products.
+    protected $table = 'products'; // Xác định tên bảng trong cơ sở dữ liệu là products.
 
     protected $id = 'product_id'; // Xác định tên cột khóa chính (primary key) trong bảng là id
 
