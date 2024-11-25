@@ -6,7 +6,6 @@ class Category extends BaseModel
 {
     protected $table = 'categories';
     protected $id = 'categories_id';
-    protected $id = 'categories_id';
 
     public function getAllCategory()
     {
