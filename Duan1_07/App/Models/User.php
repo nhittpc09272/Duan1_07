@@ -37,21 +37,30 @@ class User extends BaseModel
     }
 
     public function getOneUserByUsername(string $username)
-    {
-        $result = [];
-        try {
-            $sql = "SELECT * FROM users WHERE username=?";
-            $conn = $this->_conn->MySQLi();
-            $stmt = $conn->prepare($sql);
+{
+    $result = [];
+    try {
+        // Truy vấn cơ sở dữ liệu để lấy thông tin người dùng
+        $sql = "SELECT * FROM $this->table WHERE username=?";
+        $conn = $this->_conn->MySQLi(); // Lấy kết nối MySQLi
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $username); // Tham số username là chuỗi
+        $stmt->execute();
+        $query_result = $stmt->get_result();
 
-            $stmt->bind_param('s', $username);
-            $stmt->execute();
-            return $stmt->get_result()->fetch_assoc();
-        } catch (\Throwable $th) {
-            error_log('Lỗi khi hiển thị chi tiết dữ liệu: ' . $th->getMessage());
-            return $result;
+        // Nếu có kết quả, trả về mảng dữ liệu người dùng
+        if ($query_result->num_rows > 0) {
+            return $query_result->fetch_assoc(); // Trả về toàn bộ thông tin người dùng
+        } else {
+            return null; // Nếu không tìm thấy người dùng
         }
+    } catch (\Throwable $th) {
+        error_log('Lỗi khi hiển thị chi tiết dữ liệu: ' . $th->getMessage());
+        return $result; // Trả về mảng rỗng nếu có lỗi
     }
+}
+
+
 
     public function updateUserByUsernameAndEmail(array $data)
     {
@@ -59,7 +68,7 @@ class User extends BaseModel
             $username = $data['username'];
             $email = $data['email'];
             $password = $data['password'];
-            
+
             $sql = "UPDATE $this->table SET password = '$password' WHERE username = '$username' AND email = '$email'";
 
             $conn = $this->_conn->MySQLi();

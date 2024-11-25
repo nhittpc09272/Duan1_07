@@ -2,11 +2,8 @@
 
 namespace App\Controllers\Admin;
 
-
 use App\Helpers\NotificationHelper;
 use App\Models\Category;
-use App\Models\Product;
-use App\Validations\ProductValidation;
 use App\Views\Admin\Layouts\Footer;
 use App\Views\Admin\Layouts\Header;
 use App\Views\Admin\Components\Notification;
