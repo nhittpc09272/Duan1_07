@@ -11,107 +11,132 @@ class Edit extends BaseView
 ?>
 
         <!-- Page wrapper  -->
-        <div class="page-wrapper" style="width: 100%;">
-    <!-- ============================================================== -->
-    <!-- Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <div class="page-breadcrumb">
-        <div class="row">
-            <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">QUẢN LÝ SẢN PHẨM</h4>
-                <div class="ms-auto text-end">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Sửa sản phẩm</li>
-                        </ol>
-                    </nav>
+        <!-- ============================================================== -->
+        <div class="page-wrapper" >
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">QUẢN LÝ SẢN PHẨM</h4>
+                        <div class="ms-auto text-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Sửa loại sản phẩm</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Container fluid -->
-    <!-- ============================================================== -->
-    <div class="container-fluid">
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <form class="form-horizontal" action="/admin/products/<?= $data['id'] ?>" method="POST" enctype="multipart/form-data">
-                        <div class="card-body">
-                            <h4 class="card-title">Sửa sản phẩm</h4>
-                            <input type="hidden" name="method" value="PUT">
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <form class="form-horizontal" action="/admin/products/<?= $data['products']['product_id'] ?>" method="POST" enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <h4 class="card-title">Sửa sản phẩm</h4>
+                                    <input type="hidden" name="method" id="" value="PUT">
 
-                            <!-- ID sản phẩm -->
-                            <div class="form-group">
-                                <label for="id">ID</label>
-                                <input type="text" class="form-control" id="id" name="id" value="<?= $data['id'] ?>" disabled>
-                            </div>
+                                    <div align="center">
+                                        <img src="<?=APP_URL?>/public/uploads/products/<?= $data['products']['image']?>" alt="" width="300px">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id">ID</label>
+<input type="text" class="form-control" id="id" name="id" value="<?= $data['products']['product_id'] ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="product_name">Tên*</label>
+                                        <input type="text" class="form-control" id="product_name" placeholder="Nhập tên loại sản phẩm..." name="product_name" value="<?= $data['products']['product_name'] ?>" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">Hình ảnh</label>
+                                        <input type="file" class="form-control" id="image" placeholder="Chọn hình sản phẩm..." name="image">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">Giá tiền*</label>
+                                        <input type="number" class="form-control" id="price" placeholder="Nhập giá sản phẩm..." name="price" value="<?= $data['products']['price'] ?>" require>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label for="discount_price">Giá giảm*</label>
+                                        <input type="number" class="form-control" id="discount_price" placeholder="Nhập giá giảm sản phẩm..." name="discount_price" value="<= $data['product']['discount_price'] ?>" require>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <label for="description">Mô tả</label>
+                                        <textarea class="form-control" id="description" placeholder="Nhập mô tả sản phẩm..." name="description"><?= $data['products']['description'] ?></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category_id">Loại sản phẩm*</label>
+                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="categories_id" name="categories_id" require>
+                                            <option value="" selected disabled>Vui lòng chọn...</option>
+                                            <?php
+                                            foreach ($data['categories'] as $item) :
+                                            ?>
+                                                <option value="<?= $item['categories_id'] ?>" <?= ($item['categories_id'] == $data['products']['category_id'])? 'selected' : ''?>><?= $item['category_name'] ?></option>
+                                            <?php
+                                            endforeach;
+                                            ?>
+</select>
+                                    </div>
 
-                            <!-- Tên sản phẩm -->
-                            <div class="form-group">
-                                <label for="name">Tên sản phẩm*</label>
-                                <input type="text" class="form-control" id="name" placeholder="Nhập tên sản phẩm..." name="name" value="<?= $data['name'] ?>" required>
-                            </div>
+                                    <!-- <div class="form-group">
+                                        <label for="is_feature">Nổi bậc*</label>
+                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="is_feature" name="is_feature" require>
+                                            <option value="" selected disabled>Vui lòng chọn...</option>
+                                            <option value="1" <= ($data['products']['is_feature'] == 1 ? 'selected' : '') ?>>Nổi bậc</option>
+                                            <option value="0" <= ($data['products']['is_feature'] == 0 ? 'selected' : '') ?>>Không</option>
 
-                            <!-- Hình ảnh sản phẩm -->
-                            <div class="form-group">
-                                <label for="image">Hình ảnh (tùy chọn cập nhật)</label>
-                                <input type="file" class="form-control" id="image" name="image" accept="image/*">
-                                <?php if (!empty($data['image'])): ?>
-                                    <img src="<?= $data['image'] ?>" alt="Hình ảnh sản phẩm" style="width: 150px; margin-top: 10px;">
-                                <?php endif; ?>
-                            </div>
+                                        </select> -->
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">Trạng thái*</label>
+                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status" value="<?= $data['status'] ?>" required>
+                                            <option value="" selected disabled>Vui lòng chọn...</option>
+                                            <option value="1" <?= ($data['products']['status'] == 1 ? 'selected' : '') ?>>Hiển thị</option>
+                                            <option value="0" <?= ($data['products']['status'] == 0 ? 'selected' : '') ?>>Ẩn</option>
 
-                            <!-- Giá tiền -->
-                            <div class="form-group">
-                                <label for="price">Giá tiền (VNĐ)*</label>
-                                <input type="number" class="form-control" id="price" placeholder="Nhập giá tiền sản phẩm..." name="price" value="<?= $data['price'] ?>" min="0" required>
-                            </div>
-
-                            <!-- Số lượng -->
-                            <div class="form-group">
-                                <label for="quantity">Số lượng*</label>
-                                <input type="number" class="form-control" id="quantity" placeholder="Nhập số lượng sản phẩm..." name="quantity" value="<?= $data['quantity'] ?>" min="0" required>
-                            </div>
-
-                            <!-- Trạng thái -->
-                            <div class="form-group">
-                                <label for="status">Trạng thái*</label>
-                                <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status" required>
-                                    <option value="" disabled>Vui lòng chọn...</option>
-                                    <option value="1" <?= ($data['status'] == 1 ? 'selected' : '') ?>>Hiển thị</option>
-                                    <option value="0" <?= ($data['status'] == 0 ? 'selected' : '') ?>>Ẩn</option>
-                                </select>
-                            </div>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="reset" class="btn btn-danger text-white" name="">Làm lại</button>
+                                        <button type="submit" class="btn btn-primary" name="">Cập nhật</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
 
-                        <!-- Buttons -->
-                        <div class="border-top">
-                            <div class="card-body">
-                                <button type="reset" class="btn btn-danger text-white">Làm lại</button>
-                                <button type="submit" class="btn btn-primary">Cập nhật</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+
+                
+
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
             </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid -->
-    <!-- ============================================================== -->
-</div>
-
+<!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
 
     <?php
     }
