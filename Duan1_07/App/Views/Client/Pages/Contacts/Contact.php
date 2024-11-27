@@ -6,11 +6,11 @@ use App\Views\BaseView;
 
 class Contact extends BaseView
 {
-    public static function render($data = null)
-    {
+	public static function render($data = null)
+	{
 ?>
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
+		<!DOCTYPE html>
+		<html lang="zxx" class="no-js">
 
 		<head>
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -148,6 +148,6 @@ class Contact extends BaseView
 
 <?php
 
-    }
+	}
 }
 ?>

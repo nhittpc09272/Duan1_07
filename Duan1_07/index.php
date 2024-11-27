@@ -62,6 +62,20 @@ Route::post('/register', 'App\Controllers\Client\AuthController@registerAction')
 Route::get('/login', 'App\Controllers\Client\AuthController@login');
 Route::post('/login', 'App\Controllers\Client\AuthController@loginAction');
 
+//logout
+Route::get('/logout', 'App\Controllers\Client\AuthController@logout');
+//users
+Route::get('/users/{id}', 'App\Controllers\Client\AuthController@edit');
+Route::put('/users/{id}', 'App\Controllers\Client\AuthController@update');
+//change password
+Route::get('/change-password', 'App\Controllers\Client\AuthController@changePassword');
+Route::put('/change-password', 'App\Controllers\Client\AuthController@changePasswordAction');
+//forgot password
+Route::get('/forgot-password', 'App\Controllers\Client\AuthController@forgotPassword');
+Route::post('/forgot-password', 'App\Controllers\Client\AuthController@forgotPasswordAction');
+//reset password
+Route::get('/reset-password', 'App\Controllers\Client\AuthController@resetPassword');
+Route::put('/reset-password', 'App\Controllers\Client\AuthController@resetPasswordAction');
 
 
 // *** Admin

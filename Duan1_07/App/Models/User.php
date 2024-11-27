@@ -7,7 +7,7 @@ use App\Helpers\NotificationHelper;
 class User extends BaseModel
 {
     protected $table = 'users';
-    protected $id = 'id';
+    protected $id = 'user_id';
 
     public function getAllUser()
     {
@@ -37,30 +37,37 @@ class User extends BaseModel
     }
 
     public function getOneUserByUsername(string $username)
-{
-    $result = [];
-    try {
-        // Truy vấn cơ sở dữ liệu để lấy thông tin người dùng
-        $sql = "SELECT * FROM $this->table WHERE username=?";
-        $conn = $this->_conn->MySQLi(); // Lấy kết nối MySQLi
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('s', $username); // Tham số username là chuỗi
-        $stmt->execute();
-        $query_result = $stmt->get_result();
+    {
+        try {
+            // Truy vấn cơ sở dữ liệu để lấy thông tin người dùng
+            $sql = "SELECT * FROM $this->table WHERE username = ?"; // Giữ nguyên truy vấn nếu 'username' là cột khóa để tìm
+            $conn = $this->_conn->MySQLi(); // Lấy kết nối MySQLi
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('s', $username); // Tham số username là chuỗi
+            $stmt->execute();
+            $query_result = $stmt->get_result();
 
-        // Nếu có kết quả, trả về mảng dữ liệu người dùng
-        if ($query_result->num_rows > 0) {
-            return $query_result->fetch_assoc(); // Trả về toàn bộ thông tin người dùng
-        } else {
-            return null; // Nếu không tìm thấy người dùng
+            // Kiểm tra nếu có kết quả
+            if ($query_result->num_rows > 0) {
+                $user = $query_result->fetch_assoc();
+                if (isset($user['user_id'])) {
+                    return $user;
+                } else {
+                    // Ghi log lỗi nếu không có user_id
+                    error_log('Lỗi: user_id không có trong kết quả của username: ' . $username);
+                    return null;
+                }
+            } else {
+                // Ghi log nếu không tìm thấy người dùng
+                error_log('Không tìm thấy người dùng với username: ' . $username);
+                return null;
+            }
+        } catch (\Throwable $th) {
+            // Ghi log lỗi nếu có exception
+            error_log('Lỗi khi truy vấn cơ sở dữ liệu: ' . $th->getMessage());
+            return null;
         }
-    } catch (\Throwable $th) {
-        error_log('Lỗi khi hiển thị chi tiết dữ liệu: ' . $th->getMessage());
-        return $result; // Trả về mảng rỗng nếu có lỗi
     }
-}
-
-
 
     public function updateUserByUsernameAndEmail(array $data)
     {

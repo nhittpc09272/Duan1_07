@@ -4,12 +4,28 @@ namespace App\Views\Client\Pages\Auth;
 
 use App\Views\BaseView;
 
-class ChangePassword extends BaseView{
+class ChangePassword extends BaseView
+{
 
-    public static function render($data = null){
-    ?>
+  public static function render($data = null)
+  {
+?>
+    <!-- Kiểm tra và hiển thị thông báo -->
+    <?php if (isset($_SESSION['notification'])): ?>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script>
+        Swal.fire({
+          icon: '<?php echo $_SESSION['notification']['type']; ?>',
+          title: '<?php echo $_SESSION['notification']['message']; ?>',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      </script>
+      <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
+      ?>
+    <?php endif; ?>
     <div class="container my-5">
-        <div class="row">
+      <div class="row">
         <div class="offset-md-1 col-md-3">
           <?php
           if ($data && $data['avatar']) :
@@ -26,38 +42,38 @@ class ChangePassword extends BaseView{
           ?>
         </div>
         <div class="col-md-7">
-                <div class="card card-body">
-                    <h4 class="text-center text-danger">Đổi mật khẩu</h4>
-                    <form action="/change-password" method="post">
-                        <input type="hidden" name="method" value="PUT" id="">
-                        <div class="form-group">
-                          <label for="username">Tên đăng nhập</label>
-                          <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tên đăng nhập" disabled value="<?=$data['username'] ?>">
-                        </div>
-                        <div class="form-group">
-                          <label for="old_password">Mật khẩu cũ*</label>
-                          <input type="password" name="old_password" id="old_password" class="form-control" placeholder="Nhập Mật khẩu cũ" >
-                        </div>
-                        <div class="form-group">
-                          <label for="new_password">Mật khẩu mới*</label>
-                          <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Nhập Mật khẩu mới" >
-                        </div>
-                        <div class="form-group">
-                          <label for="re_password">Nhập lại mật khẩu mới*</label>
-                          <input type="password" name="re_password" id="re_password" class="form-control" placeholder="Nhập lại mật khẩu mới" >
-                        </div>
-                      
-                        <button type="reset" class="btn btn-outline-danger">Nhập lại</button>
-                        <button type="submit" class="btn btn-outline-info">Cập nhật</button>
-                        
-                    </form>
-                </div>
-            </div>
+          <div class="card card-body">
+            <h4 class="text-center text-danger">Đổi mật khẩu</h4>
+            <form action="/change-password" method="post">
+              <input type="hidden" name="method" value="PUT" id="">
+              <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tên đăng nhập" disabled value="<?= $data['username'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="old_password">Mật khẩu cũ*</label>
+                <input type="password" name="old_password" id="old_password" class="form-control" placeholder="Nhập Mật khẩu cũ">
+              </div>
+              <div class="form-group">
+                <label for="new_password">Mật khẩu mới*</label>
+                <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Nhập Mật khẩu mới">
+              </div>
+              <div class="form-group">
+                <label for="re_password">Nhập lại mật khẩu mới*</label>
+                <input type="password" name="re_password" id="re_password" class="form-control" placeholder="Nhập lại mật khẩu mới">
+              </div>
+
+              <button type="reset" class="btn btn-outline-danger">Nhập lại</button>
+              <button type="submit" class="btn btn-outline-info">Cập nhật</button>
+
+            </form>
+          </div>
         </div>
+      </div>
     </div>
 
 
 <?php
 
-    }
+  }
 }
