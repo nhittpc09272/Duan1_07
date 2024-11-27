@@ -4,6 +4,7 @@ namespace App\Models;
 
 class Category extends BaseModel
 {
+    
     protected $table = 'categories';
     protected $id = 'categories_id';
 
@@ -33,7 +34,7 @@ class Category extends BaseModel
     {
         return $this->getAllByStatus();
     }
-    
+
 
     public function getOneCategoryByName($name)
     {
@@ -45,7 +46,9 @@ class Category extends BaseModel
 
             $stmt->bind_param('s', $name);
             $stmt->execute();
+
             return $stmt->get_result()->fetch_assoc();
+
         } catch (\Throwable $th) {
             error_log('Lỗi khi lấy loại sản phẩm bằng tên: ' . $th->getMessage());
             return $result;

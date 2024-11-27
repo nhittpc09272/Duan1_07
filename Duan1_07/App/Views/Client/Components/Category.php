@@ -12,18 +12,18 @@ class Category extends BaseView
         <div class="sidebar-categories">
             <div class="head mb-4" style="font-size: 20px; font-weight: bold; color: #333;">Danh Mục Sản Phẩm</div>
             <ul class="main-categories list-unstyled">
-                <li><a href="/products" class="text-decoration-none">Tất cả sản phẩm</a></li>
+                <li><a href="/products" class="text-decoration-none">Tất Cả Sản Phẩm</a></li>
                 <?php
                 if ($data && count($data)) {
                     foreach ($data as $item) :
                         $id = $item['categories_id'] ?? '#';
-                        $name = $item['category_name'] ?? 'Tên không xác định';
+                        $name = $item['category_name'] ?? 'Tên không xác định được';
                 ?>
                         <li><a href="/products/categories/<?= htmlspecialchars($id) ?>" class="text-decoration-none"><?= htmlspecialchars($name) ?></a></li>
                 <?php
                     endforeach;
                 } else {
-                    echo "<li><p class='text-muted'>Không có danh mục</p></li>";
+                    echo "<li><p class='text-muted'>Không có danh mục nào</p></li>";
                 }
                 ?>
             </ul>

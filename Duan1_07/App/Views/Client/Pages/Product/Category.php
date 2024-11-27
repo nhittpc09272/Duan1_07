@@ -72,7 +72,7 @@ class Category extends BaseView
                     <?php
                     else : //else: Nếu không có sản phẩm, hiển thị thông báo "Không có sản phẩm"
                     ?>
-                        <h3 class="text-center text-danger">Không có sản phẩm</h3>
+                        <h3 class="text-center text-danger">Không có sản phẩm nào</h3>
 
                     <?php
                     endif;

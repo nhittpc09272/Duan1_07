@@ -31,12 +31,12 @@ class Detail extends BaseView
         // Kiểm tra nếu có giá giảm
         if (isset($data['product']['discount_price']) && $data['product']['discount_price'] > 0) :
         ?>
-            <h6>Giá gốc: <strike><?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá' ?> đ</strike></h6>
+            <h6>Giá gốc: <strike><?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá tiền' ?> đ</strike></h6>
             <h6>Giá giảm: <strong class="text-danger"><?= isset($data['product']['price'], $data['product']['discount_price']) ? number_format($data['product']['price'] - $data['product']['discount_price']) : 'Chưa có giá' ?> đ</strong></h6>
         <?php
         else :
         ?>
-            <h6>Giá tiền: <?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá' ?> đ</h6>
+            <h6>Giá tiền: <?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá tiền' ?> đ</h6>
         <?php
         endif;
         ?>
