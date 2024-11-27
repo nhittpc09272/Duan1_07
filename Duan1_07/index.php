@@ -21,6 +21,7 @@ require_once 'config.php';
 Route::get('/', controllerMethod: 'App\Controllers\Client\HomeController@index');
 Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
+Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
 
 // Chuyển đến trang Blog
 Route::get('/blog', controllerMethod: 'App\Controllers\Client\BlogController@blog');
@@ -42,7 +43,11 @@ Route::get('/confirm', controllerMethod: 'App\Controllers\Client\ConfirmControll
 
 
 // Chuyển đến trang Cart
-Route::get('/cart', controllerMethod: 'App\Controllers\Client\CartController@cart');
+Route::get('/cart', 'App\Controllers\Client\CartController@index');
+Route::post('/cart/add', 'App\Controllers\Client\CartController@add');
+Route::put('/cart/update', 'App\Controllers\Client\CartController@update');
+Route::delete('/cart/delete', 'App\Controllers\Client\CartController@deleteItem');
+Route::delete('/cart/delete-all', 'App\Controllers\Client\CartController@deleteAll');
 
 // Chuyển đến trang Login
 // Route::get('/login', controllerMethod: 'App\Controllers\Client\AccountController@login');

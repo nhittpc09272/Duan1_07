@@ -9,18 +9,26 @@ class Category extends BaseView
     public static function render($data = null)
     {
 ?>
-        <h5 class="text-center mb-3">Danh mục</h5>
-        <nav class="nav flex-column border-right">
-            <a class="nav-link active" href="/products">Tất cả</a>
-            <?php
-            foreach ($data as $item) :
-            ?>
-                <a class="nav-link" href="/products/categories/<?= $item['id'] ?>"><?= $item['name'] ?></a>
-            <?php
-            endforeach;
-            ?>
-        </nav>
-
+        <div class="sidebar-categories">
+            <div class="head mb-4" style="font-size: 20px; font-weight: bold; color: #333;">Danh Mục Sản Phẩm</div>
+            <ul class="main-categories list-unstyled">
+                <li><a href="/products" class="text-decoration-none">Tất cả sản phẩm</a></li>
+                <?php
+                if ($data && count($data)) {
+                    foreach ($data as $item) :
+                        $id = $item['categories_id'] ?? '#';
+                        $name = $item['category_name'] ?? 'Tên không xác định';
+                ?>
+                        <li><a href="/products/categories/<?= htmlspecialchars($id) ?>" class="text-decoration-none"><?= htmlspecialchars($name) ?></a></li>
+                <?php
+                    endforeach;
+                } else {
+                    echo "<li><p class='text-muted'>Không có danh mục</p></li>";
+                }
+                ?>
+            </ul>
+        </div>
 <?php
     }
 }
+?>
