@@ -12,16 +12,65 @@ class Product extends BaseModel
     {
         return $this->getAll();
     }
+    public function getOneProduct($id)
+    {
+        return $this->getOne($id);
+    }
 
+    public function createProduct($data)
+    {
+        return $this->create($data);
+    }
+    public function updateProduct($id, $data)
+    {
+        return $this->update($id, $data);
+    }
+
+    public function deleteProduct($id)
+    {
+        return $this->delete($id);
+    }
     public function getAllProductByStatus()
     {
         $result = [];
         try {
             $sql = "SELECT products.* FROM products 
-        INNER JOIN categories 
-        ON products.category_id = categories.categories_id 
-        WHERE products.status =" . self::STATUS_ENABLE . "  
-        AND categories.status = " . self::STATUS_ENABLE;
+            INNER JOIN categories 
+            ON products.category_id = categories.categories_id 
+            WHERE products.status =" . self::STATUS_ENABLE ."  
+            AND categories.status = " . self::STATUS_ENABLE;
+            $result = $this->_conn->MySQLi()->query($sql);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+
+
+
+    public function getOneProductByName($name)
+    {
+        return $this->getOneByName($name);
+    }
+
+    public function getAllProductJoinCategory()
+    {
+        $result = [];
+        try {
+            // $sql = "SELECT * FROM $this->table";
+            $sql = "SELECT 
+    products.*, 
+    categories.category_name AS category_name,
+    product_variants.size,
+    product_variants.color,
+    product_variants.status AS variant_status
+FROM 
+    products
+INNER JOIN 
+    categories ON products.category_id = categories.categories_id
+LEFT JOIN 
+    product_variants ON products.product_id = product_variants.product_id ";
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
