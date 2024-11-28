@@ -15,7 +15,6 @@ class Category extends BaseModel
     {
         return $this->getOne($id);
     }
-
     public function createCategory($data)
     {
         return $this->create($data);
@@ -24,7 +23,6 @@ class Category extends BaseModel
     {
         return $this->update($id, $data);
     }
-
     public function deleteCategory($id)
     {
         return $this->delete($id);
@@ -33,8 +31,6 @@ class Category extends BaseModel
     {
         return $this->getAllByStatus();
     }
-    
-
     public function getOneCategoryByName($name)
     {
         $result = [];
@@ -42,7 +38,6 @@ class Category extends BaseModel
             $sql = "SELECT * FROM $this->table WHERE name=?";
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
-
             $stmt->bind_param('s', $name);
             $stmt->execute();
             return $stmt->get_result()->fetch_assoc();

@@ -91,8 +91,7 @@ class AuthValidation
 
         // Nơi lưu trữ ảnh trong src code
         $target_dir = 'public/uploads/users/';
-
-        // Kiểm tra cái loại file upload có hợp lệ không
+// Kiểm tra cái loại file upload có hợp lệ không
         $imageFileType = strtolower(pathinfo(basename($_FILES['avatar']['name']), PATHINFO_EXTENSION));
 
         if ($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'gif') {
@@ -166,8 +165,7 @@ class AuthValidation
 
         return $is_valid;
     }
-
-    public static function resetPassword(): bool
+public static function resetPassword(): bool
     {
         $is_valid = true;
         // Kiểm tra password

@@ -36,11 +36,10 @@ class Detail extends BaseView
                     <?php
                     else :
                     ?>
-                        <h6>Giá tiền: <?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá' ?> đ</h6>
+                        <h6>Giá tiền: <?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá tiền' ?> đ</h6>
                     <?php
                     endif;
                     ?>
-                    
                     <!-- Kiểm tra số lượt xem -->
                     <h6>Số lượt xem: <?= isset($data['product']['view']) ? $data['product']['view'] : 'Chưa có lượt xem' ?></h6>
                     <!-- Kiểm tra tên danh mục sản phẩm -->
@@ -102,7 +101,7 @@ class Detail extends BaseView
                                                     <button type="button" class="btn btn-cyan btn-sm" data-toggle="collapse" data-target="#<?= $item['username'] ?><?= $item['id'] ?>" aria-expanded="false" aria-controls="<?= $item['username'] ?><?= $item['id'] ?>">Sửa</button>
                                                     <form action="/comments/<?= $item['id'] ?>" method="post" onsubmit="return confirm('Chắc chưa?')" style="display: inline-block">
                                                         <input type="hidden" name="method" value="DELETE" id="">
-                                                        <input type="hidden" name="product_id" value="<?= $data['product']['id'] ?>" id="product_id">
+                                                        <input type="hidden" name="product_id" value="<?= $data['product']['id'] ?>" id="">
                                                         <button type="submit" class="btn btn-danger btn-sm">Xoá</button>
 
                                                     </form>
@@ -206,3 +205,4 @@ class Detail extends BaseView
 
     }
 }
+

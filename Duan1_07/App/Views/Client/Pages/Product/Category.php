@@ -12,10 +12,7 @@ class Category extends BaseView
 {
     public static function render($data = null)
     {
-
 ?>
-
-
         <div class="container mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3">
@@ -26,13 +23,12 @@ class Category extends BaseView
                 </div>
                 <div class="col-md-9">
                     <!-- <h1 class="text-center mb-3">Sản phẩm</h1> -->
-
                     <?php
                     // Kiểm tra nếu dữ liệu và danh sách sản phẩm tồn tại
                     if (isset($data) && isset($data['products']) && $data && $data['products']) :
                     ?>
-                    <!-- Hiển thị tên danh mục sản phẩm từ dữ liệu đầu vào -->
-                        <h1 class="text-center mb-3"><?= $data['products'][0]['category_name'] ?></h1> 
+                        <!-- Hiển thị tên danh mục sản phẩm từ dữ liệu đầu vào -->
+                        <h1 class="text-center mb-3"><?= $data['products'][0]['category_name'] ?></h1>
 
                         <div class="row">
                             <?php
@@ -54,7 +50,7 @@ class Category extends BaseView
                                             <?php endif; ?>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-<a href="/products/<?= $item['product_id'] ?>" type="button" class="btn btn-sm btn-outline-info h-50">Chi tiết</a>
+                                                    <a href="/products/<?= $item['product_id'] ?>" type="button" class="btn btn-sm btn-outline-info h-50">Chi tiết</a>
                                                     <form action="#" method="post">
                                                         <input type="hidden" name="method" value="POST">
                                                         <button type="submit" class="btn btn-sm btn-outline-success">Thêm vào giỏ hàng</button>
@@ -65,27 +61,20 @@ class Category extends BaseView
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                            
+
 
                             ?>
                         </div>
                     <?php
                     else : //else: Nếu không có sản phẩm, hiển thị thông báo "Không có sản phẩm"
                     ?>
-                        <h3 class="text-center text-danger">Không có sản phẩm</h3>
-
+                        <h3 class="text-center text-danger">Không có sản phẩm nào</h3>
                     <?php
                     endif;
                     ?>
                 </div>
             </div>
-
-
-
         </div>
-
-
-
 <?php
 
     }

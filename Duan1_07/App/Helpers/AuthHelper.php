@@ -279,6 +279,11 @@ class AuthHelper
             NotificationHelper::error('change-password', 'Đổi mật khẩu thất bại');
             return false;
         }
+
+        // Tiến hành lưu cookie và session nếu dữ liệu hợp lệ
+        $user_data = json_encode($result);
+        setcookie('user', $user_data, time() + 3600 * 24 * 30 * 12, '/');
+        $_SESSION['user'] = $result;
     }
 
     public static function forgotPassword($data)

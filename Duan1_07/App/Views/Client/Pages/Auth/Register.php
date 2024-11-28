@@ -39,12 +39,10 @@ class Register extends BaseView
                             <div class="form-group">
                                 <label for="password">Mật khẩu</label>
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Nhập mật khẩu">
-
                             </div>
                             <div class="form-group">
                                 <label for="re_password">Nhập lại mật khẩu</label>
                                 <input type="password" name="re_password" id="re_password" class="form-control" placeholder="Nhập lại mật kẩu">
-
                             </div>
                             <div class="form-group">
                                 <label for="email">Email*</label>

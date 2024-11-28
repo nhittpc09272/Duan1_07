@@ -90,8 +90,7 @@ class AuthController
                 header('Location: /register');
                 exit();
             }
-
-            if (empty($data['re_password'])) {
+if (empty($data['re_password'])) {
                 $_SESSION['notification'] = [
                     'type' => 'error',
                     'message' => 'Nhập lại mật khẩu không được để trống.'
@@ -168,7 +167,7 @@ class AuthController
                     'message' => 'Đăng Nhập thành công!'
                 ];
                 header('Location: /');
-            } else {
+} else {
                 $_SESSION['notification'] = [
                     'type' => 'error',
                     'message' => 'Đăng nhập thất bại, vui lòng thử lại.'
@@ -255,7 +254,7 @@ class AuthController
 
         //     // Kiểm tra kết quả và lưu thông báo vào session
         //     if ($is_success) {
-        //         $_SESSION['notification'] = [
+//         $_SESSION['notification'] = [
         //             'type' => 'success',
         //             'message' => 'Đăng xuất thành công!'
         //         ];
@@ -346,8 +345,7 @@ class AuthController
 
     //     //Gọi helper để update
     //     $result = AuthHelper::update($id, $data);
-
-    //     //Kiểm tra kết quả trả về và chuyển hướng
+//     //Kiểm tra kết quả trả về và chuyển hướng
     //     header("Location: /users/$id");
 
     // }
@@ -448,8 +446,7 @@ class AuthController
     //Đổi mật khẩu
     // public static function changePasswordAction()
     // {
-
-    //     //validtion
+//     //validtion
     //     $is_valid = AuthValidation::changePassword();
     //     if (!$is_valid) {
     //         NotificationHelper::error('change_password', 'Đổi mật khẩu thất bại');
@@ -537,7 +534,7 @@ class AuthController
                 'message' => 'Gửi yêu cầu lấy lại mật khẩu thất bại.'
             ];
             header('Location: /forgot-password');
-            exit();
+exit();
         }
 
         $username = $_POST['username'];
@@ -628,7 +625,7 @@ class AuthController
         $is_valid = AuthValidation::resetPassword();
         if (!$is_valid) {
             $_SESSION['notification'] = [
-                'type' => 'error',
+'type' => 'error',
                 'message' => 'Đặt lại mật khẩu thất bại, vui lòng kiểm tra thông tin.'
             ];
             header('Location: /reset-password');
