@@ -8,6 +8,9 @@ use App\Views\Client\Layouts\Footer;
 use App\Views\Client\Pages\Contacts\Contact;
 use App\Views\Client\Layouts\Header;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 class ContactController 
 {
     // hiển thị danh sách
@@ -69,6 +72,10 @@ class ContactController
                 $mail->Body    = "<p>Bạn đã nhận được tin nhắn từ <strong>$name</strong> ($email):</p><p>$message</p>";
                 $mail->CharSet = 'UTF-8'; // Bổ sung thêm dòng này
 
+                // Hiển thị thông tin người gửi và người nhận
+                echo "Người gửi: $name ($email)<br>";
+                echo "Người nhận: quocanh25115@gmail.com (Liên Hệ)<br>";
+
                 // Gửi email
                 if ($mail->send()) {
                     NotificationHelper::success('email', 'Email đã được gửi thành công.');
@@ -80,7 +87,7 @@ class ContactController
             }
         }
 
-        // Sau khi gửi email hoặc có lỗi, điều hướng về trang liên hệ
+        // Sau khi gửi email, điều hướng về trang liên hệ
         header('Location: /contact');
         exit();
     }

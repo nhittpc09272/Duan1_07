@@ -10,18 +10,6 @@ class Index extends BaseView
     public static function render($data = null)
     {
 ?>
-
-
-        <!-- Start Banner Area -->
-        <section class="banner-area organic-breadcrumb">
-            <div class="container">
-                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
-                    <h1 class="text-white font-weight-bold">Trang Danh Mục Sản Phẩm</h1>
-                </div>
-            </div>
-        </section>
-        <!-- End Banner Area -->
-
         <div class="container mt-5">
             <div class="row">
                 <!-- Sidebar Categories -->

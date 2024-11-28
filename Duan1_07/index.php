@@ -45,6 +45,12 @@ Route::get('/confirm', controllerMethod: 'App\Controllers\Client\ConfirmControll
 // Chuyển đến trang Cart
 Route::get('/cart', controllerMethod: 'App\Controllers\Client\CartController@cart');
 
+//comment 
+Route::post('/comments', 'App\Controllers\Client\CommentController@store');
+Route::put('/comments/{id}', 'App\Controllers\Client\CommentController@update');
+Route::delete('/comments/{id}', 'App\Controllers\Client\CommentController@delete');
+
+
 // Chuyển đến trang Login
 // Route::get('/login', controllerMethod: 'App\Controllers\Client\AccountController@login');
 
