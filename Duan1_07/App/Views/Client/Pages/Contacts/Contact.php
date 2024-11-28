@@ -31,6 +31,8 @@ class Contact extends BaseView
 					padding: 30px;
 					border-radius: 8px;
 					box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+					border-radius: 8px;
+					border-color: black;
 				}
 
 				.contact_form h3 {
@@ -71,7 +73,7 @@ class Contact extends BaseView
 						<div class="col-lg-6">
 							<div class="contact_form">
 								<h3>Liên hệ với chúng tôi</h3>
-								<form id="contactForm">
+								<form method="post" action="/contact/send-email" id="contactForm">
 									<div class="form-group">
 										<label for="name">Tên của bạn</label>
 										<input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên của bạn">
@@ -89,7 +91,7 @@ class Contact extends BaseView
 										<textarea class="form-control" id="message" name="message" rows="5" placeholder="Nhập nội dung tin nhắn"></textarea>
 									</div>
 									<div class="text-right">
-										<button type="button" id="submitBtn" class="btn btn-primary">Gửi</button>
+										<button type="submit"  class="btn btn-primary">Gửi</button>
 									</div>
 								</form>
 							</div>
@@ -113,35 +115,6 @@ class Contact extends BaseView
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-			<script>
-				// Xử lý sự kiện khi người dùng nhấn nút gửi
-				document.getElementById('submitBtn').addEventListener('click', function() {
-					// Lấy giá trị từ các trường nhập liệu
-					const name = document.getElementById('name').value.trim();
-					const email = document.getElementById('email').value.trim();
-					const subject = document.getElementById('subject').value.trim();
-					const message = document.getElementById('message').value.trim();
-
-					// Kiểm tra nếu có trường nào bị bỏ trống
-					if (!name || !email || !subject || !message) {
-						Swal.fire({
-							icon: 'error',
-							title: 'Oops...',
-							text: 'Vui lòng điền đầy đủ thông tin!',
-						});
-					} else {
-						// Hiển thị thông báo thành công
-						Swal.fire({
-							icon: 'success',
-							title: 'Gửi thành công!',
-							text: 'Cảm ơn bạn đã liên hệ với chúng tôi!',
-						});
-
-						// Reset form
-						document.getElementById('contactForm').reset();
-					}
-				});
-			</script>
 		</body>
 
 		</html>
