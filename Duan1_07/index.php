@@ -99,6 +99,42 @@ Route::put('/admin/products/{id}', 'App\Controllers\Admin\ProductController@upda
 // DELETE /products/{id} (delete loại sản phẩm với id cụ thể)
 Route::delete('/admin/products/{id}', 'App\Controllers\Admin\ProductController@delete');
 
+// variant
+Route::get('/admin/variants', 'App\Controllers\Admin\VariantController@index');
+// GET /variant/create (hiển thị form thêm loại sản phẩm)
+Route::get('/admin/variants/create', 'App\Controllers\Admin\VariantController@create');
+
+// POST /variant (tạo mới một loại sản phẩm)
+Route::post('/admin/variants', 'App\Controllers\Admin\VariantController@store');
+
+// GET /variant/{id} (lấy chi tiết loại sản phẩm với id cụ thể)
+Route::get('/admin/variants/{id}', 'App\Controllers\Admin\VariantController@edit');
+
+// PUT /variant/{id} (update loại sản phẩm với id cụ thể)
+Route::put('/admin/variants/{id}', 'App\Controllers\Admin\VariantController@update');
+
+// Đảm bảo rằng định nghĩa route DELETE có mặt trong file routes.php
+Route::delete('/admin/variants/{id}', 'App\Controllers\Admin\VariantController@delete');
+
+//  *** User
+// GET /user (lấy danh sách người dùng)
+Route::get('/admin/users', 'App\Controllers\Admin\UserController@index');
+
+// GET /user/create (hiển thị form thêm người dùng)
+Route::get('/admin/users/create', 'App\Controllers\Admin\UserController@create');
+
+// POST /user (tạo mới một người dùng)
+Route::post('/admin/users', 'App\Controllers\Admin\UserController@store');
+
+// GET /user/{id} (lấy chi tiết người dùng với id cụ thể)
+Route::get('/admin/users/{id}', 'App\Controllers\Admin\UserController@edit');
+
+// PUT /user/{id} (update người dùng với id cụ thể)
+Route::put('/admin/users/{id}', 'App\Controllers\Admin\UserController@update');
+
+// DELETE /user/{id} (delete người dùng với id cụ thể)
+Route::delete('/admin/users/{id}', 'App\Controllers\Admin\UserController@delete');
+
 
 
 Route::dispatch($_SERVER['REQUEST_URI']);
