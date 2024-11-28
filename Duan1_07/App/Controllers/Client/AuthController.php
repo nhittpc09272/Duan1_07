@@ -258,28 +258,6 @@ class AuthController
         //     header('Location: /');
         // }
     }
-    // public static function logout()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //         $is_success = AuthHelper::logout();
-
-    //         if ($is_success) {
-    //             $_SESSION['notification'] = [
-    //                 'type' => 'success',
-    //                 'message' => 'Đăng xuất thành công!'
-    //             ];
-    //         } else {
-    //             $_SESSION['notification'] = [
-    //                 'type' => 'error',
-    //                 'message' => 'Đăng xuất thất bại, vui lòng thử lại.'
-    //             ];
-    //         }
-
-    //         // Chuyển hướng về trang chủ
-    //         header('Location: /');
-    //         exit();
-    //     }
-    // }
 
 
 
@@ -309,34 +287,6 @@ class AuthController
         Footer::render();
     }
 
-    // public static function update($id){
-    //     // $is_valid = AuthValidation::edit();
-
-    //     // if(!$is_valid){
-    //     //     NotificationHelper::error('update_user', 'Cập nhật thông tin tài khoản  thất bại');
-    //     //     header("Location: /users/$id");
-    //     //     exit();
-    //     // }
-
-    //     $data = [
-    //         'email' => $_POST['email'],
-    //         'phone' => $_POST['phone'],
-    //         'address' => $_POST['address'],
-    //         'username' => $_POST['username'],
-    //     ];
-
-    //     //Kiểm tra có upload hình ảnh kh, nếu có: kiểm tra có hợp lệ kh
-    //     $is_upload = AuthValidation::uploadAvatar();
-    //     if($is_upload){
-    //         $data['avatar'] = $is_upload;
-    //     }
-
-    //     //Gọi helper để update
-    //     $result = AuthHelper::update($id, $data);
-    //     //Kiểm tra kết quả trả về và chuyển hướng
-    //     header("Location: /users/$id");
-
-    // }
     public static function update($id)
     {
         $data = [
