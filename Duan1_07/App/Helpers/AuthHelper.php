@@ -154,79 +154,85 @@ class AuthHelper
         }
     }
 
-    // public static function edit($id): bool{
-    //     if(!self::checkLogin()){
-    //         NotificationHelper::error('login', 'Vui lòng dăng nhập để xem thêm');
-    //         return false;
-    //     }
+    public static function edit($id): bool{
+        if(!self::checkLogin()){
+            NotificationHelper::error('login', 'Vui lòng dăng nhập để xem thêm');
+            return false;
+        }
 
-    //     $data = $_SESSION['user'];
-    //     $user_id = $data['id'];
+        $data = $_SESSION['user'];
+        $user_id = $data['id'];
 
-    //     if($user_id != $id){
-    //         NotificationHelper::error('user_id', 'Không có quyền xem thông tin');
-    //         return false;
-    //     } 
+        if($user_id != $id){
+            NotificationHelper::error('user_id', 'Không có quyền xem thông tin');
+            return false;
+        } 
 
-    //     return true;
-    // }
+        return true;
+    }
 
-    // public static function update($id, $data){
+    public static function update($id, $data)
+    {
 
-    //     $user = new User();
-    //     $result = $user->updateUser($id, $data);
+        $user = new User();
+        $result = $user->updateUser($id, $data);
 
-    //     if(!$result){
-    //         NotificationHelper::error('update_user', 'Cập nhật thông tin tài khoản thất bại');
-    //         return false;
-    //     }
+        if (!$result) {
+            // NotificationHelper::error('update_user', 'Cập nhật thông tin tài khoản thất bại');
+            return false;
+        }
 
-    //     if($_SESSION['user']){
-    //         self::updateSession($id);
-    //     }
-    //     if($_COOKIE['user']){
-    //         self::updateCookie($id);
-    //     }
+        if ($_SESSION['user']) {
+            self::updateSession($id);
+        }
+        if ($_COOKIE['user']) {
+            self::updateCookie($id);
+        }
 
-    //     NotificationHelper::success('update_user', 'Cập nhật thông tin tài khoản thành công');
-    //     return true;
-    // }
+        // NotificationHelper::success('update_user', 'Cập nhật thông tin tài khoản thành công');
+        return true;
+    }
 
-    // public static function changePassword($id, $data){
+    public static function changePassword($id, $data){
 
-    //     $user = new User();
-    //     $result = $user->getOneUser($id);
-    //     if(!$result){
-    //         NotificationHelper::error('account', 'Không tồn tại tài khoản');
-    //         return false;
-    //     }
+        $user = new User();
+        $result = $user->getOneUser($id);
+        if(!$result){
+            NotificationHelper::error('account', 'Không tồn tại tài khoản');
+            return false;
+        }
 
-    //     //Kiểm tra mật khẩu cũ có trùng khớp vói db kh
-    //     if(!password_verify($data['old_password'], $result['password'])){
-    //         NotificationHelper::error('password_verify', 'Mật khẩu cũ không đúng');
-    //         return false;
-    //     }
+        //Kiểm tra mật khẩu cũ có trùng khớp vói db kh
+        if(!password_verify($data['old_password'], $result['password'])){
+            NotificationHelper::error('password_verify', 'Mật khẩu cũ không đúng');
+            return false;
+        }
 
-    //     //Mã hóa mật khẩu mới trước khi lưu
-    //     $hashed_password = password_hash($data['new_password'], PASSWORD_DEFAULT);
+        //Mã hóa mật khẩu mới trước khi lưu
+        $hashed_password = password_hash($data['new_password'], PASSWORD_DEFAULT);
 
-    //     $data_update = [
-    //         'password' => $hashed_password,
-    //     ];
+        $data_update = [
+            'password' => $hashed_password,
+        ];
 
-    //     $result_update = $user->updateUser($id, $data_update);
-    //     if($result_update){
-    //         if(isset($_COOKIE['user'])){
-    //             self::updateCookie($id);
-    //         }
-    //         self::updateSession($id);
-    //         NotificationHelper::success('change-password', 'Đổi mật khẩu thành công');
-    //         return true;
-    //     }else{
-    //         NotificationHelper::error('change-password', 'Đổi mật khẩu thất bại');
-    //         return false;
-    //     }
-    // }
+        $result_update = $user->updateUser($id, $data_update);
+        if ($result_update) {
+            if (isset($_COOKIE['user'])) {
+                self::updateCookie($id);
+            }
+            self::updateSession($id);
+            // NotificationHelper::success('change-password', 'Đổi mật khẩu thành công');
+            return true;
+        } else {
+            NotificationHelper::error('change-password', 'Đổi mật khẩu thất bại');
+            return false;
+        }
+
+        // Tiến hành lưu cookie và session nếu dữ liệu hợp lệ
+        $user_data = json_encode($result);
+        setcookie('user', $user_data, time() + 3600 * 24 * 30 * 12, '/');
+        $_SESSION['user'] = $result;
+    }
 
     // public static function forgotPassword($data){
 

@@ -17,30 +17,35 @@ class Header extends BaseView
         <html lang="en">
 
         <head>
-            <meta charset="utf-8">
-            <title>5TV</title>
-            <meta content="width=device-width, initial-scale=1.0" name="viewport">
-            <meta content="Free HTML Templates" name="keywords">
-            <meta content="Free HTML Templates" name="description">
-
-            <link href="img/favicon.ico" rel="icon">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Oswald:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet">
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-            <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-            <link href="/public/assets/client/css/bootstrap.min.css" rel="stylesheet">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <link rel="stylesheet" href="/public/assets/client/css/linearicons.css">
-            <link rel="stylesheet" href="/public/assets/client/css/owl.carousel.css">
-            <link rel="stylesheet" href="/public/assets/client/css/font-awesome.min.css">
-            <link rel="stylesheet" href="/public/assets/client/css/themify-icons.css">
-            <link rel="stylesheet" href="/public/assets/client/css/nice-select.css">
-            <link rel="stylesheet" href="/public/assets/client/css/nouislider.min.css">
-            <link rel="stylesheet" href="/public/assets/client/css/bootstrap.css">
-            <link rel="stylesheet" href="/public/assets/client/css/main.css">
+            <!-- Mobile Specific Meta -->
+            <meta name="viewport"
+                content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <!-- Favicon-->
+            <link rel="shortcut icon" href="img/fav.png">
+            <!-- Author Meta -->
+            <meta name="author" content="CodePixar">
+            <!-- Meta Description -->
+            <meta name="description" content>
+            <!-- Meta Keyword -->
+            <meta name="keywords" content>
+            <!-- meta character set -->
+            <meta charset="UTF-8">
+            <!-- Site Title -->
+            <title>Poly Shop</title>
+            <!--
+		CSS
+		============================================= -->
+            <link rel="stylesheet" href="/App/Views/Client/css/linearicons.css">
+            <link rel="stylesheet" href="/App/Views/Client/css/font-awesome.min.css">
+            <link rel="stylesheet" href="/App/Views/Client/css/themify-icons.css">
+            <link rel="stylesheet" href="/App/Views/Client/css/bootstrap.css">
+            <link rel="stylesheet" href="/App/Views/Client/css/owl.carousel.css">
+            <link rel="stylesheet" href="/App/Views/Client/css/nice-select.css">
+            <link rel="stylesheet" href="/App/Views/Client/css/nouislider.min.css">
+            <link rel="stylesheet" href="/App/Views/Client/css/ion.rangeSlider.css" />
+            <link rel="stylesheet" href="/App/Views/Client/css/ion.rangeSlider.skinFlat.css" />
+            <link rel="stylesheet" href="/App/Views/Client/css/magnific-popup.css">
+            <link rel="stylesheet" href="/App/Views/Client/css/main.css">
         </head>
         <style>
             :root {
@@ -515,24 +520,23 @@ class Header extends BaseView
                     </div>
                 </div>
             </div>
-            <!-- Video Modal End -->
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-primary border-inner py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+        </header>
 
+        <script src="/App/Views/Client/js/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+        <script src="/App/Views/Client/js/vendor/bootstrap.min.js"></script>
+        <script src="/App/Views/Client/js/jquery.ajaxchimp.min.js"></script>
+        <script src="/App/Views/Client/js/jquery.nice-select.min.js"></script>
+        <script src="/App/Views/Client/js/jquery.sticky.js"></script>
+        <script src="/App/Views/Client/js/nouislider.min.js"></script>
+        <script src="/App/Views/Client/js/countdown.js"></script>
+        <script src="/App/Views/Client/js/jquery.magnific-popup.min.js"></script>
+        <script src="/App/Views/Client/js/owl.carousel.min.js"></script>
+        <script src="/App/Views/Client/js/gmaps.min.js"></script>
+        <script src="/App/Views/Client/js/main.js"></script>
 
-            <!-- JavaScript Libraries -->
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="/public/assets/client/lib/easing/easing.min.js"></script>
-            <script src="/public/assets/client/lib/waypoints/waypoints.min.js"></script>
-            <script src="/public/assets/client/lib/counterup/counterup.min.js"></script>
-            <script src="/public/assets/client/lib/owlcarousel/owl.carousel.min.js"></script>
-
-            <!-- Template Javascript -->
-            <script src="/public/assets/client/js/main1.js"></script>
-        </body>
-
-        </html>
 
 <?php
 

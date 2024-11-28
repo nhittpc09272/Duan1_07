@@ -68,7 +68,6 @@ class User extends BaseModel
             $username = $data['username'];
             $email = $data['email'];
             $password = $data['password'];
-
             $sql = "UPDATE $this->table SET password = '$password' WHERE username = '$username' AND email = '$email'";
 
             $conn = $this->_conn->MySQLi();
