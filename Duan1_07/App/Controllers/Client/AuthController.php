@@ -236,7 +236,6 @@ class AuthController
         AuthHelper::logout();
         // NotificationHelper::success('logout', 'Đăng xuất thành công');
         header('Location: /');
-
         //Kiểm tra nếu form đăng ký được submit
         // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //     // Gọi phương thức register từ AuthHelper
@@ -257,7 +256,6 @@ class AuthController
 
         //     // Sau khi xử lý xong, chuyển hướng lại về trang đăng ký để hiển thị thông báo
         //     header('Location: /');
-
         // }
     }
     // public static function logout()

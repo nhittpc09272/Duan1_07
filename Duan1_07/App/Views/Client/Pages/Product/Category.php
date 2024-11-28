@@ -12,10 +12,7 @@ class Category extends BaseView
 {
     public static function render($data = null)
     {
-
 ?>
-
-
         <div class="container mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3">
@@ -26,7 +23,6 @@ class Category extends BaseView
                 </div>
                 <div class="col-md-9">
                     <!-- <h1 class="text-center mb-3">Sản phẩm</h1> -->
-
                     <?php
                     // Kiểm tra nếu dữ liệu và danh sách sản phẩm tồn tại
                     if (isset($data) && isset($data['products']) && $data && $data['products']) :
@@ -72,20 +68,13 @@ class Category extends BaseView
                     <?php
                     else : //else: Nếu không có sản phẩm, hiển thị thông báo "Không có sản phẩm"
                     ?>
-                        <h3 class="text-center text-danger">Không có sản phẩm</h3>
-
+                        <h3 class="text-center text-danger">Không có sản phẩm nào</h3>
                     <?php
                     endif;
                     ?>
                 </div>
             </div>
-
-
-
         </div>
-
-
-
 <?php
 
     }

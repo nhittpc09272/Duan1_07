@@ -103,19 +103,43 @@ class Product extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT products.*, categories.name AS category_name FROM products 
-            INNER JOIN categories ON products.category_id = categories.id 
-            WHERE products.status =" . self::STATUS_ENABLE . " AND categories.status=" . self::STATUS_ENABLE . " AND products.category_id=?";
+            // Câu truy vấn SQL
+            $sql = "SELECT 
+                        p.product_id, 
+                        p.product_name, 
+                        p.description, 
+                        p.stock_quantity, 
+                        p.image, 
+                        p.status AS product_status, 
+                        p.category_id, 
+                        c.category_name, 
+                        p.price
+                    FROM 
+                        products p
+                    INNER JOIN 
+                        categories c 
+                    ON 
+                        p.category_id = c.categories_id
+                    WHERE 
+                        p.product_id = ? 
+                        AND p.status = 1
+                        AND c.status = 1";
+
+            // Kết nối tới database
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
 
+            // Gán giá trị cho tham số
             $stmt->bind_param('i', $id);
+
+            // Thực thi câu lệnh
             $stmt->execute();
-            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            $result = $stmt->get_result()->fetch_assoc();
         } catch (\Throwable $th) {
-            error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
-            return $result;
+            error_log('Lỗi khi lấy chi tiết sản phẩm: ' . $th->getMessage());
         }
+
+        return $result;
     }
 
 

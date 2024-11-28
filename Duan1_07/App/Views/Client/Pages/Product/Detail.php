@@ -36,11 +36,10 @@ class Detail extends BaseView
                     <?php
                     else :
                     ?>
-                        <h6>Giá tiền: <?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá' ?> đ</h6>
+                        <h6>Giá tiền: <?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá tiền' ?> đ</h6>
                     <?php
                     endif;
                     ?>
-                    
                     <!-- Kiểm tra số lượt xem -->
                     <h6>Số lượt xem: <?= isset($data['product']['view']) ? $data['product']['view'] : 'Chưa có lượt xem' ?></h6>
                     <!-- Kiểm tra tên danh mục sản phẩm -->
@@ -162,7 +161,7 @@ class Detail extends BaseView
                                         ?>
                                     </div>
                                     <div class="comment-text w-100">
-                                        <h6 class="font-medium"><?= $_SESSION['user']['name'] ?> - <?= $_SESSION['user']['username'] ?></h6>
+                                        <h6 class="font-medium"><?= $_SESSION['user']['username'] ?> - <?= $_SESSION['user']['username'] ?></h6>
                                         <form action="/comments" method="post">
                                             <!-- Xác định phương thức HTTP là POST. -->
                                             <input type="hidden" name="method" value="POST" id="" required>
