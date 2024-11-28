@@ -21,7 +21,7 @@ class Index extends BaseView
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Danh sách loại sản phẩm</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Danh sách sản phẩm</li>
                                 </ol>
                             </nav>
                         </div>
@@ -43,7 +43,7 @@ class Index extends BaseView
 
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Danh sách loại sản phẩm</h5>
+                                <h5 class="card-title">Danh sác sản phẩm</h5>
                                 <?php
                                 if (count($data)) :
                                 ?>

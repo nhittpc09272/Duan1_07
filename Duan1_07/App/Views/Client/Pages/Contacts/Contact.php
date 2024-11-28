@@ -111,10 +111,84 @@ class Contact extends BaseView
 						</div>
 					</div>
 				</div>
-			</section>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+				<div class="col-lg-9">
+					<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modals error -->
+
+			<div id="error" class="modal modal-message fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<i class="fa fa-close"></i>
+							</button>
+							<h2>Sorry !</h2>
+							<p> Something went wrong </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--================End Contact Success and Error message Area =================-->
+
+
+			<script src="/public/assets/client/js/vendor/jquery-2.2.4.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+				crossorigin="anonymous"></script>
+			<script src="/public/assets/client/js/vendor/bootstrap.min.js"></script>
+			<script src="/public/assets/client/js/jquery.ajaxchimp.min.js"></script>
+			<script src="/public/assets/client/js/jquery.nice-select.min.js"></script>
+			<script src="/public/assets/client/js/jquery.sticky.js"></script>
+			<script src="/public/assets/client/js/nouislider.min.js"></script>
+			<script src="/public/assets/client/js/jquery.magnific-popup.min.js"></script>
+			<script src="/public/assets/client/js/owl.carousel.min.js"></script>
+			<!--gmaps Js-->
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+			<script src="/public/assets/client/js/gmaps.min.js"></script>
+			<script src="/public/assets/client/js/main.js"></script>
+			<script>
+				// Xử lý sự kiện khi người dùng nhấn nút gửi
+				document.getElementById('submitBtn').addEventListener('click', function() {
+					// Lấy giá trị từ các trường nhập liệu
+					const name = document.getElementById('name').value.trim();
+					const email = document.getElementById('email').value.trim();
+					const subject = document.getElementById('subject').value.trim();
+					const message = document.getElementById('message').value.trim();
+
+					// Kiểm tra nếu có trường nào bị bỏ trống
+					if (!name || !email || !subject || !message) {
+						Swal.fire({
+							icon: 'error',
+							title: 'Oops...',
+							text: 'Vui lòng điền đầy đủ thông tin!',
+						});
+					} else {
+						// Hiển thị thông báo thành công
+						Swal.fire({
+							icon: 'success',
+							title: 'Gửi thành công!',
+							text: 'Cảm ơn bạn đã liên hệ với chúng tôi!',
+						});
+
+						// Reset form
+						document.getElementById('contactForm').reset();
+					}
+				});
+			</script>
 		</body>
 
 		</html>
