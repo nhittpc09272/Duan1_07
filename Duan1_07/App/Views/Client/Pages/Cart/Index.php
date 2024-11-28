@@ -10,109 +10,271 @@ class Index extends BaseView
     public static function render($data = null)
     {
         $is_login = AuthHelper::checkLogin();
-        ?>
-        <div class="container mt-5 mb-5">
-            <h1 class="text-center fw-bold py-3"
-                style="margin-top: 100px; background-color: #f8f9fa; color: #6c757d; border-radius: 8px;">
-                Giỏ hàng của bạn
-            </h1>
-            <table class="table table-bordered table-hover align-middle mt-4">
-                <thead class="text-center" style="background-color: #ADD8E6; color: #333;">
-                    <tr>
-                        <th>STT</th>
-                        <th>Mã sản phẩm</th>
-                        <th>Hình ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giá tiền</th>
-                        <th>Số lượng</th>
-                        <th>Tổng tiền</th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody style="background-color: #f4f4f4;">
-                    <?php
-                    $total_price = 0;
-                    $i = 0;
-                    foreach ($data as $cart):
-                        if ($cart['data']):
-                            $unit_price = $cart['quantity'] * ($cart['data']['price'] - $cart['data']['discount_price']);
-                            $total_price += $unit_price;
-                            $i++;
-                            ?>
-                            <tr class="text-center">
-                                <td><?= $i ?></td>
-                                <td><?= $cart['data']['id'] ?></td>
-                                <td>
-                                    <img src="<?= APP_URL ?>/public/assets/client/images/<?= $cart['data']['image'] ?>"
-                                        alt="<?= $cart['data']['name'] ?>" class="img-thumbnail" width="100px">
-                                </td>
-                                <td><?= $cart['data']['name'] ?></td>
-                                <td class="text-danger fw-bold">
-                                    <?php if ($cart['data']['discount_price'] > 0): ?>
-                                        <strike><?= number_format($cart['data']['price']) ?>đ</strike><br>
-                                        <?= number_format($cart['data']['price'] - $cart['data']['discount_price']) ?>đ
-                                    <?php else: ?>
-                                        <?= number_format($cart['data']['price']) ?>đ
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <form action="/cart/update" method="post" class="d-flex justify-content-center align-items-center">
-                                        <input type="hidden" name="method" value="PUT">
-                                        <!-- Nút giảm số lượng -->
-                                        <button type="button" class="btn btn-outline-secondary btn-sm p-0"
-                                            style="width: 30px; height: 30px; font-size: 16px;"
-                                            onclick="this.parentNode.querySelector('input[name=quantity]').stepDown()">&#8722;</button>
-                                        <!-- Trường nhập số lượng -->
-                                        <input type="number" name="quantity" value="<?= $cart['quantity'] ?>"
-                                            class="form-control text-center mx-1" style="width: 50px; height: 31px; margin-top: 17px;"
-                                            min="1" max="99" onchange="this.form.submit()">
-                                        <!-- Nút tăng số lượng -->
-                                        <button type="button" class="btn btn-outline-secondary btn-sm p-0"
-                                            style="width: 30px; height: 30px; font-size: 16px;"
-                                            onclick="this.parentNode.querySelector('input[name=quantity]').stepUp()">&#43;</button>
-                                        <input type="hidden" name="id" value="<?= $cart['data']['id'] ?>">
-                                        <input type="hidden" name="update-cart-item">
-                                    </form>
-                                </td>
+        $total_price = 0;
+        $item_count = 0;
 
-                                <td class="fw-bold"><?= number_format($unit_price) ?>đ</td>
-                                <td>
-                                    <form action="cart/delete" method="post">
-                                        <input type="hidden" name="method" value="DELETE">
-                                        <input type="hidden" name="id" value="<?= $cart['data']['id'] ?>">
-                                        <button class="btn btn-danger btn-sm" type="submit"
-                                            style="width: 60px; height: 30px">Xóa</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php
-                        endif;
-                    endforeach;
-                    ?>
-                </tbody>
-            </table>
+        // Calculate total price and item count
+        foreach ($data as $cart) {
+            if ($cart['data']) {
+                $unit_price = $cart['quantity'] * ($cart['data']['price'] - $cart['data']['discount_price']);
+                $total_price += $unit_price;
+                $item_count += $cart['quantity'];
+            }
+        }
+?>
+        <style>
+            .delete-icon {
+                color: gray;
+                /* Màu xám khi không rê chuột */
+                transition: color 0.3s;
+                /* Hiệu ứng chuyển màu mượt mà */
+            }
 
-            <div class="mt-4">
-                <h3 class="text-end text-success fw-bold">Tổng cộng: <?= number_format($total_price) ?>đ</h3>
-            </div>
+            .delete-icon:hover {
+                color: black;
+                /* Màu đen khi rê chuột */
+            }
 
-            <div class="mt-5 d-flex justify-content-between align-items-center">
-                <form action="/cart/delete-all" method="post">
-                    <input type="hidden" name="method" value="DELETE">
-                    <button class="btn btn-danger" name="delete-cart" type="submit">Xóa giỏ hàng</button>
-                </form>
+            .payment-info {
+                background: orange;
+                /* Thay đổi màu nền thành cam */
+                padding: 10px;
+                border-radius: 6px;
+                color: #fff;
+                font-weight: bold;
+            }
 
-                <?php if ($is_login): ?>
-                    <a href="/checkout" class="btn btn-primary">Tiến hành thanh toán</a>
-                <?php else: ?>
-                    <div class="text-center">
-                        <span class="text-danger">Vui lòng đăng nhập để thanh toán</span><br>
-                        <a href="/login" class="btn btn-outline-dark mt-2">Đăng nhập</a>
+            .product-details {
+                padding: 10px;
+            }
+
+            body {
+                background: #eee;
+            }
+
+            .cart {
+                background: #fff;
+            }
+
+            .p-about {
+                font-size: 12px;
+            }
+
+            .table-shadow {
+                -webkit-box-shadow: 5px 5px 15px -2px rgba(0, 0, 0, 0.42);
+                box-shadow: 5px 5px 15px -2px rgba(0, 0, 0, 0.42);
+            }
+
+            .type {
+                font-weight: 400;
+                font-size: 10px;
+            }
+
+            label.radio {
+                cursor: pointer;
+            }
+
+            label.radio input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+
+            label.radio span {
+                padding: 1px 12px;
+                border: 2px solid #ada9a9;
+                display: inline-block;
+                color: #8f37aa;
+                border-radius: 3px;
+                text-transform: uppercase;
+                font-size: 11px;
+                font-weight: 300;
+            }
+
+            label.radio input:checked+span {
+                border-color: #fff;
+                background-color: blue;
+                color: #fff;
+            }
+
+            .credit-inputs {
+                background: rgb(102, 102, 221);
+                color: #fff !important;
+                border-color: rgb(102, 102, 221);
+            }
+
+            .credit-inputs::placeholder {
+                color: #fff;
+                font-size: 13px;
+            }
+
+            .credit-card-label {
+                font-size: 9px;
+                font-weight: 300;
+            }
+
+            .form-control.credit-inputs:focus {
+                background: rgb(102, 102, 221);
+                border: rgb(102, 102, 221);
+            }
+
+            .line {
+                border-bottom: 1px solid rgb(102, 102, 221);
+            }
+
+            .information span {
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .information {
+                margin-bottom: 5px;
+            }
+
+            .items {
+                -webkit-box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.25);
+                box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.08);
+            }
+
+            .spec {
+                font-size: 11px;
+            }
+
+            .btn-primary {
+                background-color: blue;
+                /* Đổi màu nút thanh toán thành xanh */
+                border-color: blue;
+                /* Đổi màu viền nút thanh toán thành xanh */
+            }
+        </style>
+        <style>
+    .delete-icon {
+        color: gray; /* Màu xám khi không rê chuột */
+        transition: color 0.3s; /* Hiệu ứng chuyển màu mượt mà */
+    }
+
+    .delete-icon:hover {
+        color: black; /* Màu đen khi rê chuột */
+    }
+</style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <div class="container mt-5 p-3 rounded cart">
+            <div class="row no-gutters">
+                <h2>Giỏ hàng của bạn</h2>
+                <div class="col-md-8">
+                    <div class="product-details mr-2">
+                        <div class="d-flex flex-row align-items-center">
+                            <i class="fa fa-long-arrow-left"></i>
+                            <span class="ml-2">Tiếp tục mua sắm</span>
+                        </div>
+                        <hr>
+                        <h6 class="mb-0">Giỏ hàng</h6>
+                        <div class="d-flex justify-content-between">
+                            <span>Bạn có <?= $item_count ?> sản phẩm trong giỏ hàng</span>
+                            <div class="d-flex flex-row align-items-center">
+                                <span class="text-black-50">Sắp xếp theo:</span>
+                                <div class="price ml-2">
+                                    <span class="mr-1">giá</span>
+                                    <i class="fa fa-angle-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php
+                        $i = 0;
+                        foreach ($data as $cart):
+                            if ($cart['data']):
+                                $unit_price = $cart['quantity'] * ($cart['data']['price'] - $cart['data']['discount_price']);
+                                $i++;
+                        ?>
+                                <div class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded">
+                                    <div class="d-flex flex-row">
+                                        <img class="rounded" src="<?= APP_URL ?>/public/assets/client/img/image/<?= $cart['data']['image'] ?>" width="40">
+                                        <div class="ml-2">
+                                            <span class="font-weight-bold d-block"><?= $cart['data']['product_name'] ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <button class="btn btn-secondary btn-sm" style="margin-right: 5px;">-</button>
+                                        <span class="d-block mx-2"><?= $cart['quantity'] ?></span>
+                                        <button class="btn btn-secondary btn-sm" style="margin-left: 5px;">+</button>
+                                        <span class="d-block ml-5 font-weight-bold"><?= number_format($unit_price) ?>đ</span>
+                                        <i class="fa fa-trash-o ml-3 text-black-50 delete-icon" style="cursor: pointer;" title="Xóa sản phẩm"></i>
+                                    </div>
+                                </div>
+                        <?php
+                            endif;
+                        endforeach;
+                        ?>
                     </div>
-                <?php endif; ?>
+                </div>
+                <div class="col-md-4">
+                    <div class="payment-info">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span>Thông tin thẻ</span>
+                            <!-- <img class="rounded" src="https://i.imgur.com/WU501C8.jpg" width="30"> -->
+                        </div>
+                        <span class="type d-block mt-3 mb-1">Loại thẻ</span>
+                        <label class="radio">
+                            <input type="radio" name="card" value="payment" checked>
+                            <span><img width="30" src="https://img.icons8.com/color/48/000000/mastercard.png" /></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="card" value="payment">
+                            <span><img width="30" src="https://img.icons8.com/officel/48/000000/visa.png" /></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="card" value="payment">
+                            <span><img width="30" src="https://img.icons8.com/ultraviolet/48/000000/amex.png" /></span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="card" value="payment">
+                            <span><img width="30" src="https://img.icons8.com/officel/48/000000/paypal.png" /></span>
+                        </label>
+                        <div>
+                            <label class="credit-card-label">Tên trên thẻ</label>
+                            <input type="text" class="form-control credit-inputs" placeholder="Tên">
+                        </div>
+                        <div>
+                            <label class="credit-card-label">Số thẻ</label>
+                            <input type="text" class="form-control credit-inputs" placeholder="0000 0000 0000 0000">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="credit-card-label">Ngày hết hạn</label>
+                                <input type="text" class="form-control credit-inputs" placeholder="12/24">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="credit-card-label">CVV</label>
+                                <input type="text" class="form-control credit-inputs" placeholder="342">
+                            </div>
+                        </div>
+                        <hr class="line">
+                        <!-- <div class="d-flex justify-content-between information">
+                    <span>Tổng phụ</span>
+                    <span><?= number_format($total_price) ?>đ</span>
+                </div> -->
+                        <!-- <div class="d-flex justify-content-between information">
+                    <span>Phí vận chuyển</span>
+                    <span>$20.00</span>
+                </div> -->
+                        <div class="d-flex justify-content-between information">
+                            <span>Tổng cộng (bao gồm thuế)</span>
+                            <span><?= number_format($total_price + 20) ?>đ</span>
+                        </div>
+                        <button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="button">
+                            <span><?= number_format($total_price + 20) ?>đ</span>
+                            <span>Thanh toán<i class="fa fa-long-arrow-right ml-1"></i></span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <br><br>
-        <?php
+<?php
     }
 }

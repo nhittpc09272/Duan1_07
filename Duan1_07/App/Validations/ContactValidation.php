@@ -4,14 +4,15 @@ namespace App\Validations;
 
 use App\Helpers\NotificationHelper;
 
-class ContactValidation {
-    
-    public static function validate(): bool {
+class ContactValidation
+{
+    public static function validate(): bool
+    {
         $is_valid = true;
 
         // Kiểm tra tên
         if (!isset($_POST['name']) || trim($_POST['name']) === '') {
-            NotificationHelper::error('name', 'Tên không được để trống');
+            NotificationHelper::error('name', 'Họ và tên không được để trống');
             $is_valid = false;
         }
 
@@ -21,9 +22,20 @@ class ContactValidation {
             $is_valid = false;
         }
 
+        // Kiểm tra số điện thoại
+        if (!isset($_POST['phone']) || trim($_POST['phone']) === '') {
+            NotificationHelper::error('phone', 'Số điện thoại không được để trống');
+            $is_valid = false;
+        } else {
+            if (!preg_match('/^\d{10,11}$/', $_POST['phone'])) {
+                NotificationHelper::error('phone', 'Số điện thoại phải là 10-11 chữ số');
+                $is_valid = false;
+            }
+        }
+
         // Kiểm tra nội dung
         if (!isset($_POST['message']) || trim($_POST['message']) === '') {
-            NotificationHelper::error('message', 'Nội dung không được để trống');
+            NotificationHelper::error('message', 'Nội dung liên hệ không được để trống');
             $is_valid = false;
         }
 

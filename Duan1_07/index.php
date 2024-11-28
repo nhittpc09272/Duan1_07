@@ -49,6 +49,12 @@ Route::put('/cart/update', 'App\Controllers\Client\CartController@update');
 Route::delete('/cart/delete', 'App\Controllers\Client\CartController@deleteItem');
 Route::delete('/cart/delete-all', 'App\Controllers\Client\CartController@deleteAll');
 
+//comment 
+Route::post('/comments', 'App\Controllers\Client\CommentController@store');
+Route::put('/comments/{id}', 'App\Controllers\Client\CommentController@update');
+Route::delete('/comments/{id}', 'App\Controllers\Client\CommentController@delete');
+
+
 // Chuyển đến trang Login
 // Route::get('/login', controllerMethod: 'App\Controllers\Client\AccountController@login');
 

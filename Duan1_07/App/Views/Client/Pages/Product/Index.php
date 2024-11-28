@@ -10,18 +10,6 @@ class Index extends BaseView
     public static function render($data = null)
     {
 ?>
-
-
-        <!-- Start Banner Area -->
-        <section class="banner-area organic-breadcrumb">
-            <div class="container">
-                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-start">
-                    <h1 class="text-white font-weight-bold">Trang Danh Mục Sản Phẩm</h1>
-                </div>
-            </div>
-        </section>
-        <!-- End Banner Area -->
-
         <div class="container mt-5">
             <div class="row">
                 <!-- Sidebar Categories -->
@@ -67,7 +55,7 @@ class Index extends BaseView
                         ?>
                                 <div class="col-md-4 mb-4">
                                     <div class="card shadow border-0 rounded-lg">
-<img class="img-fluid card-img-top" src="<?= APP_URL ?>/public/assets/client/img/image/<?= $item['image'] ?>" alt="<?= $item['product_name'] ?>" style="height: 250px; object-fit: cover;">
+                                        <img class="img-fluid card-img-top" src="<?= APP_URL ?>/public/assets/client/img/image/<?= $item['image'] ?>" alt="<?= $item['product_name'] ?>" style="height: 250px; object-fit: cover;">
                                         <div class="card-body">
                                             <h5 class="card-title text-dark"><?= $item['product_name'] ?></h5>
                                             <div class="price">
@@ -99,7 +87,7 @@ class Index extends BaseView
                         else :
                             ?>
                             <h3 class="text-center text-danger">Không có sản phẩm</h3>
-<?php endif; ?>
+                        <?php endif; ?>
                     </div>
                     <!-- End Product List -->
 

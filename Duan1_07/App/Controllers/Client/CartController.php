@@ -16,10 +16,10 @@ class CartController
 {
     public static function index()
     {
-        echo "index";
+        // echo "index";
         if (isset($_COOKIE['cart'])) {
             $product = new Product();
-            var_dump($product);
+            // var_dump($product);
             
 
             $cookie_data = $_COOKIE['cart'];
