@@ -161,14 +161,14 @@ class Detail extends BaseView
                                         ?>
                                     </div>
                                     <div class="comment-text w-100">
-                                        <h6 class="font-medium"><?= $_SESSION['user']['name'] ?> - <?= $_SESSION['user']['username'] ?></h6>
+                                        <h6 class="font-medium"><?= $_SESSION['user']['username'] ?> - <?= $_SESSION['user']['username'] ?></h6>
                                         <form action="/comments" method="post">
                                             <!-- Xác định phương thức HTTP là POST. -->
                                             <input type="hidden" name="method" value="POST" id="" required>
                                             <!-- Lưu ID của sản phẩm mà bình luận liên quan -->
                                             <input type="hidden" name="product_id" id="product_id" value="<?= $data['product']['product_id'] ?>">
                                             <!-- Lưu ID của người dùng hiện tại. -->
-                                            <input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['id'] ?>">
+                                            <input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
                                             <div class="form-group">
                                                 <label for="content">Bình luận</label>
                                                 <textarea class="form-control rounded-0" name="content" id="" rows="3" placeholder="Nhập bình luận..."></textarea>

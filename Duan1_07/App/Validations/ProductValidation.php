@@ -68,7 +68,7 @@ class ProductValidation {
         }
 
         //noi luu anh
-        $target_dir = 'public/uploads/products/';
+        $target_dir = '/public/assets/client/img/image/';
 
         //kiem tra loai file upload co hop le khong
         $imageFileType = strtolower(pathinfo(basename($_FILES['image']['name']), PATHINFO_EXTENSION));
