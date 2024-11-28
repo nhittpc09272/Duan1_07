@@ -169,7 +169,7 @@ class Detail extends BaseView
                                             <!-- Lưu ID của sản phẩm mà bình luận liên quan -->
                                             <input type="hidden" name="product_id" id="product_id" value="<?= $data['product']['product_id'] ?>">
                                             <!-- Lưu ID của người dùng hiện tại. -->
-                                            <input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['id'] ?>">
+                                            <input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION['user']['user_id'] ?>">
                                             <div class="form-group">
                                                 <label for="content">Bình luận</label>
                                                 <textarea class="form-control rounded-0" name="content" id="" rows="3" placeholder="Nhập bình luận..."></textarea>

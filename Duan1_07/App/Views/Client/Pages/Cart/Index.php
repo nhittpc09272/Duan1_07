@@ -150,15 +150,18 @@ class Index extends BaseView
             }
         </style>
         <style>
-    .delete-icon {
-        color: gray; /* Màu xám khi không rê chuột */
-        transition: color 0.3s; /* Hiệu ứng chuyển màu mượt mà */
-    }
+            .delete-icon {
+                color: gray;
+                /* Màu xám khi không rê chuột */
+                transition: color 0.3s;
+                /* Hiệu ứng chuyển màu mượt mà */
+            }
 
-    .delete-icon:hover {
-        color: black; /* Màu đen khi rê chuột */
-    }
-</style>
+            .delete-icon:hover {
+                color: black;
+                /* Màu đen khi rê chuột */
+            }
+        </style>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">

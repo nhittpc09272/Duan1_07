@@ -2,15 +2,15 @@
 
 namespace App\Controllers\Client;
 
+use App\Helpers\AuthHelper;
 use App\Helpers\NotificationHelper;
+use App\Models\Product;
 use App\Views\Client\Components\Notification;
 use App\Views\Client\Layouts\Footer;
-use App\Views\Client\Pages\Carts\Cart;
 use App\Views\Client\Layouts\Header;
-use App\Models\Product;
-use App\Views\Client\Pages\Product\Index;
 use App\Views\Client\Pages\Checkouts\Checkout;
-use App\Helpers\AuthHelper;
+use App\Views\Client\Pages\Cart\Order;
+use App\Views\Client\Pages\Cart\Index;
 
 class CartController
 {
@@ -20,7 +20,7 @@ class CartController
         if (isset($_COOKIE['cart'])) {
             $product = new Product();
             // var_dump($product);
-
+            
 
             $cookie_data = $_COOKIE['cart'];
             $cart_data = json_decode($cookie_data, true);
