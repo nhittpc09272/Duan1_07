@@ -27,8 +27,8 @@ class Category extends BaseView
                     // Kiểm tra nếu dữ liệu và danh sách sản phẩm tồn tại
                     if (isset($data) && isset($data['products']) && $data && $data['products']) :
                     ?>
-                    <!-- Hiển thị tên danh mục sản phẩm từ dữ liệu đầu vào -->
-                        <h1 class="text-center mb-3"><?= $data['products'][0]['category_name'] ?></h1> 
+                        <!-- Hiển thị tên danh mục sản phẩm từ dữ liệu đầu vào -->
+                        <h1 class="text-center mb-3"><?= $data['products'][0]['category_name'] ?></h1>
 
                         <div class="row">
                             <?php
@@ -61,9 +61,6 @@ class Category extends BaseView
                                     </div>
                                 </div>
                             <?php endforeach; ?>
-                            
-
-                            ?>
                         </div>
                     <?php
                     else : //else: Nếu không có sản phẩm, hiển thị thông báo "Không có sản phẩm"

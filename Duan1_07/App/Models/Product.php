@@ -35,6 +35,73 @@ class Product extends BaseModel
         }
     }
 
+
+
+    public function getOneProductByName($name)
+    {
+        return $this->getOneByName($name);
+    }
+
+    public function getAllProductJoinCategory()
+    {
+        $result = [];
+        try {
+            // $sql = "SELECT * FROM $this->table";
+            $sql = "SELECT 
+    products.*, 
+    categories.category_name AS category_name,
+    product_variants.size,
+    product_variants.color,
+    product_variants.status AS variant_status
+FROM 
+    products
+INNER JOIN 
+    categories ON products.category_id = categories.categories_id
+LEFT JOIN 
+    product_variants ON products.product_id = product_variants.product_id ";
+            $result = $this->_conn->MySQLi()->query($sql);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+
+    // public function getAllProductByCategoryAndStatus(int $id)
+    // {
+    //     $result = [];
+    //     try {
+    //         // Truy vấn SQL
+    //         $sql = "SELECT 
+    //                 products.*, 
+    //                 categories.category_name 
+    //             FROM products 
+    //             INNER JOIN categories 
+    //             ON products.category_id = categories.categories_id 
+    //             WHERE products.status = ? 
+    //             AND categories.status = ? 
+    //             AND products.category_id = ?";
+
+    //         // Kết nối và chuẩn bị câu lệnh
+    //         $conn = $this->_conn->MySQLi();
+    //         $stmt = $conn->prepare($sql);
+
+    //         // Gán tham số
+    //         $status = self::STATUS_ENABLE;
+    //         $stmt->bind_param('iii', $status, $status, $id);
+
+    //         // Thực thi truy vấn và trả về kết quả
+    //         $stmt->execute();
+    //         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    //     } catch (\Throwable $th) {
+    //         // Ghi log lỗi
+    //         error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
+    //         return $result;
+    //     }
+    // }
+
+
+
     public function getOneProductByStatus(int $id)
     {
         $result = [];
@@ -83,21 +150,21 @@ class Product extends BaseModel
     //     return $this->getOneByName($name);
     // }
 
-    public function getAllProductJoinCategory()
-    {
-        $result = [];
-        try {
-            $sql = "SELECT products.*,categories.name AS category_name
-            FROM products 
-            INNER JOIN categories 
-            ON products.category_id = categories.id;";
-            $result = $this->_conn->MySQLi()->query($sql);
-            return $result->fetch_all(MYSQLI_ASSOC);
-        } catch (\Throwable $th) {
-            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
-            return $result;
-        }
-    }
+    // public function getAllProductJoinCategory()
+    // {
+    //     $result = [];
+    //     try {
+    //         $sql = "SELECT products.*,categories.name AS category_name
+    //         FROM products 
+    //         INNER JOIN categories 
+    //         ON products.category_id = categories.id;";
+    //         $result = $this->_conn->MySQLi()->query($sql);
+    //         return $result->fetch_all(MYSQLI_ASSOC);
+    //     } catch (\Throwable $th) {
+    //         error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+    //         return $result;
+    //     }
+    // }
 
     public function getAllProductByCategoryAndStatus(int $id)
     {

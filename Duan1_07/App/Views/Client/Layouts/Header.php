@@ -421,6 +421,7 @@ class Header extends BaseView
                         <a href="/about" class="nav-item nav-link">GIỚI THIỆU</a>
                         <a href="/blog" class="nav-item nav-link">TIN TỨC</a>
 
+
                         <a href="/contact" class="nav-item nav-link">LIÊN HỆ</a>
                     </div>
                     <div class="d-flex align-items-center">
@@ -465,7 +466,7 @@ class Header extends BaseView
                             style="border-color: orange;"
                             onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
                             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            Đăng Nhập
+                            Đăng Nhập.
                         </a>
                     <?php
                     endif;

@@ -93,7 +93,6 @@ Route::get('/reset-password', 'App\Controllers\Client\AuthController@resetPasswo
 Route::put('/reset-password', 'App\Controllers\Client\AuthController@resetPasswordAction');
 
 
-
 // *** Admin
 
 Route::get('/admin', 'App\Controllers\Admin\HomeController@index');

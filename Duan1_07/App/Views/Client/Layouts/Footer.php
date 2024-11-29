@@ -9,7 +9,7 @@ class Footer extends BaseView
     public static function render($data = null)
     {
 ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
         <html lang="en">
 
         <head>
@@ -64,10 +64,12 @@ class Footer extends BaseView
                 transition: .5s;
             }
 
-            /* 
-.btn-primary {
-    color: #FFFFFF;
-} */
+
+
+            .container-fluid.bg-img {
+                min-height: calc(60vh - 60px);
+                /* Điều chỉnh theo chiều cao của footer */
+            }
 
             .border-inner {
                 position: relative;
@@ -348,7 +350,7 @@ class Footer extends BaseView
 
         <body>
             <!-- Footer Start -->
-            <div class="container-fluid bg-img text-secondary" style="margin-top: 90px">
+            <div class="container-fluid bg-img text-secondary" style="margin-top: 9%">
                 <div class="container">
                     <div class="row gx-5">
                         <div class="col-lg-4 col-md-6 mb-lg-n5">
@@ -443,7 +445,7 @@ class Footer extends BaseView
 
 
             <!-- Back to Top -->
-            <a href="#" class="btn btn-primary border-inner py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
+            <!-- <a href="#" class="btn btn-primary border-inner py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a> -->
 
 
             <!-- JavaScript Libraries -->

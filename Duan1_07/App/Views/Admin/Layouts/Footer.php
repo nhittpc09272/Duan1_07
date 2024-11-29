@@ -12,10 +12,17 @@ class Footer extends BaseView
 ?>
 <footer class="footer">
   <div class="d-sm-flex justify-content-center justify-content-sm-between">
-    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ms-1"></i></span>
+    <!-- Thông tin bản quyền -->
+    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+      Copyright © 2023. Trang web <a href="#" target="_blank">5TV Store</a> - Chuyên cung cấp giày chất lượng cao. All rights reserved.
+    </span>
+    <!-- Câu slogan hoặc lời nhắn -->
+    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+      Sản phẩm được chăm chút kỹ lưỡng & làm từ <i class="ti-heart text-danger ms-1"></i> bởi đội ngũ 5TV.
+    </span>
   </div>
 </footer>
+
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

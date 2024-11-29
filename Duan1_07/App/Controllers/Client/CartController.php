@@ -99,58 +99,7 @@ class CartController
         ob_end_flush(); // Kết thúc output buffering
     }
 
-    // public static function add()
-    // {
-    //     // Kiểm tra xem người dùng có đăng nhập hay không
-    //     if (!AuthHelper::checkLogin()) {
-    //         NotificationHelper::error('login', 'Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng');
-    //         header('Location: /login');
-    //         exit();
-    //     }
-
-    //     // Lấy ID sản phẩm từ POST
-    //     $productId = (int)$_POST['id'];
-
-    //     // Kiểm tra xem sản phẩm có tồn tại không
-    //     $productModel = new Product();
-    //     $product = $productModel->getOne($productId);
-
-    //     if (!$product) {
-    //         var_dump($product);
-    //         NotificationHelper::error('product', 'Sản phẩm không tồn tại');
-    //         header('Location: /');
-    //         exit();
-    //     }
-
-    //     // Thêm sản phẩm vào giỏ hàng
-    //     if (!isset($_SESSION['cart'])) {
-    //         $_SESSION['cart'] = [];
-    //     }
-
-    //     // Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
-    //     $found = false;
-    //     foreach ($_SESSION['cart'] as &$cartItem) {
-    //         if ($cartItem['id'] === $productId) {
-    //             $cartItem['quantity'] += 1; // Tăng số lượng nếu sản phẩm đã có
-    //             $found = true;
-    //             break;
-    //         }
-    //     }
-
-    //     // Nếu sản phẩm chưa có trong giỏ hàng, thêm mới
-    //     if (!$found) {
-    //         $_SESSION['cart'][] = [
-    //             'id' => $productId,
-    //             'name' => $product['name'],
-    //             'price' => $product['price'],
-    //             'quantity' => 1,
-    //         ];
-    //     }
-
-    //     NotificationHelper::success('cart', 'Sản phẩm đã được thêm vào giỏ hàng');
-    //     header('Location: /cart'); // Chuyển hướng đến giỏ hàng
-    // }
-
+    
     public static function update()
     {
         ob_start(); // Bắt đầu output buffering
@@ -280,7 +229,11 @@ class CartController
     public static function order()
     {
         Header::render();
-        Index::render();
+        Notification::render();
+        NotificationHelper::unset();
+        Order::render();
         Footer::render();
     }
+
+
 }
