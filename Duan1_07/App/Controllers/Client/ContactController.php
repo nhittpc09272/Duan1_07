@@ -21,23 +21,6 @@ class ContactController
         Footer::render();
     }
 
-    // public static function submit()
-    // {
-    //     // Xác thực dữ liệu từ form
-    //     if (!ContactValidation::validate()) {
-    //         // Nếu không hợp lệ, quay lại form liên hệ
-    //         header('Location: /contact');
-    //         exit();
-    //     }
-
-    //     // Nếu hợp lệ, xử lý dữ liệu (ví dụ: gửi email hoặc lưu vào cơ sở dữ liệu)
-    //     // ...
-
-    //     // Thông báo thành công
-    //     NotificationHelper::success('contact', 'Gửi liên hệ thành công!');
-    //     header('Location: /contact');
-    //     exit();
-    // }
     public static function sendEmail()
     {
         $is_valid = true;
@@ -89,10 +72,6 @@ class ContactController
                 $mail->Body    = "<p>Bạn đã nhận được tin nhắn từ <strong>$name</strong> ($email):</p><p>$message</p>";
                 $mail->CharSet = 'UTF-8'; // Bổ sung thêm dòng này
 
-                // Hiển thị thông tin người gửi và người nhận
-                echo "Người gửi: $name ($email)<br>";
-                echo "Người nhận: quocanh25115@gmail.com (Liên Hệ)<br>";
-
                 // Gửi email
                 if ($mail->send()) {
                     NotificationHelper::success('email', 'Email đã được gửi thành công.');
@@ -104,7 +83,7 @@ class ContactController
             }
         }
 
-        // Sau khi gửi email, điều hướng về trang liên hệ
+        // Sau khi gửi email hoặc có lỗi, điều hướng về trang liên hệ
         header('Location: /contact');
         exit();
     }
