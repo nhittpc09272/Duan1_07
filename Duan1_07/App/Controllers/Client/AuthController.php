@@ -285,22 +285,57 @@ class AuthController
         Footer::render();
     }
 
-    public static function update($id)
+    // public static function update($id)
+    // {
+    //     //     // $is_valid = AuthValidation::edit();
+
+    //     //     // if(!$is_valid){
+    //     //     //     NotificationHelper::error('update_user', 'Cập nhật thông tin tài khoản  thất bại');
+    //     //     //     header("Location: /users/$id");
+    //     //     //     exit();
+    //     //     // }
+
+    //     //     $data = [
+    //     //         'email' => $_POST['email'],
+    //     //         'phone' => $_POST['phone'],
+    //     //         'address' => $_POST['address'],
+    //     //         'username' => $_POST['username'],
+    //     //     ];
+
+    //     // Kiểm tra avatar có được upload hợp lệ hay không
+    //     $is_upload = AuthValidation::uploadAvatar();
+    //     if ($is_upload) {
+    //         $data['avatar'] = $is_upload;
+    //     }
+
+    //     // Gọi helper để cập nhật thông tin
+    //     $result = AuthHelper::update($id, $data);
+
+    //     if ($result) {
+    //         $_SESSION['notification'] = [
+    //             'type' => 'success',
+    //             'message' => 'Cập nhật thông tin thành công!'
+    //         ];
+    //     } else {
+    //         $_SESSION['notification'] = [
+    //             'type' => 'error',
+    //             'message' => 'Cập nhật thông tin thất bại, vui lòng thử lại.'
+    //         ];
+    //     }
+
+    //     // Chuyển hướng về trang thông tin người dùng
+    //     header("Location: /users/$id");
+    //     exit();
+    // }
+    public function update(int $id)
     {
-        //     // $is_valid = AuthValidation::edit();
-
-        //     // if(!$is_valid){
-        //     //     NotificationHelper::error('update_user', 'Cập nhật thông tin tài khoản  thất bại');
-        //     //     header("Location: /users/$id");
-        //     //     exit();
-        //     // }
-
-        //     $data = [
-        //         'email' => $_POST['email'],
-        //         'phone' => $_POST['phone'],
-        //         'address' => $_POST['address'],
-        //         'username' => $_POST['username'],
-        //     ];
+        // Kiểm tra tính hợp lệ của dữ liệu đầu vào
+        $data = [
+            'email' => isset($_POST['email']) ? $_POST['email'] : '',
+            'phone' => isset($_POST['phone']) ? $_POST['phone'] : '',
+            'address' => isset($_POST['address']) ? $_POST['address'] : '',
+            'username' => isset($_POST['username']) ? $_POST['username'] : '',
+        ];
 
         // Kiểm tra avatar có được upload hợp lệ hay không
         $is_upload = AuthValidation::uploadAvatar();
@@ -308,18 +343,26 @@ class AuthController
             $data['avatar'] = $is_upload;
         }
 
-        // Gọi helper để cập nhật thông tin
-        $result = AuthHelper::update($id, $data);
+        // Kiểm tra lại $data trước khi gọi update
+        if (!empty($data) && is_array($data)) {
+            $result = AuthHelper::update($id, $data);
 
-        if ($result) {
-            $_SESSION['notification'] = [
-                'type' => 'success',
-                'message' => 'Cập nhật thông tin thành công!'
-            ];
+            if ($result) {
+                $_SESSION['notification'] = [
+                    'type' => 'success',
+                    'message' => 'Cập nhật thông tin thành công!'
+                ];
+            } else {
+                $_SESSION['notification'] = [
+                    'type' => 'error',
+                    'message' => 'Cập nhật thông tin thất bại, vui lòng thử lại.'
+                ];
+            }
         } else {
+            // Xử lý lỗi nếu $data không hợp lệ
             $_SESSION['notification'] = [
                 'type' => 'error',
-                'message' => 'Cập nhật thông tin thất bại, vui lòng thử lại.'
+                'message' => 'Dữ liệu không hợp lệ để cập nhật.'
             ];
         }
 
@@ -327,8 +370,6 @@ class AuthController
         header("Location: /users/$id");
         exit();
     }
-
-
 
 
     //Hiển thị form đổi mật khẩu
@@ -350,76 +391,6 @@ class AuthController
         ChangePassword::render($data);
         Footer::render();
     }
-    public static function changePasswordAction()
-    {
-        $is_valid = AuthValidation::changePassword();
-        if (!$is_valid) {
-            $_SESSION['notification'] = [
-                'type' => 'error',
-                'message' => 'Đổi mật khẩu thất bại, vui lòng kiểm tra lại thông tin.'
-            ];
-            header('Location: /change-password');
-            exit();
-        }
-
-        $id = $_SESSION['user']['user_id'];
-        $data = [
-            'old_password' => $_POST['old_password'],
-            'new_password' => $_POST['new_password'],
-        ];
-
-        $result = AuthHelper::changePassword($id, $data);
-        if ($result) {
-            $_SESSION['notification'] = [
-                'type' => 'success',
-                'message' => 'Đổi mật khẩu thành công!'
-            ];
-            header('Location: /login');
-        } else {
-            $_SESSION['notification'] = [
-                'type' => 'error',
-                'message' => 'Đổi mật khẩu thất bại, vui lòng thử lại.'
-            ];
-            header('Location: /change-password');
-        }
-
-        exit();
-    }
-    
-
-
-    
-
-    // Hiển thị giao diện form lấy lại mật khẩu
-    public static function forgotPassword()
-    {
-
-        Header::render();
-        Notification::render();  // Hiển thị thông báo nếu có
-        NotificationHelper::unset();
-        ForgotPassword::render();
-        Footer::render();
-    }
-
-    //Hiển thị form đổi mật khẩu
-    // public static function changePassword()
-    // {
-    //     $is_login = AuthHelper::checkLogin();
-
-    //     if (!$is_login) {
-    //         NotificationHelper::error('login', 'Vui lòng đăng nhập để đổi mật khẩu');
-    //         header('Location: /login');
-    //         exit;
-    //     }
-
-    //     $data = $_SESSION['user'];
-
-    //     Header::render();
-    //     Notification::render();  // Hiển thị thông báo nếu có
-    //     NotificationHelper::unset();
-    //     ChangePassword::render($data);
-    //     Footer::render();
-    // }
     // public static function changePasswordAction()
     // {
     //     $is_valid = AuthValidation::changePassword();
@@ -431,43 +402,91 @@ class AuthController
     //         header('Location: /change-password');
     //         exit();
     //     }
-
-    //     $id = $_SESSION['user']['user_id'];
+    // }
+    // public static function update($id)
+    // {
     //     $data = [
-    //         'old_password' => $_POST['old_password'],
-    //         'new_password' => $_POST['new_password'],
+    //         'email' => $_POST['email'],
+    //         'phone' => $_POST['phone'],
+    //         'address' => $_POST['address'],
+    //         'username' => $_POST['username'],
     //     ];
 
-    //     $result = AuthHelper::changePassword($id, $data);
+    //     // Kiểm tra avatar có được upload hợp lệ hay không
+    //     $is_upload = AuthValidation::uploadAvatar();
+    //     if ($is_upload) {
+    //         $data['avatar'] = $is_upload;
+    //     }
+
+    //     // Gọi helper để cập nhật thông tin
+    //     $result = AuthHelper::update($id, $data);
+
     //     if ($result) {
     //         $_SESSION['notification'] = [
     //             'type' => 'success',
-    //             'message' => 'Đổi mật khẩu thành công!'
+    //             'message' => 'Cập nhật thông tin thành công!'
     //         ];
-    //         header('Location: /login');
     //     } else {
     //         $_SESSION['notification'] = [
     //             'type' => 'error',
-    //             'message' => 'Đổi mật khẩu thất bại, vui lòng thử lại.'
+    //             'message' => 'Cập nhật thông tin thất bại, vui lòng thử lại.'
     //         ];
-    //         header('Location: /change-password');
     //     }
 
-    //     exit();
-    // }
+    //     //     Header::render();
+    //     //     Notification::render();  // Hiển thị thông báo nếu có
+    //     //     NotificationHelper::unset();
+    //     //     ChangePassword::render($data);
+    //     //     Footer::render();
+    //     // }
+        public static function changePasswordAction()
+        {
+            $is_valid = AuthValidation::changePassword();
+            if (!$is_valid) {
+                $_SESSION['notification'] = [
+                    'type' => 'error',
+                    'message' => 'Đổi mật khẩu thất bại, vui lòng kiểm tra lại thông tin.'
+                ];
+                header('Location: /change-password');
+                exit();
+            }
+
+            $id = $_SESSION['user']['user_id'];
+            $data = [
+                'old_password' => $_POST['old_password'],
+                'new_password' => $_POST['new_password'],
+            ];
+
+            $result = AuthHelper::changePassword($id, $data);
+            if ($result) {
+                $_SESSION['notification'] = [
+                    'type' => 'success',
+                    'message' => 'Đổi mật khẩu thành công!'
+                ];
+                header('Location: /login');
+            } else {
+                $_SESSION['notification'] = [
+                    'type' => 'error',
+                    'message' => 'Đổi mật khẩu thất bại, vui lòng thử lại.'
+                ];
+                header('Location: /change-password');
+            }
+
+            exit();
+        }
 
 
 
 
-    // // Hiển thị giao diện form lấy lại mật khẩu
-    // public static function forgotPassword()
-    // {
+    //     // // Hiển thị giao diện form lấy lại mật khẩu
+    //     // public static function forgotPassword()
+    //     // {
 
-    //     Header::render();
-    //     Notification::render();  // Hiển thị thông báo nếu có
-    //     NotificationHelper::unset();
-    //     ForgotPassword::render();
-    //     Footer::render();
+    //     //     Header::render();
+    //     //     Notification::render();  // Hiển thị thông báo nếu có
+    //     //     NotificationHelper::unset();
+    //     //     ForgotPassword::render();
+    //     //     Footer::render();
     // }
 
 
@@ -490,38 +509,104 @@ class AuthController
         $data = ['username' => $username];
         $result = AuthHelper::forgotPassword($data);
 
-        if (!$result) {
-            $_SESSION['notification'] = [
-                'type' => 'error',
-                'message' => 'Không tìm thấy tài khoản hoặc thông tin không khớp.'
-            ];
-            header('Location: /forgot-password');
-            exit();
-        }
+        //     $data = [
+        //         'username' => $username
+        //     ];
+        //     // AuthHelper
+        //     $result = AuthHelper::forgotPassword($data);
+        //     if (!$result) {
+        //         NotificationHelper::error('username_exist', 'Không tồn tại tài khoản này');
+        //         header('Location: /forgot-password');
+        //         exit();
+        //     }
 
-        if ($result['email'] != $email) {
-            $_SESSION['notification'] = [
-                'type' => 'error',
-                'message' => 'Email không đúng.'
-            ];
-            header('Location: /forgot-password');
-            exit();
-        }
+        //     if ($result['email'] != $email) {
+        //         NotificationHelper::error('email_exist', 'Email không đúng');
+        //         header('Location: /forgot-password');
+        //         exit();
+        //     }
 
-        $_SESSION['reset_password'] = [
-            'username' => $username,
-            'email' => $email
-        ];
+        //     $_SESSION['reset_password'] = [
+        //         'username' => $username,
+        //         'email' => $email
+        //     ];
+        //     header('Location: /reset-password');
 
-        $_SESSION['notification'] = [
-            'type' => 'success',
-            'message' => 'Yêu cầu đặt lại mật khẩu đã được gửi. Vui lòng kiểm tra email.'
-        ];
-
-        header('Location: /reset-password');
-        exit();
+        //     // echo 'Thành Công';
     }
+    // public static function forgotPasswordAction()
+    // {
+    //     $is_valid = AuthValidation::forgotPassword();
+    //     if (!$is_valid) {
+    //         $_SESSION['notification'] = [
+    //             'type' => 'error',
+    //             'message' => 'Gửi yêu cầu lấy lại mật khẩu thất bại.'
+    //         ];
+    //         header('Location: /forgot-password');
+    //         exit();
+    //     }
+    //     $username = $_POST['username'];
+    //     $email = $_POST['email'];
 
+    //     $data = ['username' => $username];
+    //     $result = AuthHelper::forgotPassword($data);
+
+    //     if (!$result) {
+    //         $_SESSION['notification'] = [
+    //             'type' => 'error',
+    //             'message' => 'Không tìm thấy tài khoản hoặc thông tin không khớp.'
+    //         ];
+    //         header('Location: /forgot-password');
+    //         exit();
+    //     }
+
+    //     if ($result['email'] != $email) {
+    //         $_SESSION['notification'] = [
+    //             'type' => 'error',
+    //             'message' => 'Email không đúng.'
+    //         ];
+    //         header('Location: /forgot-password');
+    //         exit();
+    //     }
+
+    //     $_SESSION['reset_password'] = [
+    //         'username' => $username,
+    //         'email' => $email
+    //     ];
+
+    //     $_SESSION['notification'] = [
+    //         'type' => 'success',
+    //         'message' => 'Yêu cầu đặt lại mật khẩu đã được gửi. Vui lòng kiểm tra email.'
+    //     ];
+
+    //     header('Location: /reset-password');
+    //     exit();
+    // }
+
+
+    // public static function resetPassword()
+    // {
+    //     if (!isset($_SESSION['reset_password'])) {
+    //         NotificationHelper::error('reset_password', 'Vui lòng nhập đầy đủ thông tin của form này');
+    //         header('Location: /forgot-password');
+    //         exit();
+    //     }
+    //     Header::render();
+    //     Notification::render();  // Hiển thị thông báo nếu có
+    //     NotificationHelper::unset();
+    //     ResetPassword::render();
+    //     Footer::render();
+    // }
+
+    // public static function resetPasswordAction()
+    // {
+    //     // validation
+    //     $is_valid = AuthValidation::resetPassword();
+    //     if (!$is_valid) {
+    //         NotificationHelper::error('reset_password', 'Đặt lại mật khẩu thất bại');
+    //         header('Location: /reset-password');
+    //         exit();
+    //     }
 
     public static function resetPassword()
     {
@@ -538,6 +623,28 @@ class AuthController
     }
 
 
+    //     public static function resetPasswordAction()
+    //     {
+    //         $is_valid = AuthValidation::resetPassword();
+    //         if (!$is_valid) {
+    //             $_SESSION['notification'] = [
+    //                 'type' => 'error',
+    //                 'message' => 'Đặt lại mật khẩu thất bại, vui lòng kiểm tra thông tin.'
+    //             ];
+    //             header('Location: /reset-password');
+    //             exit();
+    //         }
+
+    //     //     if ($result) {
+    //     //         NotificationHelper::success('reset_password', 'Đặt lại mật khẩu thành công');
+    //     //         unset($_SESSION['reset_password']);
+    //     //         header('Location: /login');
+    //     //     } else {
+    //     //         NotificationHelper::error('reset_password', 'Đặt lại mật khẩu thất bại');
+    //     //         header('Location: /reset-password');
+    //     //     }
+    //     // }
+    // }
     public static function resetPasswordAction()
     {
         $is_valid = AuthValidation::resetPassword();

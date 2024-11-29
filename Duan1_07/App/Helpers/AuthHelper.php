@@ -27,59 +27,7 @@ class AuthHelper
 
         return $result;  // Trả về true nếu thành công, false nếu thất bại
     }
-
-
-    // public static function login($data)
-    // {
-    //     $user = new User();
-    //     $is_exist = $user->getOneUserByUsername($data['username']);
-
-    //     // Kiểm tra nếu người dùng không tồn tại hoặc thiếu user_id
-    //     if (empty($is_exist)) {
-    //         NotificationHelper::error('login', 'Tên đăng nhập không tồn tại. Vui lòng kiểm tra lại.');
-    //         return false;
-    //     }
-
-    //     if (!isset($is_exist['user_id'])) {
-    //         // Ghi log lỗi khi thiếu user_id
-    //         error_log('Lỗi: user_id không có trong kết quả truy vấn cho username: ' . $data['username']);
-    //         NotificationHelper::error('username', 'Không tìm thấy thông tin người dùng');
-    //         return false;
-    //     }
-
-    //     // Kiểm tra mật khẩu
-    //     if (!password_verify($data['password'], $is_exist['password'])) {
-    //         NotificationHelper::error('password', 'Mật khẩu không đúng');
-    //         return false;
-    //     }
-
-    //     // Kiểm tra trạng thái người dùng
-    //     if ($is_exist['status'] == 0) {
-    //         NotificationHelper::error('status', 'Tài khoản đã bị khóa');
-    //         return false;
-    //     }
-
-    //     // Lưu thông tin vào session nếu đăng nhập thành công
-    //     $_SESSION['user'] = [
-    //         'user_id' => $is_exist['user_id'],
-    //         'username' => $is_exist['username'],
-    //         'email' => $is_exist['email'],
-    //         'role' => $is_exist['role'], // có thể lưu thêm các thông tin khác nếu cần
-    //     ];
-
-    //     // nếu có, kiểm tra remember => lưu session/ cookie => thông báo thành công, trả về true
-    //     if($data['remember']){
-    //         // lưu cookie, lưu session
-    //         self::updateCookie($is_exist['user_id']);
-
-    //     }else{
-    //         //lưu session
-    //         self::updateSession($is_exist['user_id']);
-    //     }
-
-    //     // NotificationHelper::success('login', 'Đăng nhập thành công');
-    //     return true;
-    // }
+    
     public static function login($data)
     {
         $user = new User();

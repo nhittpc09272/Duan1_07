@@ -51,7 +51,7 @@ abstract class BaseModel implements CrudInterface
             // Kiểm tra nếu có dữ liệu
             if ($query_result->num_rows > 0) {
                 $result = $query_result->fetch_assoc(); // Trả về kết quả tìm thấy
-            } 
+            }
             return $result;
         } catch (\Throwable $th) {
             // Xử lý lỗi khi truy vấn
@@ -123,25 +123,61 @@ abstract class BaseModel implements CrudInterface
             return false;
         }
     }
+    // public function update(int $id, array $data)
+    // {
+    //     try {
+    //         $sql = "UPDATE $this->table SET ";
+    //         foreach ($data as $key => $value) {
+    //             $sql .= "$key = '$value', ";
+    //         }
+    //         $sql = rtrim($sql, ", ");
+
+    //         $sql .= " WHERE $this->id=$id";
+
+    //         $conn = $this->_conn->MySQLi();
+    //         $stmt = $conn->prepare($sql);
+    //         return $stmt->execute();
+    //     } catch (\Throwable $th) {
+    //         error_log('Lỗi khi cập nhật dữ liệu: ', $th->getMessage());
+    //         return false;
+    //     }
+    // }
     public function update(int $id, array $data)
     {
         try {
-            $sql = "UPDATE $this->table SET ";
+            // Tạo phần SET của câu lệnh SQL
+            $set_part = [];
             foreach ($data as $key => $value) {
-                $sql .= "$key = '$value', ";
+                $set_part[] = "$key = ?";
             }
-            $sql = rtrim($sql, ", ");
+            $set_sql = implode(", ", $set_part);
 
-            $sql .= " WHERE $this->id=$id";
+            // Câu lệnh SQL
+            $sql = "UPDATE $this->table SET $set_sql WHERE $this->id = ?";
 
+            // Kết nối cơ sở dữ liệu và chuẩn bị câu lệnh
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
+
+            // Liên kết các tham số
+            $params = array_values($data);
+            $params[] = $id;  // Thêm id vào cuối
+
+            // Xác định kiểu dữ liệu cho các tham số (chuỗi và integer)
+            $types = str_repeat('s', count($params) - 1) . 'i';
+
+            // Gọi bind_param (chú ý kiểu dữ liệu phù hợp)
+            $stmt->bind_param($types, ...$params);
+
+            // Thực thi câu lệnh
             return $stmt->execute();
         } catch (\Throwable $th) {
-            error_log('Lỗi khi cập nhật dữ liệu: ', $th->getMessage());
+            // Xử lý lỗi và ghi log
+            error_log('Lỗi khi cập nhật dữ liệu: ' . $th->getMessage());
             return false;
         }
     }
+
     public function delete(int $id): bool
     {
         try {
