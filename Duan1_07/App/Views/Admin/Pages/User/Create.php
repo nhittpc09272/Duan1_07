@@ -46,55 +46,52 @@ class Create extends BaseView
                     <div class="col-md-12">
                         <div class="card">
                             <form class="form-horizontal" action="/admin/users" method="POST" enctype="multipart/form-data">
-                                <div class="card-body">
+                            <div class="card-body">
                                     <h4 class="card-title">Thêm người dùng</h4>
                                     <input type="hidden" name="method" id="" value="POST">
                                     <div class="form-group">
                                         <label for="username">Tên đăng nhập*</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Nhập tên đăng nhập..." name="username"
-                                            value="<?= isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '' ?>">
+                                        <input type="text" class="form-control" id="username" placeholder="Nhập tên đăng nhập..." name="username" >
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email*</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Nhập email..." name="email"
-                                            value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
+                                        <input type="text" class="form-control" id="email" placeholder="Nhập tên email..." name="email" >
                                     </div>
-                                    <!-- Lặp lại cho các trường khác tương tự -->
-
-                                    <div class="form-group">
-                                        <label for="phone">Số điện thoại*</label>
-                                        <input type="text" class="form-control" id="phone" placeholder="Nhập phone..." name="phone"
-                                            value="<?= isset($_POST['phone']) ? htmlspecialchars($_POST['phone']) : '' ?>" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="address">Địa chỉ*</label>
-                                        <input type="text" class="form-control" id="address" placeholder="Nhập address..." name="address"
-                                            value="<?= isset($_POST['address']) ? htmlspecialchars($_POST['address']) : '' ?>" required>
-                                    </div>
-
+                                    <!-- <div class="form-group">
+                                        <label for="name">Tên*</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Nhập họ và tên người dùng..." name="name" >
+                                    </div>  -->
                                     <div class="form-group">
                                         <label for="password">Mật khẩu*</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu..." name="password" required>
+                                        <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu..." name="password" >
+                                    </div> 
+                                    
+                                    <div class="form-group">
+                                        <label for="ar">Nhập lại mật khẩu*</label>
+                                        <input type="password" class="form-control" id="re_password" placeholder="Nhập lại mật khẩu..." name="re_password" >
                                     </div>
                                     <div class="form-group">
-                                        <label for="re_password">Nhập lại mật khẩu*</label>
-                                        <input type="password" class="form-control" id="re_password" placeholder="Nhập lại mật khẩu..." name="re_password" required>
+                                        <label for="phone">số điện thoại*</label>
+                                        <input type="number" class="form-control" id="phone" placeholder="Nhập lại mật khẩu..." name="phone" >
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="avatar">Hình đại diện</label>
-                                        <input type="file" class="form-control" id="avatar" placeholder="Chọn ảnh đại diện..." name="avatar">
+                                        <label for="address">address*</label>
+                                        <input type="text" class="form-control" id="address" placeholder="Nhập lại mật khẩu..." name="address" >
                                     </div>
+                                 <div class="form-group">
+                                        <label for="avatar">Ảnh đại diện</label>
+                                        <input type="file" class="form-control" id="avatar" placeholder="Chọn ảnh đại diện..." name="avatar" >
+                                    </div>
+                                 
                                     <div class="form-group">
                                         <label for="status">Trạng thái*</label>
-                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status" required>
-                                            <option value="" disabled <?= !isset($_POST['status']) ? 'selected' : '' ?>>Vui lòng chọn...</option>
-                                            <option value="1" <?= (isset($_POST['status']) && $_POST['status'] == '1') ? 'selected' : '' ?>>Hiển thị</option>
-                                            <option value="0" <?= (isset($_POST['status']) && $_POST['status'] == '0') ? 'selected' : '' ?>>Ẩn</option>
+                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status" >
+                                            <option value="" selected disabled>Vui lòng chọn...</option>
+                                            <option value="1">Hiển thị</option>
+                                            <option value="0">Ẩn</option>
+
                                         </select>
                                     </div>
-
                                 </div>
                                 <div class="border-top">
                                     <div class="card-body">

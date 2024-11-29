@@ -95,7 +95,7 @@ class UserController
             'status' => $_POST['status']
         ];
 
-        var_dump($data);
+        
 
         $is_upload = UserValidation::uploadAvatar();
         if ($is_upload) {
