@@ -8,8 +8,22 @@ class Create extends BaseView
 {
     public static function render($data = null)
     {
-        
+
 ?>
+        <!-- Kiểm tra và hiển thị thông báo -->
+        <?php if (isset($_SESSION['notification'])): ?>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                Swal.fire({
+                    icon: '<?php echo $_SESSION['notification']['type']; ?>',
+                    title: '<?php echo $_SESSION['notification']['message']; ?>',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            </script>
+            <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
+            ?>
+        <?php endif; ?>
         <div class="page-wrapper" style="width: 100%;">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->

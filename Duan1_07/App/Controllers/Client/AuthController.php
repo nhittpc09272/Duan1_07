@@ -478,62 +478,19 @@ class AuthController
 
 
 
-    //     // // Hiển thị giao diện form lấy lại mật khẩu
-    //     // public static function forgotPassword()
-    //     // {
+        // Hiển thị giao diện form lấy lại mật khẩu
+        public static function forgotPassword()
+        {
 
-    //     //     Header::render();
-    //     //     Notification::render();  // Hiển thị thông báo nếu có
-    //     //     NotificationHelper::unset();
-    //     //     ForgotPassword::render();
-    //     //     Footer::render();
-    // }
+            Header::render();
+            Notification::render();  // Hiển thị thông báo nếu có
+            NotificationHelper::unset();
+            ForgotPassword::render();
+            Footer::render();
+    }
 
 
     // Thực hiện lấy lại mật khẩu
-    public static function forgotPasswordAction()
-    {
-        $is_valid = AuthValidation::forgotPassword();
-        if (!$is_valid) {
-            $_SESSION['notification'] = [
-                'type' => 'error',
-                'message' => 'Gửi yêu cầu lấy lại mật khẩu thất bại.'
-            ];
-            header('Location: /forgot-password');
-            exit();
-        }
-
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-
-        $data = ['username' => $username];
-        $result = AuthHelper::forgotPassword($data);
-
-        //     $data = [
-        //         'username' => $username
-        //     ];
-        //     // AuthHelper
-        //     $result = AuthHelper::forgotPassword($data);
-        //     if (!$result) {
-        //         NotificationHelper::error('username_exist', 'Không tồn tại tài khoản này');
-        //         header('Location: /forgot-password');
-        //         exit();
-        //     }
-
-        //     if ($result['email'] != $email) {
-        //         NotificationHelper::error('email_exist', 'Email không đúng');
-        //         header('Location: /forgot-password');
-        //         exit();
-        //     }
-
-        //     $_SESSION['reset_password'] = [
-        //         'username' => $username,
-        //         'email' => $email
-        //     ];
-        //     header('Location: /reset-password');
-
-        //     // echo 'Thành Công';
-    }
     // public static function forgotPasswordAction()
     // {
     //     $is_valid = AuthValidation::forgotPassword();
@@ -545,43 +502,86 @@ class AuthController
     //         header('Location: /forgot-password');
     //         exit();
     //     }
+
     //     $username = $_POST['username'];
     //     $email = $_POST['email'];
 
     //     $data = ['username' => $username];
     //     $result = AuthHelper::forgotPassword($data);
 
-    //     if (!$result) {
-    //         $_SESSION['notification'] = [
-    //             'type' => 'error',
-    //             'message' => 'Không tìm thấy tài khoản hoặc thông tin không khớp.'
-    //         ];
-    //         header('Location: /forgot-password');
-    //         exit();
-    //     }
+    //     //     $data = [
+    //     //         'username' => $username
+    //     //     ];
+    //     //     // AuthHelper
+    //     //     $result = AuthHelper::forgotPassword($data);
+    //     //     if (!$result) {
+    //     //         NotificationHelper::error('username_exist', 'Không tồn tại tài khoản này');
+    //     //         header('Location: /forgot-password');
+    //     //         exit();
+    //     //     }
 
-    //     if ($result['email'] != $email) {
-    //         $_SESSION['notification'] = [
-    //             'type' => 'error',
-    //             'message' => 'Email không đúng.'
-    //         ];
-    //         header('Location: /forgot-password');
-    //         exit();
-    //     }
+    //     //     if ($result['email'] != $email) {
+    //     //         NotificationHelper::error('email_exist', 'Email không đúng');
+    //     //         header('Location: /forgot-password');
+    //     //         exit();
+    //     //     }
 
-    //     $_SESSION['reset_password'] = [
-    //         'username' => $username,
-    //         'email' => $email
-    //     ];
+    //     //     $_SESSION['reset_password'] = [
+    //     //         'username' => $username,
+    //     //         'email' => $email
+    //     //     ];
+    //     //     header('Location: /reset-password');
 
-    //     $_SESSION['notification'] = [
-    //         'type' => 'success',
-    //         'message' => 'Yêu cầu đặt lại mật khẩu đã được gửi. Vui lòng kiểm tra email.'
-    //     ];
-
-    //     header('Location: /reset-password');
-    //     exit();
+    //     //     // echo 'Thành Công';
     // }
+    public static function forgotPasswordAction()
+    {
+        $is_valid = AuthValidation::forgotPassword();
+        if (!$is_valid) {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Gửi yêu cầu lấy lại mật khẩu thất bại.'
+            ];
+            header('Location: /forgot-password');
+            exit();
+        }
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+
+        $data = ['username' => $username];
+        $result = AuthHelper::forgotPassword($data);
+
+        if (!$result) {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Không tìm thấy tài khoản hoặc thông tin không khớp.'
+            ];
+            header('Location: /forgot-password');
+            exit();
+        }
+
+        if ($result['email'] != $email) {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Email không đúng.'
+            ];
+            header('Location: /forgot-password');
+            exit();
+        }
+
+        $_SESSION['reset_password'] = [
+            'username' => $username,
+            'email' => $email
+        ];
+
+        $_SESSION['notification'] = [
+            'type' => 'success',
+            'message' => 'Yêu cầu đặt lại mật khẩu đã được gửi. Vui lòng kiểm tra email.'
+        ];
+
+        header('Location: /reset-password');
+        exit();
+    }
 
 
     // public static function resetPassword()

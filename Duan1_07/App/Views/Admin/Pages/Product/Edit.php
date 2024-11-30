@@ -10,9 +10,23 @@ class Edit extends BaseView
     {
 ?>
 
+        <!-- Kiểm tra và hiển thị thông báo -->
+        <?php if (isset($_SESSION['notification'])): ?>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                Swal.fire({
+                    icon: '<?php echo $_SESSION['notification']['type']; ?>',
+                    title: '<?php echo $_SESSION['notification']['message']; ?>',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            </script>
+            <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
+            ?>
+        <?php endif; ?>
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper" >
+        <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -50,15 +64,15 @@ class Edit extends BaseView
                                     <input type="hidden" name="method" id="" value="PUT">
 
                                     <div align="center">
-                                        <img src="<?=APP_URL?>/public/uploads/products/<?= $data['products']['image']?>" alt="" width="300px">
+                                        <img src="<?= APP_URL ?>/public/uploads/products/<?= $data['products']['image'] ?>" alt="" width="300px">
                                     </div>
                                     <div class="form-group">
                                         <label for="id">ID</label>
-<input type="text" class="form-control" id="id" name="id" value="<?= $data['products']['product_id'] ?>" disabled>
+                                        <input type="text" class="form-control" id="id" name="id" value="<?= $data['products']['product_id'] ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="product_name">Tên*</label>
-                                        <input type="text" class="form-control" id="product_name" placeholder="Nhập tên loại sản phẩm..." name="product_name" value="<?= $data['products']['product_name'] ?>" >
+                                        <input type="text" class="form-control" id="product_name" placeholder="Nhập tên loại sản phẩm..." name="product_name" value="<?= $data['products']['product_name'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="image">Hình ảnh</label>
@@ -83,11 +97,11 @@ class Edit extends BaseView
                                             <?php
                                             foreach ($data['categories'] as $item) :
                                             ?>
-                                                <option value="<?= $item['categories_id'] ?>" <?= ($item['categories_id'] == $data['products']['category_id'])? 'selected' : ''?>><?= $item['category_name'] ?></option>
+                                                <option value="<?= $item['categories_id'] ?>" <?= ($item['categories_id'] == $data['products']['category_id']) ? 'selected' : '' ?>><?= $item['category_name'] ?></option>
                                             <?php
                                             endforeach;
                                             ?>
-</select>
+                                        </select>
                                     </div>
 
                                     <!-- <div class="form-group">
@@ -98,29 +112,29 @@ class Edit extends BaseView
                                             <option value="0" <= ($data['products']['is_feature'] == 0 ? 'selected' : '') ?>>Không</option>
 
                                         </select> -->
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="status">Trạng thái*</label>
-                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status" value="<?= $data['status'] ?>" required>
-                                            <option value="" selected disabled>Vui lòng chọn...</option>
-                                            <option value="1" <?= ($data['products']['status'] == 1 ? 'selected' : '') ?>>Hiển thị</option>
-                                            <option value="0" <?= ($data['products']['status'] == 0 ? 'selected' : '') ?>>Ẩn</option>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Trạng thái*</label>
+                                    <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status" value="<?= $data['status'] ?>" required>
+                                        <option value="" selected disabled>Vui lòng chọn...</option>
+                                        <option value="1" <?= ($data['products']['status'] == 1 ? 'selected' : '') ?>>Hiển thị</option>
+                                        <option value="0" <?= ($data['products']['status'] == 0 ? 'selected' : '') ?>>Ẩn</option>
 
-                                        </select>
-                                    </div>
+                                    </select>
                                 </div>
-                                <div class="border-top">
-                                    <div class="card-body">
-                                        <button type="reset" class="btn btn-danger text-white" name="">Làm lại</button>
-                                        <button type="submit" class="btn btn-primary" name="">Cập nhật</button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
-
+                        <div class="border-top">
+                            <div class="card-body">
+                                <button type="reset" class="btn btn-danger text-white" name="">Làm lại</button>
+                                <button type="submit" class="btn btn-primary" name="">Cập nhật</button>
+                            </div>
+                        </div>
+                        </form>
                     </div>
 
-                
+                </div>
+
+
 
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
@@ -132,12 +146,12 @@ class Edit extends BaseView
                 <!-- ============================================================== -->
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
-          
-<!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
 
-    <?php
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+
+        <?php
     }
 }

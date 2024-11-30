@@ -481,12 +481,12 @@ class Header extends BaseView
         <!-- Hero Start -->
         <div class="container-fluid py-5 mb-5 banner1-header">
             <!-- <img class="img-fluid" src="img/banner1.jpg" alt=""> -->
-            <div class="container py-5">
+            <div class="container py-5" style="height: 60%;">
                 <div class="row justify-content-start">
                     <div class="col-lg-8 text-center text-lg-start">
-                        <h1 class="font-secondary text-primary mb-4">Super Crispy</h1>
-                        <h1 class="display-1 text-uppercase text-primary mb-4">CakeZone</h1>
-                        <h1 class="text-uppercase text-primary">The Best Cake In London</h1><div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
+                        <h1 class="font-secondary text-primary mb-4"></h1>
+                        <h1 class="display-1 text-uppercase text-primary mb-4"></h1>
+                        <h1 class="text-uppercase text-primary"></h1><div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                                 <a href="" class="btn btn-primary border-inner py-3 px-5 me-5">Read More</a>
                                 <button type="button" class="btn-play" data-bs-toggle="modal"
                                     data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">

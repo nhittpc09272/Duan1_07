@@ -59,8 +59,8 @@ class UserValidation {
         
         // Kiểm tra password
         if (isset($_POST['password']) && ($_POST['password']) !== '') {
-            NotificationHelper::error('password', 'Mật khẩu không được để trống');
-            $is_valid = false;
+            // NotificationHelper::error('password', 'Mật khẩu không được để trống');
+            // $is_valid = false;
             if(strlen($_POST['password'])<3){
                 NotificationHelper::error('password', 'Tên đăng nhập phải ít nhất 3 kí tự');
                 $is_valid = false;

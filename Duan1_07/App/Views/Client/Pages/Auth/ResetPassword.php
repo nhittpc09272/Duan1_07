@@ -25,28 +25,46 @@ class ResetPassword extends BaseView
       ?>
     <?php endif; ?>
     <div class="container my-5">
-      <div class="row">
-        <div class="offset-md-3 col-md-6">
-          <div class="card card-body">
-            <h4 class="text-center text-danger">Đặt lại mật khẩu </h4>
-            <form action="/reset-password" method="post">
-              <input type="hidden" name="method" id="" value="PUT">
-              <div class="form-group">
-                <label for="password">Mật khẩu*</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Nhập mật khẩu">
-              </div>
-              <div class="form-group">
-                <label for="re_password">Nhập lại mật khẩu*</label>
-                <input type="password" name="re_password" id="re_password" class="form-control" placeholder="Nhập lại mật khẩu">
-              </div>
-              <button type="reset" class="btn btn-outline-danger">Nhập lại</button>
-              <button type="submit" class="btn btn-outline-info">Đặt lại mật khẩu</button>
-              <br>
-            </form>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card shadow">
+            <!-- Header -->
+            <div class="card-header bg-warning text-white text-center">
+              <h4>Đặt lại mật khẩu</h4>
+            </div>
+            <!-- Nội dung -->
+            <div class="card-body">
+              <form action="/reset-password" method="post">
+                <input type="hidden" name="method" value="PUT">
+
+                <!-- Nhập mật khẩu mới -->
+                <div class="form-group mb-3">
+                  <label for="password" class="form-label">Mật khẩu mới</label>
+                  <input type="password" name="password" id="password" class="form-control" placeholder="Nhập mật khẩu mới" required>
+                </div>
+
+                <!-- Nhập lại mật khẩu -->
+                <div class="form-group mb-3">
+                  <label for="re_password" class="form-label">Nhập lại mật khẩu</label>
+                  <input type="password" name="re_password" id="re_password" class="form-control" placeholder="Nhập lại mật khẩu" required>
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="d-flex justify-content-between">
+                  <button type="reset" class="btn btn-outline-danger w-45">Nhập lại</button>
+                  <button type="submit" class="btn btn-outline-warning w-45">Đặt lại mật khẩu</button>
+                </div>
+              </form>
+            </div>
+            <!-- Footer -->
+            <div class="card-footer text-center text-muted">
+              <small>Hãy chắc chắn rằng mật khẩu của bạn đủ mạnh và dễ nhớ.</small>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
 
 
 <?php
