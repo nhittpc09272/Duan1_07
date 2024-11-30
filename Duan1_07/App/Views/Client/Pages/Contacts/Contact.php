@@ -21,15 +21,19 @@ class Contact extends BaseView
 			<meta charset="UTF-8">
 			<title> </title>
 
+			<link href="/public/assets/client/css/bootstrap.min.css" rel="stylesheet">
+			<link href="/public/assets/client/css/main.css" rel="stylesheet">
 			<link rel="stylesheet" href="/public/assets/client/css/linearicons.css">
-			<link rel="stylesheet" href="/public/assets/client/css/owl.carousel.css">
-			<link rel="stylesheet" href="/public/assets/client/css/themify-icons.css">
 			<link rel="stylesheet" href="/public/assets/client/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/public/assets/client/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/public/assets/client/css/themify-icons.css">
+			<link rel="stylesheet" href="/public/assets/client/css/bootstrap.css">
+			<link rel="stylesheet" href="/public/assets/client/css/owl.carousel.css">
 			<link rel="stylesheet" href="/public/assets/client/css/nice-select.css">
 			<link rel="stylesheet" href="/public/assets/client/css/nouislider.min.css">
-			<link rel="stylesheet" href="/public/assets/client/css/bootstrap.css">
-			<link rel="stylesheet" href="/public/assets/client/css/main.css">
-			<link rel="stylesheet" href="/App/Views/Client/Layouts/Header.php">
+			<link rel="stylesheet" href="/public/assets/client/css/ion.rangeSlider.css" />
+			<link rel="stylesheet" href="/public/assets/client/css/ion.rangeSlider.skinFlat.css" />
+			<link rel="stylesheet" href="/public/assets/client/css/magnific-popup.css">
 		</head>
 		<style>
 			.contact_form {

@@ -31,41 +31,42 @@ class ProductController
             'categories' => $categories
         ];
         Header::render();
-        Notification::render();
-        NotificationHelper::unset();
+
         Index::render($data);
         Footer::render();
+        Notification::render();
+        NotificationHelper::unset();
     }
 
     // Phương thức này hiển thị chi tiết của một sản phẩm cụ thể dựa trên ID và cũng hiển thị các bình luận mới nhất cho sản phẩm đó.
     public static function detail($id)
-{
-    $product = new Product();
-    $product_detail = $product->getOneProductByStatus($id);
+    {
+        $product = new Product();
+        $product_detail = $product->getOneProductByStatus($id);
 
-    // Nếu không tìm thấy sản phẩm, hiển thị thông báo và chuyển hướng về trang danh sách sản phẩm
-    if (!$product_detail) {
-        NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này');
-        header('location: /products');
-        exit;
+        // Nếu không tìm thấy sản phẩm, hiển thị thông báo và chuyển hướng về trang danh sách sản phẩm
+        if (!$product_detail) {
+            NotificationHelper::error('product_detail', 'Không thể xem sản phẩm này');
+            header('location: /products');
+            exit;
+        }
+
+        // Lấy bình luận mới nhất cho sản phẩm (nếu cần)
+        // $comment = new Comment();
+        // $comments = $comment->get5CommentNewestByProductAndStatus($id);
+
+        // Dữ liệu để truyền vào view
+        $data = [
+            'product' => $product_detail,
+            //     'comments' => $comments
+        ];
+
+        Header::render();
+        Notification::render();
+        NotificationHelper::unset();
+        Detail::render($data); // Truyền dữ liệu vào đây
+        Footer::render();
     }
-
-    // Lấy bình luận mới nhất cho sản phẩm (nếu cần)
-    // $comment = new Comment();
-    // $comments = $comment->get5CommentNewestByProductAndStatus($id);
-
-    // Dữ liệu để truyền vào view
-    $data = [
-        'product' => $product_detail,
-    //     'comments' => $comments
-    ];
-
-    Header::render();
-    Notification::render();
-    NotificationHelper::unset();
-    Detail::render($data); // Truyền dữ liệu vào đây
-    Footer::render();
-}
 
 
     public static function getProductByCategory($id)

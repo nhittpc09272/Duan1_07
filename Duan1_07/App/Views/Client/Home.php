@@ -13,6 +13,7 @@ class Home extends BaseView
         <link href="/public/assets/client/css/main.css" rel="stylesheet">
         <link rel="stylesheet" href="/public/assets/client/css/linearicons.css">
         <link rel="stylesheet" href="/public/assets/client/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/assets/client/css/font-awesome.min.css">
         <link rel="stylesheet" href="/public/assets/client/css/themify-icons.css">
         <link rel="stylesheet" href="/public/assets/client/css/bootstrap.css">
         <link rel="stylesheet" href="/public/assets/client/css/owl.carousel.css">
@@ -957,21 +958,20 @@ class Home extends BaseView
                                 tuyệt vời này với giá hấp dẫn!</p>
                         </div>
                     </div>
-                </div>
+                </div> <br>
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="row">
                             <!-- product 1 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r1.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-puma-rebound-v6-low-nam-trang-xanh-02-800x800.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày Puma Rebound v6 Low Nam - Trắng Xanh</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>1.790.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">2.850.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -979,14 +979,13 @@ class Home extends BaseView
                             <!-- product 2 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r2.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-adidas-grand-court-base-2-nam-xam-01-800x800.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày adidas Grand Court Base 2.0 Nam - Xám</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>1.690.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">2.000.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -994,14 +993,13 @@ class Home extends BaseView
                             <!-- product 3 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r3.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-lacoste-angular-textile-nam-trang-nau-01-800x800.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày Lacoste Angular Textile Nam - Trắng Nâu</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>2.690.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">4.250.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -1009,14 +1007,13 @@ class Home extends BaseView
                             <!-- product 4 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r5.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-adidas-superstar-nam-trang-xanh-la-01-800x800.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày adidas Superstar Nam Nữ - Trắng Xanh lá</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>1.990.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">2.600.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -1024,14 +1021,13 @@ class Home extends BaseView
                             <!-- product 5 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r6.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-nike-air-xax-axis-nam-trang-den-02-800x800.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày Nike Air Max Axis Nam - Trắng Đen</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>2.190.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">3.310.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -1039,59 +1035,55 @@ class Home extends BaseView
                             <!-- product 6 -->
                             <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r7.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-nike-interact-run-nu-hong-nhe-02-1000x1000.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày Nike Interact Run Nữ - Hồng Nhẹ</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>2.090.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">2.479.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- product 7 -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r9.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-nike-air-max-systm-nu-trang-xanh-xam-02-800x800.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày Nike Air Max SYSTM Nữ - Trắng Xanh Xám</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>2.290.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">3.050.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- product 8 -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r10.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-adidas-eastrail-2-nam-den.01-800x800.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày Adidas Eastrail 2 Nam - Đen</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>1.990.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">2.800.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- product 9 -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
                                 <div class="single-related-product d-flex">
-                                    <a href="#"><img src="/public/assets/client/img/r11.jpg" alt></a>
+                                    <a href="#"><img src="/public/assets/client/img/giay-adidas-ultrabounce-nam-xam-01-800x800.jpg" style="width: 150px; height: 180px;" alt=></a>
                                     <div class="desc">
-                                        <a href="#" class="title">Giày cao gót
-                                            đen dây ren</a>
+                                        <a href="#" class="title">Giày Adidas Ultrabounce Nam- Xám</a>
                                         <div class="price">
-                                            <h6>₫4,347,000</h6>
+                                            <h6>1.790.000 VND</h6>
                                             <h6
-                                                class="l-through">₫4,830,000</h6>
+                                                class="l-through">2.400.000 VND</h6>
                                         </div>
                                     </div>
                                 </div>

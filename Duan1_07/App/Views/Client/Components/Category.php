@@ -8,6 +8,9 @@ class Category extends BaseView
 {
     public static function render($data = null)
     {
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
 ?>
         <div class="sidebar-categories">
             <div class="head mb-4" style="font-size: 20px; font-weight: bold; color: #333;">Danh Mục Sản Phẩm</div>

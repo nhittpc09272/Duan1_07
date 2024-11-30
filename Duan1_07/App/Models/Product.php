@@ -13,11 +13,12 @@ class Product extends BaseModel
         return $this->getAll();
     }
 
-    public function getOneProduct($id) {
+    public function getOneProduct($id)
+    {
         $id = (int) $id; // Ép kiểu trước khi gọi getOne()
         return $this->getOne($id);
     }
-    
+
     public function getAllProductByStatus()
     {
         $result = [];
