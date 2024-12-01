@@ -13,12 +13,6 @@ class Product extends BaseModel
         return $this->getAll();
     }
 
-    public function getOneProduct($id)
-    {
-        $id = (int) $id; // Ép kiểu trước khi gọi getOne()
-        return $this->getOne($id);
-    }
-
     public function getAllProductByStatus()
     {
         $result = [];
@@ -36,70 +30,38 @@ class Product extends BaseModel
         }
     }
 
-
-
-    public function getOneProductByName($name)
-    {
-        return $this->getOneByName($name);
-    }
-
-    public function getAllProductJoinCategory()
+    public function getAllProductByCategoryAndStatus(int $id)
     {
         $result = [];
         try {
-            // $sql = "SELECT * FROM $this->table";
+            // Truy vấn SQL
             $sql = "SELECT 
-    products.*, 
-    categories.category_name AS category_name,
-    product_variants.size,
-    product_variants.color,
-    product_variants.status AS variant_status
-FROM 
-    products
-INNER JOIN 
-    categories ON products.category_id = categories.categories_id
-LEFT JOIN 
-    product_variants ON products.product_id = product_variants.product_id ";
-            $result = $this->_conn->MySQLi()->query($sql);
-            return $result->fetch_all(MYSQLI_ASSOC);
+                    products.*, 
+                    categories.category_name 
+                FROM products 
+                INNER JOIN categories 
+                ON products.category_id = categories.categories_id 
+                WHERE products.status = ? 
+                AND categories.status = ? 
+                AND products.category_id = ?";
+
+            // Kết nối và chuẩn bị câu lệnh
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            // Gán tham số
+            $status = self::STATUS_ENABLE;
+            $stmt->bind_param('iii', $status, $status, $id);
+
+            // Thực thi truy vấn và trả về kết quả
+            $stmt->execute();
+            return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         } catch (\Throwable $th) {
-            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            // Ghi log lỗi
+            error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
             return $result;
         }
     }
-
-    // public function getAllProductByCategoryAndStatus(int $id)
-    // {
-    //     $result = [];
-    //     try {
-    //         // Truy vấn SQL
-    //         $sql = "SELECT 
-    //                 products.*, 
-    //                 categories.category_name 
-    //             FROM products 
-    //             INNER JOIN categories 
-    //             ON products.category_id = categories.categories_id 
-    //             WHERE products.status = ? 
-    //             AND categories.status = ? 
-    //             AND products.category_id = ?";
-
-    //         // Kết nối và chuẩn bị câu lệnh
-    //         $conn = $this->_conn->MySQLi();
-    //         $stmt = $conn->prepare($sql);
-
-    //         // Gán tham số
-    //         $status = self::STATUS_ENABLE;
-    //         $stmt->bind_param('iii', $status, $status, $id);
-
-    //         // Thực thi truy vấn và trả về kết quả
-    //         $stmt->execute();
-    //         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    //     } catch (\Throwable $th) {
-    //         // Ghi log lỗi
-    //         error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
-    //         return $result;
-    //     }
-    // }
 
 
 
@@ -146,104 +108,92 @@ LEFT JOIN
         return $result;
     }
 
-    // public function getOneProductByName($name)
-    // {
-    //     return $this->getOneByName($name);
-    // }
-
-    // public function getAllProductJoinCategory()
-    // {
-    //     $result = [];
-    //     try {
-    //         $sql = "SELECT products.*,categories.name AS category_name
-    //         FROM products 
-    //         INNER JOIN categories 
-    //         ON products.category_id = categories.id;";
-    //         $result = $this->_conn->MySQLi()->query($sql);
-    //         return $result->fetch_all(MYSQLI_ASSOC);
-    //     } catch (\Throwable $th) {
-    //         error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
-    //         return $result;
-    //     }
-    // }
-
-    public function getAllProductByCategoryAndStatus(int $id)
+    public function getAllProductByCategory(int $categoryId)
     {
         $result = [];
         try {
-            // Câu truy vấn SQL
-            $sql = "SELECT 
-                        p.product_id, 
-                        p.product_name, 
-                        p.description, 
-                        p.stock_quantity, 
-                        p.image, 
-                        p.status AS product_status, 
-                        p.category_id, 
-                        c.category_name, 
-                        p.price
-                    FROM 
-                        products p
-                    INNER JOIN 
-                        categories c 
-                    ON 
-                        p.category_id = c.categories_id
-                    WHERE 
-                        p.product_id = ? 
-                        AND p.status = 1
-                        AND c.status = 1";
+            // Câu lệnh SQL
+            $sql = "SELECT * FROM products WHERE category_id = ?";
 
-            // Kết nối tới database
+            // Kết nối tới database và chuẩn bị truy vấn
             $conn = $this->_conn->MySQLi();
             $stmt = $conn->prepare($sql);
 
-            // Gán giá trị cho tham số
-            $stmt->bind_param('i', $id);
+            if ($stmt === false) {
+                throw new \Exception("Lỗi khi chuẩn bị câu lệnh SQL: " . $conn->error);
+            }
 
-            // Thực thi câu lệnh
+            // Gán tham số và thực thi câu lệnh
+            $stmt->bind_param('i', $categoryId);
             $stmt->execute();
-            $result = $stmt->get_result()->fetch_assoc();
+
+            // Lấy kết quả
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+            // Đóng câu lệnh
+            $stmt->close();
         } catch (\Throwable $th) {
-            error_log('Lỗi khi lấy chi tiết sản phẩm: ' . $th->getMessage());
+            // Ghi log lỗi
+            error_log('Lỗi khi lấy sản phẩm theo danh mục: ' . $th->getMessage());
         }
 
-        return $result;
+        return $result; // Trả về danh sách sản phẩm
     }
 
+    public function countProductByCategory()
+    {
+        $result = [];
+        try {
+            $sql = "SELECT COUNT(*) AS count, categories.name FROM products INNER JOIN categories ON products.category_id=categories.id\n" . "GROUP BY products.category_id;";
 
-    // public function getAllProductJoinCategory()
-    // {
-    //     $result = [];
-    //     try {
-    //         $sql = "SELECT products.*,categories.name AS category_name
-    //         FROM products 
-    //         INNER JOIN categories 
-    //         ON products.category_id = categories.id;";
-    //         $result = $this->_conn->MySQLi()->query($sql);
-    //         return $result->fetch_all(MYSQLI_ASSOC);
-    //     } catch (\Throwable $th) {
-    //         error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
-    //         return $result;
-    //     }
-    // }
+            $result = $this->_conn->MySQLi()->query($sql);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
 
-    // public function getAllProductByCategoryAndStatus(int $id)
-    // {
-    //     $result = [];
-    //     try {
-    //         $sql = "SELECT products.*, categories.name AS category_name FROM products 
-    //         INNER JOIN categories ON products.category_id = categories.id 
-    //         WHERE products.status =" . self::STATUS_ENABLE . " AND categories.status=" . self::STATUS_ENABLE . " AND products.category_id=?";
-    //         $conn = $this->_conn->MySQLi();
-    //         $stmt = $conn->prepare($sql);
+    public function countTotalProduct()
+    {
+        return $this->countTotal();
+    }
 
-    //         $stmt->bind_param('i', $id);
-    //         $stmt->execute();
-    //         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    //     } catch (\Throwable $th) {
-    //         error_log('Lỗi khi hiển thị dữ liệu: ' . $th->getMessage());
-    //         return $result;
-    //     }
-    // }
+    public function searchProductsByName($query)
+    {
+        $result = [];
+        try {
+            // Câu truy vấn tìm kiếm sản phẩm theo tên
+            $sql = "SELECT * FROM products WHERE product_name LIKE ?";
 
+            // Kết nối tới cơ sở dữ liệu
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            if ($stmt === false) {
+                throw new \Exception("Lỗi khi chuẩn bị câu lệnh SQL: " . $conn->error);
+            }
+
+            // Gán tham số vào truy vấn
+            $searchTerm = "%{$query}%"; // Tìm kiếm với ký tự %
+            $stmt->bind_param('s', $searchTerm);
+            $stmt->execute();
+
+            // Lấy kết quả
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+            // Đóng câu lệnh
+            $stmt->close();
+        } catch (\Throwable $th) {
+            // Ghi log lỗi
+            error_log('Lỗi khi tìm kiếm sản phẩm: ' . $th->getMessage());
+        }
+
+        return $result; // Trả về danh sách sản phẩm tìm thấy
+    }
+
+    public function getOneProduct($id) {
+        $id = (int) $id; // Ép kiểu trước khi gọi getOne()
+        return $this->getOne($id);
+    }
 }
