@@ -25,7 +25,7 @@ class VariantController
 
         Header::render();
         Index::render($data); // Truyền dữ liệu vào view
-        Footer::render();
+        //Footer::render();
     }
 
 
@@ -41,7 +41,7 @@ class VariantController
         Header::render();
         // Truyền danh sách sản phẩm vào view
         Create::render(['products' => $products]);
-        Footer::render();
+        //Footer::render();
     }
 
 
@@ -203,7 +203,7 @@ class VariantController
         NotificationHelper::unset();
         // hiển thị form sửa
         Edit::render($data);
-        Footer::render();
+        //Footer::render();
     }
 
 

@@ -28,7 +28,7 @@ class CategoryController
         NotificationHelper::unset();
         // hiển thị giao diện danh sách
         Index::render($data);
-        Footer::render();
+        //Footer::render();
     }
 
 
@@ -40,7 +40,7 @@ class CategoryController
         // NotificationHelper::unset();
         // hiển thị form thêm
         Create::render();
-        Footer::render();
+        //Footer::render();
     }
 
 
@@ -166,13 +166,13 @@ class CategoryController
         NotificationHelper::unset();
         // hiển thị form sửa
         Edit::render($data);
-        Footer::render();
+        //Footer::render();
 
         //     if ($data) {
         //         Header::render();
         //         // hiển thị form sửa
         //         Edit::render($data);
-        //         Footer::render();
+        //         //Footer::render();
         //     } else {
         //         header('location: /admin/categories');
         //     }

@@ -23,6 +23,9 @@ Route::get('/products', 'App\Controllers\Client\ProductController@index');
 Route::get('/products/{id}', 'App\Controllers\Client\ProductController@detail');
 Route::get('/products/categories/{id}', 'App\Controllers\Client\ProductController@getProductByCategory');
 
+// Lấy danh sách biến thể cho một sản phẩm cụ thể
+Route::get('/products/{productId}/variants', 'App\Controllers\Client\VariantController@index');
+
 // Chuyển đến trang Blog
 Route::get('/blog', controllerMethod: 'App\Controllers\Client\BlogController@blog');
 
@@ -34,6 +37,8 @@ Route::get('/about', controllerMethod: 'App\Controllers\Client\AboutController@a
 
 // Chuyển đến trang Checkout
 Route::get('/checkout', controllerMethod: 'App\Controllers\Client\CheckoutController@checkout');
+Route::get('/checkout/placeOrder', controllerMethod: 'App\Controllers\Client\CheckoutController@placeOrder');
+
 
 // Chuyển đến trang Order tracking
 Route::get('/tracking', controllerMethod: 'App\Controllers\Client\TrackingController@tracking');
@@ -49,12 +54,13 @@ Route::put('/cart/update', 'App\Controllers\Client\CartController@update');
 Route::delete('/cart/delete', 'App\Controllers\Client\CartController@deleteItem');
 Route::delete('/cart/delete-all', 'App\Controllers\Client\CartController@deleteAll');
 
-//comment 
+// Comments
 Route::post('/comments', 'App\Controllers\Client\CommentController@store');
 Route::put('/comments/{id}', 'App\Controllers\Client\CommentController@update');
 Route::delete('/comments/{id}', 'App\Controllers\Client\CommentController@delete');
 
-
+// // Chuyển đến trang tiềm kiếm sản phẩm
+Route::get('/search', controllerMethod: 'App\Controllers\Client\SearchController@search');
 
 
 // Chuyển đến trang Login

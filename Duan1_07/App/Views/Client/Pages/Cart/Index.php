@@ -22,250 +22,115 @@ class Index extends BaseView
             }
         }
 ?>
-        <?php if (isset($_SESSION['notification'])): ?>
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script>
-                Swal.fire({
-                    icon: '<?php echo $_SESSION['notification']['type']; ?>',
-                    title: '<?php echo $_SESSION['notification']['message']; ?>',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            </script>
-            <?php unset($_SESSION['notification']); ?>
-        <?php endif; ?>
-        <style>
-            :root {
-                --primary-color: #000;
-                --secondary-color: #666;
-                --border-color: #e0e0e0;
-            }
+        <!DOCTYPE html>
+        <html lang="en">
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Arial', sans-serif;
-            }
-
-            body {
-                background-color: #f5f5f5;
-                color: var(--primary-color);
-            }
-
-            .cart-container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 20px;
-                display: flex;
-                gap: 30px;
-            }
-
-            .cart-items {
-                flex: 2;
-                background-color: white;
-                padding: 20px;
-                border: 1px solid var(--border-color);
-            }
-
-            .cart-summary {
-                flex: 1;
-                background-color: white;
-                padding: 20px;
-                border: 1px solid var(--border-color);
-                height: fit-content;
-            }
-
-            .cart-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 1px solid var(--border-color);
-                padding-bottom: 15px;
-                margin-bottom: 20px;
-            }
-
-            .cart-header h1 {
-                font-size: 24px;
-                font-weight: 600;
-            }
-
-            .cart-item {
-                display: flex;
-                align-items: center;
-                padding: 15px 0;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .cart-item img {
-                width: 120px;
-                height: 160px;
-                object-fit: cover;
-                margin-right: 20px;
-            }
-
-            .item-details {
-                flex-grow: 1;
-            }
-
-            .item-details h3 {
-                font-size: 16px;
-                margin-bottom: 10px;
-            }
-
-            .item-details p {
-                color: var(--secondary-color);
-                font-size: 14px;
-            }
-
-            .quantity-control {
-                display: flex;
-                align-items: center;
-                border: 1px solid var(--border-color);
-                width: 120px;
-            }
-
-            .quantity-control button {
-                background: none;
-                border: none;
-                padding: 5px 10px;
-                cursor: pointer;
-            }
-
-            .quantity-control input {
-                width: 50px;
-                text-align: center;
-                border: none;
-                font-size: 16px;
-            }
-
-            .item-price {
-                font-weight: 600;
-                text-align: right;
-            }
-
-            .original-price {
-                text-decoration: line-through;
-                color: #888;
-                font-size: 14px;
-            }
-
-            .discounted-price {
-                color: red;
-            }
-
-            .cart-summary-details {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 15px;
-            }
-
-            .checkout-btn {
-                width: 100%;
-                padding: 15px;
-                background-color: var(--primary-color);
-                color: white;
-                border: none;
-                font-size: 16px;
-                cursor: pointer;
-                margin-top: 20px;
-            }
-
-            .remove-btn {
-                background: none;
-                border: none;
-                color: var(--secondary-color);
-                cursor: pointer;
-                margin-top: 10px;
-            }
-
-            .cart-actions {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 20px;
-            }
-        </style>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Giỏ hàng</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
         </head>
 
         <body>
-            <div class="cart-container">
-                <div class="cart-items">
-                    <div class="cart-header">
-                        <h1>Giỏ hàng (<?= $item_count ?> sản phẩm)</h1>
-                        <a href="/products">Tiếp tục mua sắm</a>
+            <div class="container py-5">
+                <h1 class="text-center mb-4">Giỏ hàng (<?= $item_count ?> sản phẩm)</h1>
+                <div class="d-flex justify-content-between mb-4">
+                    <a href="/products" class="btn btn-primary">Tiếp tục mua sắm</a>
+                </div>
+
+                <div class="row">
+                    <!-- Danh sách sản phẩm -->
+                    <div class="col-lg-8">
+                        <?php foreach ($data as $cart): ?>
+                            <?php if ($cart['data']): ?>
+                                <div class="card mb-3">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="<?= APP_URL ?>/public/assets/client/img/image/<?= $cart['data']['image'] ?>"
+                                                class="img-fluid rounded-start"
+                                                alt="<?= $cart['data']['product_name'] ?>">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?= $cart['data']['product_name'] ?></h5>
+                                                <p class="card-text">Mã sản phẩm: <?= $cart['data']['product_id'] ?></p>
+
+                                                <!-- Cập nhật số lượng -->
+                                                <form action="/cart/update" method="post" class="d-flex align-items-center">
+                                                    <input type="hidden" name="method" value="PUT">
+                                                    <input type="number" name="quantity" value="<?= $cart['quantity'] ?>"
+                                                        min="1" max="99" class="form-control mx-2" style="width: 70px;"
+                                                        onchange="this.form.submit()">
+                                                    <input type="hidden" name="id" value="<?= $cart['data']['product_id'] ?>">
+                                                </form>
+
+                                                <!-- Xóa sản phẩm -->
+                                                <form action="/cart/delete" method="post" class="mt-2">
+                                                    <input type="hidden" name="method" value="DELETE">
+                                                    <input type="hidden" name="id" value="<?= $cart['data']['product_id'] ?>">
+                                                    <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                                </form>
+
+                                                <!-- Giá sản phẩm -->
+                                                <div class="mt-3">
+                                                    <?php if ($cart['data']['discount_price'] > 0): ?>
+                                                        <div class="text-muted text-decoration-line-through">
+                                                            <?= number_format($cart['data']['price']) ?>đ
+                                                        </div>
+                                                        <div class="text-success fw-bold">
+                                                            <?= number_format($cart['data']['price'] - $cart['data']['discount_price']) ?>đ
+                                                        </div>
+                                                    <?php else: ?>
+                                                        <div class="fw-bold"><?= number_format($cart['data']['price']) ?>đ</div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
 
-                    <?php foreach ($data as $cart): ?>
-                        <?php if ($cart['data']): ?>
-                            <div class="cart-item">
-                                <img src="<?= APP_URL ?>/public/assets/client/img/image/<?= $cart['data']['image'] ?>" alt="<?= $cart['data']['product_name'] ?>">
-
-                                <div class="item-details">
-                                    <h3><?= $cart['data']['product_name'] ?></h3>
-                                    <p>Mã sản phẩm: <?= $cart['data']['product_id'] ?></p>
-
-                                    <form action="/cart/update" method="post" class="quantity-control">
-                                        <input type="hidden" name="method" value="PUT">
-                                        <button type="button" onclick="this.parentNode.querySelector('input[name=quantity]').stepDown()">&#8722;</button>
-                                        <input type="number" name="quantity" value="<?= $cart['quantity'] ?>" min="1" max="99" onchange="this.form.submit()">
-                                        <button type="button" onclick="this.parentNode.querySelector('input[name=quantity]').stepUp()">&#43;</button>
-                                        <input type="hidden" name="id" value="<?= $cart['data']['product_id'] ?>">
-                                        <input type="hidden" name="update-cart-item">
-                                    </form>
-
-                                    <form action="cart/delete" method="post">
-                                        <input type="hidden" name="method" value="DELETE">
-                                        <input type="hidden" name="id" value="<?= $cart['data']['product_id'] ?>">
-                                        <button class="remove-btn" type="submit">Xóa</button>
-                                    </form>
+                    <!-- Tóm tắt đơn hàng -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Tóm tắt đơn hàng</h5>
+                                <div class="d-flex justify-content-between">
+                                    <span>Tạm tính:</span>
+                                    <span><?= number_format($total_price) ?>đ</span>
                                 </div>
-
-                                <div class="item-price">
-                                    <?php if ($cart['data']['discount_price'] > 0): ?>
-                                        <div class="original-price"><?= number_format($cart['data']['price']) ?>đ</div>
-                                        <div class="discounted-price"><?= number_format($cart['data']['price'] - $cart['data']['discount_price']) ?>đ</div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <span>Phí vận chuyển:</span>
+                                    <span>30,000đ</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between fw-bold">
+                                    <span>Tổng cộng:</span>
+                                    <span><?= number_format($total_price + 30000) ?>đ</span>
+                                </div>
+                                <div class="mt-4">
+                                    <form action="/cart/delete-all" method="post">
+                                        <input type="hidden" name="method" value="DELETE">
+                                        <button class="btn btn-danger w-100 mb-2">Xóa giỏ hàng</button>
+                                    </form>
+                                    <?php if ($is_login): ?>
+                                        <a href="/checkout" class="btn btn-success w-100">Tiến hành thanh toán</a>
                                     <?php else: ?>
-                                        <?= number_format($cart['data']['price']) ?>đ
+                                        <div class="text-center text-danger">
+                                            <p>Vui lòng đăng nhập để thanh toán</p>
+                                            <a href="/login" class="btn btn-outline-dark">Đăng nhập</a>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
                             </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="cart-summary">
-                    <div class="cart-summary-details">
-                        <span>Tạm tính</span>
-                        <span><?= number_format($total_price) ?>đ</span>
-                    </div>
-
-                    <div class="cart-summary-details">
-                        <span>Phí vận chuyển</span>
-                        <span>30. 000đ</span>
-                    </div>
-
-                    <div class="cart-summary-details">
-                        <strong>Tổng cộng</strong>
-                        <strong><?= number_format($total_price + 30000) ?>đ</strong>
-                    </div>
-
-                    <div class="cart-actions">
-                        <form action="/cart/delete-all" method="post">
-                            <input type="hidden" name="method" value="DELETE">
-                            <button class="btn btn-danger" name="delete-cart" type="submit">Xóa giỏ hàng</button>
-                        </form>
-
-                        <?php if ($is_login): ?>
-                            <a href="/checkout" class="checkout-btn">Tiến hành thanh toán</a>
-                        <?php else: ?>
-                            <div class="text-center">
-                                <span class="text-danger">Vui lòng đăng nhập để thanh toán</span><br>
-                                <a href="/login" class="btn btn-outline-dark mt-2">Đăng nhập</a>
-                            </div>
-                        <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
         </body>
 
         </html>

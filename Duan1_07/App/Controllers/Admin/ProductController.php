@@ -32,7 +32,7 @@ class ProductController
         NotificationHelper::unset();
         // hiển thị giao diện danh sách
         Index::render($data);
-        Footer::render();
+        //Footer::render();
     }
 
 
@@ -46,61 +46,75 @@ class ProductController
         NotificationHelper::unset();
         // hiển thị form thêm
         Create::render($data);
-        Footer::render();
+        //Footer::render();
     }
 
 
     // xử lý chức năng thêm
     public static function store()
     {
-        //validation các trường dữ liệu
+        // Validation các trường dữ liệu
         $is_valid = ProductValidation::create();
 
         if (!$is_valid) {
-            NotificationHelper::error('store', 'Thêm sản phẩm thất bại');
-            header('location: /admin/products/create');
-            exit;
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Thêm sản phẩm thất bại.'
+            ];
+            header('Location: /admin/products/create');
+            exit();
         }
 
         $name = $_POST['product_name'];
 
-        //kiểm tra tên loại có tồn tại ch => không được trùng tên
+        // Kiểm tra tên sản phẩm có tồn tại => không được trùng tên
         $product = new Product();
         $is_exits = $product->getOneProductByName($name);
 
         if ($is_exits) {
-            NotificationHelper::error('store', 'Tên sản phẩm đã tồn tại');
-            header('location: /admin/products/create');
-            exit;
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Tên sản phẩm đã tồn tại.'
+            ];
+            header('Location: /admin/products/create');
+            exit();
         }
 
-        //thêm vào database
+        // Thêm vào database
         $data = [
             'product_name' => $name,
             'price' => $_POST['price'],
             'stock_quantity' => $_POST['stock_quantity'],
-            
             'description' => $_POST['description'],
-            
             'status' => $_POST['status'],
             'category_id' => $_POST['categories_id'],
+            'discount_price' => $_POST['discount_price'],
         ];
 
         $is_upload = ProductValidation::uploadImage();
-        if($is_upload){
+        if ($is_upload) {
             $data['image'] = $is_upload;
         }
 
         $result = $product->createProduct($data);
 
         if ($result) {
-            NotificationHelper::success('store', 'Thêm loại sản phẩm thành công');
-            header('location: /admin/products');
+            $_SESSION['notification'] = [
+                'type' => 'success',
+                'message' => 'Thêm sản phẩm thành công.'
+            ];
+            header('Location: /admin/products');
+            exit();
         } else {
-            NotificationHelper::success('store', 'Thêm loại sản phẩm thất bại');
-            header('location: /admin/products/create');
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Thêm sản phẩm thất bại.'
+            ];
+            header('Location: /admin/products/create');
+            exit();
         }
     }
+
 
 
     // // hiển thị chi tiết
@@ -120,7 +134,7 @@ class ProductController
         $data_category = $category->getAllCategory();
 
 
-        if(!$data_product){
+        if (!$data_product) {
             NotificationHelper::error('edit', 'Không thể xem sản phẩm này');
             header('location: /admin/products');
             exit;
@@ -131,12 +145,12 @@ class ProductController
             'categories' => $data_category,
         ];
 
-            Header::render();
-            Notification::render();
-            NotificationHelper::unset();
-            // hiển thị form sửa
-            Edit::render($data);
-            Footer::render();
+        Header::render();
+        Notification::render();
+        NotificationHelper::unset();
+        // hiển thị form sửa
+        Edit::render($data);
+        //Footer::render();
 
     }
 
@@ -144,72 +158,89 @@ class ProductController
     // xử lý chức năng sửa (cập nhật)
     public static function update(int $id)
     {
-        //validation các trường dữ liệu
+        // Validation các trường dữ liệu
         $is_valid = ProductValidation::edit();
 
-        if(!$is_valid){
-            NotificationHelper::error('update', 'Cập nhật loại sản phẩm thất bại');
-            header("location: /admin/products/$id");
-            exit;
+        if (!$is_valid) {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Cập nhật sản phẩm thất bại.'
+            ];
+            header("Location: /admin/products/$id");
+            exit();
         }
 
         $name = $_POST['product_name'];
         $status = $_POST['status'];
-        //kiểm tra tên loại có tồn tại ch => không được trùng tên
+
+        // Kiểm tra tên sản phẩm có tồn tại => không được trùng tên
         $product = new Product();
         $is_exits = $product->getOneProductByName($name);
 
-        if($is_exits){
-            if($is_exits['id'] != $id){
-                NotificationHelper::error('update', 'Tên loại sản phẩm đã tồn tại');
-                header("location: /admin/products/$id");
-                exit;
-            }
+        if ($is_exits && $is_exits['id'] != $id) {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Tên sản phẩm đã tồn tại.'
+            ];
+            header("Location: /admin/products/$id");
+            exit();
         }
 
-        //Thực hiện cập nhật
+        // Thực hiện cập nhật
         $data = [
-           'product_name' => $name,
+            'product_name' => $name,
             'price' => $_POST['price'],
-            'stock_quantity' => $_POST['stock_quantity'],
-            
             'description' => $_POST['description'],
-            
             'status' => $_POST['status'],
             'category_id' => $_POST['categories_id'],
         ];
 
         $is_upload = ProductValidation::uploadImage();
-        if($is_upload){
+        if ($is_upload) {
             $data['image'] = $is_upload;
         }
 
         $result = $product->updateProduct($id, $data);
 
-        if($result){
-            NotificationHelper::success('update', 'Cập nhật loại sản phẩm thành công');
-            header('location: /admin/products');
-        }else{
-            NotificationHelper::success('update', 'Cập nhật loại sản phẩm thất bại');
-            header("location: /admin/products/$id");
+        if ($result) {
+            $_SESSION['notification'] = [
+                'type' => 'success',
+                'message' => 'Cập nhật sản phẩm thành công.'
+            ];
+            header('Location: /admin/products');
+            exit();
+        } else {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Cập nhật sản phẩm thất bại.'
+            ];
+            header("Location: /admin/products/$id");
+            exit();
         }
-
     }
+
 
 
     // thực hiện xoá
     public static function delete(int $id)
-    {
-       $product = new Product();
-       $result = $product->deleteProduct($id);
+{
+    $product = new Product();
+    $result = $product->deleteProduct($id);
 
-       if($result){
-        NotificationHelper::success('delete', 'Xóa sản phẩm thành công');
-       }else{
-        NotificationHelper::error('delete', 'Xóa sản phẩm thất bại');
-       }
-
-       header('location: /admin/products');
-
+    if ($result) {
+        $_SESSION['notification'] = [
+            'type' => 'success',
+            'message' => 'Xóa sản phẩm thành công.'
+        ];
+    } else {
+        $_SESSION['notification'] = [
+            'type' => 'error',
+            'message' => 'Xóa sản phẩm thất bại.'
+        ];
     }
+
+    header('Location: /admin/products');
+    exit();
+}
+
 }

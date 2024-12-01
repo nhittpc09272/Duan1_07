@@ -29,7 +29,6 @@ class Category extends BaseView
                     ?>
                         <!-- Hiển thị tên danh mục sản phẩm từ dữ liệu đầu vào -->
                         <h1 class="text-center mb-3"><?= $data['products'][0]['category_name'] ?></h1>
-
                         <div class="row">
                             <?php
                             // Lặp qua từng sản phẩm trong danh sách sản phẩm.
