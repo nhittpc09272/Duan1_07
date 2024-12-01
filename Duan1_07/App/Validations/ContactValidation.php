@@ -22,16 +22,23 @@ class ContactValidation
             $is_valid = false;
         }
 
-        // Kiểm tra số điện thoại
-        if (!isset($_POST['phone']) || trim($_POST['phone']) === '') {
-            NotificationHelper::error('phone', 'Số điện thoại không được để trống');
+        // Kiểm tra chur ddee
+        if (!isset($_POST['subject']) || trim($_POST['subject']) === '') {
+            NotificationHelper::error('subject', 'Họ và tên không được để trống');
             $is_valid = false;
-        } else {
-            if (!preg_match('/^\d{10,11}$/', $_POST['phone'])) {
-                NotificationHelper::error('phone', 'Số điện thoại phải là 10-11 chữ số');
-                $is_valid = false;
-            }
         }
+
+
+        // // Kiểm tra số điện thoại
+        // if (!isset($_POST['phone']) || trim($_POST['phone']) === '') {
+        //     NotificationHelper::error('phone', 'Số điện thoại không được để trống');
+        //     $is_valid = false;
+        // } else {
+        //     if (!preg_match('/^\d{10,11}$/', $_POST['phone'])) {
+        //         NotificationHelper::error('phone', 'Số điện thoại phải là 10-11 chữ số');
+        //         $is_valid = false;
+        //     }
+        // }
 
         // Kiểm tra nội dung
         if (!isset($_POST['message']) || trim($_POST['message']) === '') {

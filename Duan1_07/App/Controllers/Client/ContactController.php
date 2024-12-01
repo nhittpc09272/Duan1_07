@@ -12,7 +12,7 @@ use App\Views\Client\Layouts\Header;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class ContactController 
+class ContactController
 {
     public static function contact()
     {
@@ -41,71 +41,93 @@ class ContactController
     public static function sendEmail()
     {
         $is_valid = true;
-
-        // Kiểm tra các trường dữ liệu từ form
-        if (empty($_POST['name'])) {
-            NotificationHelper::error('name', 'Không để trống họ tên');
+        $errors = []; // Mảng lưu trữ các lỗi
+    
+        // Kiểm tra tên
+        if (!isset($_POST['name']) || trim($_POST['name']) === '') {
+            $errors['name'] = 'Họ và tên không được để trống';
             $is_valid = false;
         }
-
-        if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            NotificationHelper::error('email', 'Email không hợp lệ');
+    
+        // Kiểm tra email
+        if (!isset($_POST['email']) || trim($_POST['email']) === '' || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'Email không hợp lệ';
             $is_valid = false;
         }
-
-        if (empty($_POST['message'])) {
-            NotificationHelper::error('message', 'Nội dung không được để trống');
+    
+        // Kiểm tra chủ đề
+        if (!isset($_POST['subject']) || trim($_POST['subject']) === '') {
+            $errors['subject'] = 'Chủ đề không được để trống';
             $is_valid = false;
         }
-
+    
+        // Kiểm tra nội dung
+        if (!isset($_POST['message']) || trim($_POST['message']) === '') {
+            $errors['message'] = 'Nội dung liên hệ không được để trống';
+            $is_valid = false;
+        }
+    
+        // Nếu không hợp lệ, lưu lỗi vào session và chuyển hướng
+        if (!$is_valid) {
+            $_SESSION['contact_errors'] = $errors;
+            $_SESSION['contact_data'] = $_POST;
+    
+            header('Location: /contact');
+            exit();
+        }
+    
         // Nếu tất cả đều hợp lệ, gửi email
-        if ($is_valid) {
+        try {
             $name = $_POST['name'];
-            $email = $_POST['email']; // Lấy email từ form nhập
+            $email = $_POST['email'];
+            $subject = $_POST['subject'];
             $message = $_POST['message'];
-
-            // Cấu hình PHPMailer
-            $mail = new PHPMailer(true); // Enable exceptions
-
-            try {
-                // Cấu hình SMTP
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'quocanh25115@gmail.com'; // Địa chỉ Gmail của bạn
-                $mail->Password = 'mgbb qlbh lhbo wkxs'; // App password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
-
-                // Người gửi
-                $mail->setFrom($email, $name); // Sử dụng email và tên nhập từ form
-
-                // Người nhận
-                $mail->addAddress('quocanh25115@gmail.com', 'Liên Hệ'); // Email của bạn là người nhận
-
-                // Nội dung email
-                $mail->isHTML(true);
-                $mail->Subject = "Liên hệ từ $name";
-                $mail->Body    = "<p>Bạn đã nhận được tin nhắn từ <strong>$name</strong> ($email):</p><p>$message</p>";
-                $mail->CharSet = 'UTF-8'; // Bổ sung thêm dòng này
-
-                // Hiển thị thông tin người gửi và người nhận
-                echo "Người gửi: $name ($email)<br>";
-                echo "Người nhận: quocanh25115@gmail.com (Liên Hệ)<br>";
-
-                // Gửi email
-                if ($mail->send()) {
-                    NotificationHelper::success('email', 'Email đã được gửi thành công.');
-                } else {
-                    NotificationHelper::error('email', 'Không thể gửi email. Lỗi: ' . $mail->ErrorInfo);
-                }
-            } catch (Exception $e) {
-                NotificationHelper::error('email', 'Lỗi: ' . $e->getMessage());
+    
+            $mail = new PHPMailer(true);
+    
+            // Cấu hình SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'quocanh25115@gmail.com';
+            $mail->Password = 'mgbb qlbh lhbo wkxs';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+    
+            // Người gửi
+            $mail->setFrom($email, $name);
+    
+            // Người nhận
+            $mail->addAddress('quocanh25115@gmail.com', 'Liên Hệ');
+    
+            // Nội dung email
+            $mail->isHTML(true);
+            $mail->Subject = "Liên hệ từ $name - $subject";
+            $mail->Body = "<p>Bạn đã nhận được tin nhắn từ <strong>$name</strong> ($email):</p><p>Chủ đề: $subject</p><p>Nội dung: $message</p>";
+            $mail->CharSet = 'UTF-8';
+    
+            // Gửi email
+            if ($mail->send()) {
+                $_SESSION['notification'] = [
+                    'type' => 'success',
+                    'message' => 'Email đã được gửi thành công. Chúng tôi sẽ phản hồi bạn trong thời gian sớm nhất!'
+                ];
+                unset($_SESSION['contact_data']);
+            } else {
+                $_SESSION['notification'] = [
+                    'type' => 'error',
+                    'message' => 'Không thể gửi email. Vui lòng thử lại.'
+                ];
             }
+        } catch (Exception $e) {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Lỗi: ' . $e->getMessage()
+            ];
         }
-
-        // Sau khi gửi email, điều hướng về trang liên hệ
+    
         header('Location: /contact');
         exit();
     }
+    
 }
