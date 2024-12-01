@@ -8,153 +8,108 @@ class Checkout extends BaseView
 {
     public static function render($data = null)
     {
-
+        // Đảm bảo các biến được khởi tạo
+        $id = isset($data['id']) ? $data['id'] : null;
+        $result = isset($data['user']) ? $data['user'] : [
+            'firstName' => '',
+            'lastName' => '',
+            'phoneNumber' => '',
+            'address' => ''
+        ];
+        $priceInVND = isset($data['priceInVND']) ? $data['priceInVND'] : 100000000;
+        $message = isset($data['message']) ? $data['message'] : '';
 ?>
+        <!-- End Banner Area -->
 
-
-        <!DOCTYPE html>
-        <html lang="vi">
-
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Thanh Toán</title>
-            <!-- Link Bootstrap CSS -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-            <style>
-                .section_gap {
-                    padding: 60px 0;
-                }
-
-                .checkout_area h2 {
-                    color: #333;
-                    font-weight: bold;
-                    margin-bottom: 30px;
-                }
-
-                .order_box {
-                    background: #fff;
-                    padding: 20px;
-                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                    border-radius: 8px;
-                }
-
-                .order_box h2 {
-                    font-size: 24px;
-                    margin-bottom: 20px;
-                    text-transform: uppercase;
-                    font-weight: bold;
-                }
-
-                .order_box ul {
-                    list-style: none;
-                    padding: 0;
-                }
-
-                .order_box ul li {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 10px 0;
-                    border-bottom: 1px solid #eee;
-                }
-
-                .order_box ul li:last-child {
-                    border-bottom: none;
-                }
-
-                .order_box .btn {
-                    background: #ff9900;
-                    color: #fff;
-                    display: block;
-                    text-align: center;
-                    margin-top: 20px;
-                    padding: 12px;
-                    border-radius: 5px;
-                    text-decoration: none;
-                    font-size: 16px;
-                    font-weight: bold;
-                    transition: background 0.3s ease;
-                }
-
-                .order_box .btn:hover {
-                    background: #cc7a00;
-                }
-
-                .qr-code img {
-                    max-width: 100%;
-                    height: auto;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-                }
-            </style>
-        </head>
-
-        <body>
-
-            <!-- Checkout Section -->
-            <section class="checkout_area section_gap">
-                <div class="container">
+        <!--================Checkout Area =================-->
+        <section class="checkout_area section_gap">
+            <div class="container">
+                <div class="billing_details">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h2>Chi tiết thanh toán</h2>
-                            <form class="row g-3">
-                                <div class="col-md-6">
-                                    <label for="name" class="form-label">Họ và tên</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Nhập họ và tên">
+                            <h3>Thông tin thanh toán</h3>
+                            <form class="row contact_form" action="checkout.php" method="post">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($id ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+
+                                <div class="col-md-6 form-group p_star">
+                                    <label for="first" class="font-bold mb-2">Họ <span class="text-danger"> * </span></label>
+                                    <input type="text" class="form-control" id="first" name="firstName"
+                                        value="<?php echo htmlspecialchars($result['firstName']); ?>">
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Nhập email">
+                                <div class="col-md-6 form-group p_star">
+                                    <label for="last" class="font-bold mb-2">Tên <span class="text-danger"> * </span></label>
+                                    <input type="text" class="form-control" id="last" name="lastName"
+                                        value="<?php echo htmlspecialchars($result['lastName']); ?>">
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="phone" class="form-label">Số điện thoại</label>
-                                    <input type="text" class="form-control" id="phone" placeholder="Nhập số điện thoại">
+                                <div class="col-md-12 form-group p_star">
+                                    <label for="number" class="font-bold mb-2">Số điện thoại <span class="text-danger"> * </span></label>
+                                    <input type="text" class="form-control" id="number" name="phoneNumber"
+                                        value="<?php echo htmlspecialchars($result['phoneNumber']); ?>">
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="address" class="form-label">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ">
+                                <div class="col-md-12 form-group p_star">
+                                    <label for="email" class="font-bold mb-2">Địa chỉ email (nếu có)</label>
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Địa chỉ email (nếu có)">
+                                </div>
+                                <div class="col-md-12 form-group p_star">
+                                    <label for="address" class="font-bold mb-2">Địa chỉ nhận hàng: <span class="text-danger"> * </span></label>
+                                    <input type="text" class="form-control" id="address" name="address"
+                                        value="<?php echo htmlspecialchars($result['address']); ?>">
+                                </div>
+
+                                <hr />
+                                <div class="col-md-12 form-group">
+                                    <div class="creat_account">
+                                        <h5 for="f-option3">Ghi chú</h5>
+                                    </div>
+                                    <textarea class="form-control" name="message" id="message" rows="1"><?php echo htmlspecialchars($message); ?></textarea>
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="note" class="form-label">Ghi chú</label>
-                                    <textarea class="form-control" id="note" rows="3" placeholder="Thêm ghi chú nếu có"></textarea>
+                                    <button type="submit" name="submit" class="btn btn-warning">Cập nhật</button>
                                 </div>
                             </form>
                         </div>
                         <div class="col-lg-4">
                             <div class="order_box">
-                                <h2>Đơn hàng của bạn</h2>
-                                <ul>
-                                    <li><span>Sản phẩm 1</span><span>₫500,000</span></li>
-                                    <li><span>Sản phẩm 2</span><span>₫300,000</span></li>
-                                    <li><span>Vận chuyển</span><span>₫50,000</span></li>
-                                    <li><strong>Tổng cộng</strong><strong>₫850,000</strong></li>
-                                </ul>
-                                <div class="qr-code text-center mt-4">
-                                    <h5>Quét mã QR để thanh toán</h5>
-                                    <img src="https://via.placeholder.com/200" alt="QR Code">
+                                <h2>Đơn hàng của tôi</h2>
+                                <div class="payment_item active">
+                                    <div class="radion_btn">
+                                        <input type="radio" id="f-option6" name="selector">
+                                        <label for="f-option6">Thanh toán khi nhận hàng</label>
+                                        <img src="img/product/card.jpg" alt="">
+                                        <div class="check"></div>
+                                    </div>
+                                    <form action="/App/Views/Client/Pages/Checkouts/congThanhToanvnpay.php" method="POST">
+                                        <input type="hidden" name="total_congthanhtoan" value="<?php echo htmlspecialchars($priceInVND); ?>">
+                                        <button class="btn btn-danger" name="redirect" id="redirect">Thanh toán VnPay</button>
+                                    </form>
                                 </div>
-                                <a href="/confirm" class="btn">Xác nhận và thanh toán</a>
+                                <div class="creat_account">
+                                    <input type="checkbox" checked id="f-option4" name="selector">
+                                    <label for="f-option4">Tôi đã đọc và chấp nhận </label>
+                                    <a href="#">dịch vụ & điều khoản*</a>
+                                </div>
+                                <?php if (isset($_SESSION['notification'])): ?>
+                                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                    <script>
+                                        Swal.fire({
+                                            icon: '<?php echo $_SESSION['notification']['type']; ?>',
+                                            title: '<?php echo $_SESSION['notification']['message']; ?>',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    </script>
+                                    <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
+                                    ?>
+                                <?php endif; ?>
+                                <a onclick="return confirm('Bằng việc ấn đồng ý, bạn sẽ chấp nhận điều khoản, dịch vụ, và thanh toán đơn hàng này ?')" class="primary-btn" href="?orderId=order">Thanh toán</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- Link Bootstrap JS -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        </body>
-
-        </html>
-
-
-
-
-
-
-
+            </div>
+        </section>
 
 <?php
-
     }
 }
+?>

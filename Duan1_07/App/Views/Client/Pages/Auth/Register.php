@@ -75,7 +75,7 @@ class Register extends BaseView
             <div class="d-flex justify-content-center align-items-center h-100">
                 <!-- Form đăng nhập -->
                 <div class="card p-5 shadow-lg" style="width: 500px; background-color: rgba(255, 255, 255, 0.9); border-radius: 15px; position: relative; z-index: 10;">
-                    <h3 class="text-center mb-4" style="color: #333; font-weight: bold;">Đăng ký tài khoản</h3>
+                    <h3 class="text-center mb-4" style="color: #333; font-weight: bold;">Đăng ký</h3>
                     <form action="/register" method="post">
                         <input type="hidden" name="method" value="POST">
                         <div class="form-group">
