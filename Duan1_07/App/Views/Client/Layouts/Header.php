@@ -410,18 +410,9 @@ class Header extends BaseView
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto mx-lg-auto py-0">
-                        <a href="/" class="nav-item nav-link">TRANG CHỦ</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">SẢN PHẨM</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="/products" class="dropdown-item">DANH MỤC</a>
-                                <a href="/products" class="dropdown-item">SẢN PHẨM</a>
-                            </div>
-                        </div>
+                        <a href="/" class="nav-item nav-link">TRANG CHỦ</a><a href="/products" class="nav-item nav-link">SẢN PHẨM</a>
                         <a href="/about" class="nav-item nav-link">GIỚI THIỆU</a>
                         <a href="/blog" class="nav-item nav-link">TIN TỨC</a>
-
-
                         <a href="/contact" class="nav-item nav-link">LIÊN HỆ</a>
                     </div>
                     <div class="d-flex align-items-center">
@@ -478,15 +469,16 @@ class Header extends BaseView
             <!-- Navbar End -->
 
 
-        <!-- Hero Start -->
-        <div class="container-fluid py-5 mb-5 banner1-header">
-            <!-- <img class="img-fluid" src="img/banner1.jpg" alt=""> -->
-            <div class="container py-5" style="height: 60%;">
-                <div class="row justify-content-start">
-                    <div class="col-lg-8 text-center text-lg-start">
-                        <h1 class="font-secondary text-primary mb-4"></h1>
-                        <h1 class="display-1 text-uppercase text-primary mb-4"></h1>
-                        <h1 class="text-uppercase text-primary"></h1><div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
+            <!-- Hero Start -->
+            <div class="container-fluid py-5 mb-5 banner1-header">
+                <!-- <img class="img-fluid" src="img/banner1.jpg" alt=""> -->
+                <div class="container py-5" style="height: 60%;">
+                    <div class="row justify-content-start">
+                        <div class="col-lg-8 text-center text-lg-start">
+                            <h1 class="font-secondary text-primary mb-4"></h1>
+                            <h1 class="display-1 text-uppercase text-primary mb-4"></h1>
+                            <h1 class="text-uppercase text-primary"></h1>
+                            <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                                 <a href="" class="btn btn-primary border-inner py-3 px-5 me-5">Read More</a>
                                 <button type="button" class="btn-play" data-bs-toggle="modal"
                                     data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
@@ -519,27 +511,30 @@ class Header extends BaseView
                     </div>
                 </div>
             </div>
-        </header>
+            </header>
 
-        <script src="/App/Views/Client/js/vendor/jquery-2.2.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-            crossorigin="anonymous"></script>
-        <script src="/App/Views/Client/js/vendor/bootstrap.min.js"></script>
-        <script src="/App/Views/Client/js/jquery.ajaxchimp.min.js"></script>
-        <script src="/App/Views/Client/js/jquery.nice-select.min.js"></script>
-        <script src="/App/Views/Client/js/jquery.sticky.js"></script>
-        <script src="/App/Views/Client/js/nouislider.min.js"></script>
-        <script src="/App/Views/Client/js/countdown.js"></script>
-        <script src="/App/Views/Client/js/jquery.magnific-popup.min.js"></script>
-        <script src="/App/Views/Client/js/owl.carousel.min.js"></script>
-        <script src="/App/Views/Client/js/gmaps.min.js"></script>
-        <script src="/App/Views/Client/js/main.js"></script>
+            <script src="/App/Views/Client/js/vendor/jquery-2.2.4.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+                integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+                crossorigin="anonymous"></script>
+            <script src="/App/Views/Client/js/vendor/bootstrap.min.js"></script>
+            <script src="/App/Views/Client/js/jquery.ajaxchimp.min.js"></script>
+            <script src="/App/Views/Client/js/jquery.nice-select.min.js"></script>
+            <script src="/App/Views/Client/js/jquery.sticky.js"></script>
+            <script src="/App/Views/Client/js/nouislider.min.js"></script>
+            <script src="/App/Views/Client/js/countdown.js"></script>
+            <script src="/App/Views/Client/js/jquery.magnific-popup.min.js"></script>
+            <script src="/App/Views/Client/js/owl.carousel.min.js"></script>
+            <script src="/App/Views/Client/js/gmaps.min.js"></script>
+            <script src="/App/Views/Client/js/main.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
 
-<?php
+
+    <?php
 
     }
 }
 
-?>
+    ?>

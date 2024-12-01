@@ -136,7 +136,7 @@ class AuthController
                 ];
             }
 
-            header('Location: /register');
+            header('Location: /login');
             exit();
         }
     }
@@ -225,7 +225,7 @@ class AuthController
                 ];
             }
 
-            header('Location: /login');
+            header('Location: /');
             exit();
         }
     }
