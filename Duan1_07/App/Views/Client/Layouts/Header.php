@@ -358,35 +358,181 @@ class Header extends BaseView
                 background: linear-gradient(rgba(43, 40, 37, .5), rgba(43, 40, 37, .5)), url(../img/bg.jpg) center center no-repeat;
                 background-size: cover;
             }
+
+            :root {
+                --primary-color: #FF6F00;
+                /* Cam chính */
+                --secondary-color: #FFA000;
+                /* Cam nhạt */
+                --dark-color: #212121;
+                /* Đen */
+                --light-color: #FFFFFF;
+                /* Trắng */
+                --text-color: #333333;
+                /* Đen nhạt */
+            }
+
+            body {
+                font-family: 'Roboto', sans-serif;
+                color: var(--text-color);
+                background-color: #F5F5F5;
+            }
+
+            /* Topbar Styles */
+            .topbar {
+                background-color: var(--primary-color);
+                color: var(--light-color);
+                padding: 10px 0;
+            }
+
+            .topbar-contact {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .topbar-contact a {
+                color: var(--light-color);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition: opacity 0.3s ease;
+            }
+
+            .topbar-contact a:hover {
+                opacity: 0.8;
+            }
+
+            .topbar-contact i {
+                font-size: 1.2rem;
+            }
+
+            .social-links a {
+                color: var(--light-color);
+                margin-left: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            .social-links a:hover {
+                transform: scale(1.2);
+            }
+
+            /* Navbar Styles */
+            .navbar-custom {
+                background-color: var(--light-color);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-brand img {
+                max-height: 60px;
+                transition: transform 0.3s ease;
+            }
+
+            .navbar-brand img:hover {
+                transform: scale(1.05);
+            }
+
+            .nav-link {
+                color: var(--dark-color) !important;
+                position: relative;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin: 0 10px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 3px;
+                bottom: -5px;
+                left: 0;
+                background-color: var(--primary-color);
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            .nav-link:hover {
+                color: var(--primary-color) !important;
+            }
+
+            /* Dropdown Styles */
+            .dropdown-menu {
+                background-color: var(--light-color);
+                border: 1px solid var(--primary-color);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .dropdown-item {
+                color: var(--dark-color);
+                transition: all 0.3s ease;
+            }
+
+            .dropdown-item:hover {
+                background-color: var(--primary-color);
+                color: var(--light-color);
+            }
+
+            /* Button Styles */
+            .btn-outline-custom {
+                border: 2px solid var(--primary-color);
+                color: var(--primary-color);
+                background-color: transparent;
+                transition: all 0.3s ease;
+            }
+
+            .btn-outline-custom:hover {
+                background-color: var(--primary-color);
+                color: var(--light-color);
+            }
+
+            .btn-cart {
+                position: relative;
+            }
+
+            .cart-badge {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                background-color: var(--secondary-color);
+                color: var(--light-color);
+                border-radius: 50%;
+                padding: 2px 6px;
+                font-size: 0.7rem;
+            }
+
+            /* Responsive Adjustments */
+            @media (max-width: 991px) {
+                .topbar-contact {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
         </style>
 
         <body>
             <!-- Topbar Start -->
-            <div class="container-fluid px-0 d-none d-lg-block">
-                <div class="row gx-0">
-                    <div class="col-lg-4 text-center bg-secondary py-3">
-                        <div class="d-inline-flex align-items-center justify-content-center">
-                            <i class="bi bi-envelope fs-1 text-primary me-3"></i>
-                            <div class="text-start">
-                                <h6 class="text-uppercase mb-1">Email</h6>
-                                <span>store5tv@example.com</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 text-center">
-                        <div class="d-inline-flex align-items-center justify-content-center">
-                            <a href="index.html" class="navbar-brand">
-                                <!-- <h1 class="m-0 text-uppercase"><i class="fs-1 text-dark me-3"></i></h1> -->
-                                <img src="/public/assets/client//img/logo1.jpg" alt="">
+            <div class="container-fluid topbar">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 topbar-contact">
+                            <a href="mailto:store5tv@example.com">
+                                <i class="fas fa-envelope"></i> store5tv@example.com
+                            </a>
+                            <a href="tel:0843956969">
+                                <i class="fas fa-phone"></i> 084 395 6969
                             </a>
                         </div>
-                    </div>
-                    <div class="col-lg-4 text-center bg-secondary py-3">
-                        <div class="d-inline-flex align-items-center justify-content-center">
-                            <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
-                            <div class="text-start">
-                                <h6 class="text-uppercase mb-1">Số điện thoại</h6>
-                                <span>084 395 6969</span>
+                        <div class="col-lg-6 text-end d-none d-lg-block">
+                            <div class="social-links">
+                                <a href="#" class="text-light mx-2"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="text-light mx-2"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-light mx-2"><i class="fab fa-tiktok"></i></a>
                             </div>
                         </div>
                     </div>
@@ -394,105 +540,75 @@ class Header extends BaseView
             </div>
             <!-- Topbar End -->
 
-
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-0">
-                <a href="index.html" class="navbar-brand d-block d-lg-none">
-                    <h1 class="m-0 text-uppercase text-white"><i class="fa fa-birthday-cake fs-1 text-primary me-3"></i>CakeZone</h1>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto mx-lg-auto py-0">
-                        <a href="/" class="nav-item nav-link">TRANG CHỦ</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">SẢN PHẨM</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="/products" class="dropdown-item">DANH MỤC</a>
-                                <a href="/products" class="dropdown-item">SẢN PHẨM</a>
-                            </div>
-                        </div>
-                        <a href="/about" class="nav-item nav-link">GIỚI THIỆU</a>
-                        <a href="/blog" class="nav-item nav-link">TIN TỨC</a>
+            <nav class="navbar navbar-expand-lg navbar-custom">
+                <div class="container">
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="/">
+                        <img src="/public/assets/client/img/logo1.jpg" alt="5TV Logo" class="img-fluid">
+                    </a>
 
+                    <!-- Mobile Toggle -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                        <a href="/contact" class="nav-item nav-link">LIÊN HỆ</a>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <a href="/cart"
-                            class="btn btn-outline-light me-2"
-                            style="border-color: orange;"
-                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
-                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            <i class="fa fa-shopping-cart me-2"></i>Giỏ Hàng
-                        </a>
-
-                    </div>
-                    <?php if ($is_login):
-                    ?>
-                        <li class="nav-item bg-light-pink">
-                            <div class="dropdown show">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-color: orange;">
-                                    Tài khoản
+                    <!-- Navigation Links -->
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Trang Chủ</a>
+                            </li>
+                            <!-- <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    Sản Phẩm
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/products/categories">Danh Mục</a></li>
+                                    <li><a class="dropdown-item" href="/products">Tất Cả Sản Phẩm</a></li>
+                                    <li><a class="dropdown-item" href="/products/new">Sản Phẩm Mới</a></li>
+                                    <li><a class="dropdown-item" href="/products/sale">Khuyến Mãi</a></li>
+                                </ul>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/products">Sản Phẩm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">Giới Thiệu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/blog">Tin Tức</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Liên Hệ</a>
+                            </li>
+                        </ul>
 
-                                    <a class="dropdown-item" href="/users/<?= $_SESSION['user']['user_id'] ?>">
-                                        <i class="bi bi-person-circle me-2"></i><?= $_SESSION['user']['username'] ?>
-                                    </a>
-                                    <a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a>
+                        <!-- Action Buttons -->
+                        <div class="d-flex align-items-center">
+                            <!-- Giỏ Hàng -->
+                            <a href="/cart" class="btn btn-outline-custom me-2">
+                                <i class="fas fa-shopping-cart me-2"></i>Giỏ Hàng
+                            </a>
+
+                            <!-- Đăng Nhập/Tài Khoản -->
+                            <?php if ($is_login): ?>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-custom dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                        <i class="fas fa-user me-2"></i>Tài K Khoản
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/users/profile"><?= $_SESSION['user']['username'] ?></a></li>
+                                        <li><a class="dropdown-item" href="/orders">Đơn Hàng</a></li>
+                                        <li><a class="dropdown-item" href="/logout">Đăng Xuất</a></li>
+                                    </ul>
                                 </div>
-                            </div>
-
-                        </li>
-                    <?php
-                    else:
-                    ?>
-                        <a href="/register"
-                            class="btn btn-outline-light me-2"
-                            style="border-color: orange;"
-                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
-                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            Đăng Ký
-                        </a>
-                        <a href="/login"
-                            class="btn btn-outline-light me-2"
-                            style="border-color: orange;"
-                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
-                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            Đăng Nhập
-                        </a>
-                    <?php
-                    endif;
-                    ?>
-
-                </div>
+                            <?php else: ?>
+                                <a href="/register" class="btn btn-outline-custom me-2">Đăng Ký</a>
+                                <a href="/login" class="btn btn-outline-custom">Đăng Nhập</a>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    <!-- <div class="d-flex align-items-center">
-                        <a href="/cart"
-                            class="btn btn-outline-light me-2"
-                            style="border-color: orange;"
-                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
-                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            <i class="fa fa-shopping-cart me-2"></i>Giỏ Hàng
-                        </a>
-                        <a href="/register"
-                            class="btn btn-outline-light me-2"
-                            style="border-color: orange;"
-                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
-                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            Đăng Ký
-                        </a>
-                        <a href="/login"
-                            class="btn btn-outline-light me-2"
-                            style="border-color: orange;"
-                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
-                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
-                            Đăng Nhập.
-                        </a>
-                    </div> -->
-                </div>
                 </div>
             </nav>
             <!-- Navbar End -->

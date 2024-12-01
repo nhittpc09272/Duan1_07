@@ -111,7 +111,7 @@ class Route
 
         // Route cho trang liên hệ (GET)
         if ($route == '/contact' && $_SERVER['REQUEST_METHOD'] == 'GET') {
-            \App\Controllers\Client\ContactController::contact(); // Hiển thị trang liên hệ
+            // \App\Controllers\Client\ContactController::contact(); // Hiển thị trang liên hệ
         }
 
         // Route cho gửi email (POST)
