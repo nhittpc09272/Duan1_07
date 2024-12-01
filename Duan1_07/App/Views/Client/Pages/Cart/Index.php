@@ -272,8 +272,7 @@ class Index extends BaseView
                         </div>
                         <button class="btn btn-primary btn-block d-flex justify-content-between mt-3" type="button">
                             <span><?= number_format($total_price + 20) ?>đ</span>
-                            <span>Thanh toán<i class="fa fa-long-arrow-right ml-1"></i></span>
-                        </button>
+                            <a href="/checkout" class="btn btn-primary">Tiến hành thanh toán</a>                        </button>
                     </div>
                 </div>
             </div>

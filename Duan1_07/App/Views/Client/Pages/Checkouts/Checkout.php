@@ -19,20 +19,6 @@ class Checkout extends BaseView
         $priceInVND = isset($data['priceInVND']) ? $data['priceInVND'] : 100000000;
         $message = isset($data['message']) ? $data['message'] : '';
 ?>
-
-        <section class="banner-area organic-breadcrumb">
-            <div class="container">
-                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-                    <div class="col-first">
-                        <h1>Xác nhận đơn hàng</h1>
-                        <nav class="d-flex align-items-center">
-                            <a href="index.php">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
-                            <a href="checkout.php">Đơn hàng</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- End Banner Area -->
 
         <!--================Checkout Area =================-->
