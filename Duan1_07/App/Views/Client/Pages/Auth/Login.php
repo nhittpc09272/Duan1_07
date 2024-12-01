@@ -72,10 +72,6 @@ class Login extends BaseView
                 </div>
             </div>
         </div>
-
-        <style>
-
-        </style>
 <?php
     }
 }
