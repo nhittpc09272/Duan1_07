@@ -10,10 +10,7 @@ class Checkout extends BaseView
 {
     public static function render($data = null)
     {
-    //      echo '<pre>';
-    // var_dump($data);
-    // echo '</pre>';
-    // die; // Dừng thực thi để kiểm tra dữ liệu
+        
         $is_login = AuthHelper::checkLogin();
 
         $priceInVND = isset($data['priceInVND']) ? $data['priceInVND'] : 100000000;
@@ -57,7 +54,6 @@ class Checkout extends BaseView
 
                             // Check if $data is an array and not empty
                             if (is_array($data) && !empty($data)):
-                                // var_dump($data);
                                 foreach ($data as $cart):
                                     if ($cart['data']):
                                         $i++;
