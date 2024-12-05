@@ -88,7 +88,7 @@ class ProductController
             'description' => $_POST['description'],
             'status' => $_POST['status'],
             'category_id' => $_POST['categories_id'],
-            'discount_price' => $_POST['discount_price'],
+           
         ];
 
         $is_upload = ProductValidation::uploadImage();
