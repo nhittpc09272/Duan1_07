@@ -175,6 +175,30 @@ Route::put('/admin/users/{id}', 'App\Controllers\Admin\UserController@update');
 // DELETE /user/{id} (delete người dùng với id cụ thể)
 Route::delete('/admin/users/{id}', 'App\Controllers\Admin\UserController@delete');
 
+// *** Comment
+// GET /comments (lấy danh sách bình luận)
+Route::get('/admin/comments', 'App\Controllers\Admin\CommentController@index');
+
+// GET /comments/create (hiển thị form thêm bình luận)
+Route::get('/admin/comments/create', 'App\Controllers\Admin\CommentController@create');
+
+// POST /comments (tạo mới một bình luận)
+Route::post('/admin/comments', 'App\Controllers\Admin\CommentController@store');
+
+// GET /comments/{id} (lấy chi tiết bình luận với id cụ thể)
+Route::get('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@edit');
+
+// PUT /comments/{id} (update bình luận với id cụ thể)
+Route::put('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@update');
+
+// DELETE /comments/{id} (delete bình luận với id cụ thể)
+Route::delete('/admin/comments/{id}', 'App\Controllers\Admin\CommentController@delete');
+
+Route::post('/comments', 'App\Controllers\Client\CommentController@store');
+Route::put('/comments/{id}', 'App\Controllers\Client\CommentController@update');
+Route::delete('/comments/{id}', 'App\Controllers\Client\CommentController@delete');
+
+
 
 
 Route::dispatch($_SERVER['REQUEST_URI']);

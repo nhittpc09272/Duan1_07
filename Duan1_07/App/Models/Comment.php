@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers\NotificationHelper;
+
 class Comment extends BaseModel
 {
     protected $table = 'comments';
@@ -97,8 +99,7 @@ class Comment extends BaseModel
         }
     }
 
-    public function countTotalComment()
-    {
+    public function countTotalComment(){
         return $this->countTotal();
     }
 
@@ -106,16 +107,26 @@ class Comment extends BaseModel
     {
         $result = [];
         try {
-            $sql = "SELECT COUNT(*) AS count, products.product_name 
-                    FROM comments 
-                    INNER JOIN products ON comments.product_id = products.product_id 
-                    GROUP BY comments.product_id 
-                    ORDER BY count DESC 
-                    LIMIT 5";
+            $sql = "SELECT COUNT(*) AS count, products.product_name FROM comments INNER JOIN products ON comments.product_id = products.product_id GROUP BY comments.product_id ORDER BY count DESC LIMIT 5;";
             $result = $this->_conn->MySQLi()->query($sql);
             return $result->fetch_all(MYSQLI_ASSOC) ?? [];
         } catch (\Throwable $th) {
             error_log('Error counting comments by product: ' . $th->getMessage());
+            return $result;
+        }
+    }
+    public function getAllProductJoinCategory()
+    {
+        $result = [];
+        try {
+            $sql = "SELECT products.*, categories.category_name AS category_name 
+FROM products 
+INNER JOIN categories ON products.category_id = categories.categories_id ";
+            $result = $this->_conn->MySQLi()->query($sql);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            NotificationHelper::error('getAllProductJoinCategory', 'Lỗi khi hiển thị tất cả dữ liệu');
             return $result;
         }
     }

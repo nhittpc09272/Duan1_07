@@ -132,7 +132,7 @@ class Edit extends BaseView
                         </form>
                     </div>
 
-                </div>
+                
 
 
 

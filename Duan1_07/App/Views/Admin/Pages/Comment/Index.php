@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Views\Admin\Pages\Category;
+namespace App\Views\Admin\Pages\Comment;
 
 use App\Views\BaseView;
 
@@ -9,20 +9,6 @@ class Index extends BaseView
     public static function render($data = null)
     {
 ?>
-        <!-- Kiểm tra và hiển thị thông báo -->
-        <?php if (isset($_SESSION['notification'])): ?>
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script>
-                Swal.fire({
-                    icon: '<?php echo $_SESSION['notification']['type']; ?>',
-                    title: '<?php echo $_SESSION['notification']['message']; ?>',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            </script>
-            <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
-            ?>
-        <?php endif; ?>
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -30,12 +16,12 @@ class Index extends BaseView
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">QUẢN LÝ LOẠI SẢN PHẨM</h4>
+                        <h4 class="page-title">QUẢN LÝ BÌNH LUẬN</h4>
                         <div class="ms-auto text-end">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Danh sách loại sản phẩm</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Danh sách bình luận</li>
                                 </ol>
                             </nav>
                         </div>
@@ -57,7 +43,7 @@ class Index extends BaseView
 
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Danh sách loại sản phẩm</h5>
+                                <h5 class="card-title">Danh sách bình luận</h5>
                                 <?php
                                 if (count($data)) :
                                 ?>
@@ -65,23 +51,31 @@ class Index extends BaseView
                                         <table id="" class="table table-striped ">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Tên</th>
+                                                    <th>STT</th>
+                                                    <th>Tài khoản</th>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Nội dung</th>
+                                                    <th>Thời gian</th>
                                                     <th>Trạng thái</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
+                                                $stt=0;
                                                 foreach ($data as $item) :
+                                                    $stt++;
                                                 ?>
                                                     <tr>
-                                                        <td><?= $item['categories_id'] ?></td>
-                                                        <td><?= $item['category_name'] ?></td>
+                                                        <td><?= $stt ?></td>
+                                                        <td><?= $item['username'] ?></td>
+                                                        <td><?= $item['product_name'] ?></td>
+                                                        <td><?= $item['content'] ?></td>
+                                                        <td><?= $item['date'] ?></td>
                                                         <td><?= ($item['status'] == 1) ? 'Hiển thị' : 'Ẩn' ?></td>
                                                         <td>
-                                                            <a href="/admin/categories/<?= $item['categories_id'] ?>" class="btn btn-primary ">Sửa</a>
-                                                            <form action="/admin/categories/<?= $item['categories_id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
+                                                            <a href="/admin/comments/<?= $item['id'] ?>" class="btn btn-primary ">Sửa</a>
+                                                            <form action="/admin/comments/<?= $item['id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
                                                                 <input type="hidden" name="method" value="DELETE" id="">
                                                                 <button type="submit" class="btn btn-danger text-white">Xoá</button>
                                                             </form>
@@ -123,8 +117,6 @@ class Index extends BaseView
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-        </div>
-        </div>
 
 
     <?php

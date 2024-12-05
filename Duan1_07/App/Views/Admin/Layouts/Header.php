@@ -35,6 +35,22 @@ class Header extends BaseView
       <link rel="stylesheet" href="../../../../public/assets/dist/assets/css/style.css">
       <!-- kết thúc inject -->
       <link rel="shortcut icon" href="../../../../public/assets/dist/assets/images/favicon.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="<?= APP_URL ?>/public/assets/admin/images/favicon.png">
+            <!-- CSS -->
+            <link href="<?= APP_URL ?>/public/assets/admin/libs/flot/css/float-chart.css" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="<?= APP_URL ?>/public/assets/admin/extra-libs/multicheck/multicheck.css">
+            <link href="<?= APP_URL ?>/public/assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+
+            <link rel="stylesheet" type="text/css" href="<?= APP_URL ?>/public/assets/admin/libs/select2/dist/css/select2.min.css">
+            <link rel="stylesheet" type="text/css" href="<?= APP_URL ?>/public/assets/admin/libs/jquery-minicolors/jquery.minicolors.css">
+            <link rel="stylesheet" type="text/css" href="<?= APP_URL ?>/public/assets/admin/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+            <link rel="stylesheet" type="text/css" href="<?= APP_URL ?>/public/assets/admin/libs/quill/dist/quill.snow.css">
+
+            <!-- Custom CSS -->
+            <link href="<?= APP_URL ?>/public/assets/admin/dist/css/style.min.css" rel="stylesheet">
+
+            <!-- ChartJs -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
 
     <body>
@@ -191,6 +207,19 @@ class Header extends BaseView
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="/admin/users"> người dùng </a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/users/create"> thêm người dùng </a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#comment" aria-expanded="false" aria-controls="comment">
+                  <i class="icon-grid-2 menu-icon"></i>
+                  <span class="menu-title">quản lý comment </span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="comment">
+                  <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="/admin/comments"> danh sách bình luận</a></li>
+         
                   </ul>
                 </div>
               </li>

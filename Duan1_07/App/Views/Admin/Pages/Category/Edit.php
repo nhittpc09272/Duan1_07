@@ -79,7 +79,7 @@ class Edit extends BaseView
                     </div>
                 </div>
             </div>
-        </div>
+        
 <?php
     }
 }
