@@ -240,4 +240,48 @@ LEFT JOIN
     {
         return $this->update($id, $data);
     }
+
+    // Phương thức mới để lấy chi tiết sản phẩm
+    public function getProductDetails($productId)
+    {
+        $result = [];
+        try {
+            $sql = "SELECT 
+                        pvo.product_variant_option_id, 
+                        pvo.product_variant_name, 
+                        pv.variant_id, 
+                        pv.size, 
+                        pv.color, 
+                        pv.status AS variant_status,
+                        pvc.sku_id, 
+                        sk.sku, 
+                        sk.price
+                    FROM 
+                        product_variant_option_combinations pvc
+                    JOIN 
+                        product_variant_options pvo ON pvc.product_variant_option_id = pvo.product_variant_option_id
+                    JOIN 
+                        product_variants pv ON pvo.variant_id = pv.variant_id
+                    JOIN 
+                        skus sk ON pvc.sku_id = sk.sku_id
+                    WHERE 
+                        pvc.product_id = :productId";
+
+            // Kết nối và chuẩn bị câu lệnh
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            // Gán tham số
+            $stmt->bind_param(':productId', $productId);
+
+            // Thực thi truy vấn và trả về kết quả
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy chi tiết sản phẩm: ' . $th->getMessage());
+        }
+
+        return $result;
+    }
 }

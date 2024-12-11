@@ -58,4 +58,3 @@ class ProductVariants extends BaseModel
         return $this->delete($variantId);
     }
 }
-

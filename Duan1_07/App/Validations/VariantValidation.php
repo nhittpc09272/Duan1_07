@@ -12,7 +12,7 @@ class VariantValidation
 
         $is_valid = true;
 
-        //Tên loai sa pham
+        //Tên loai san pham
         if (!isset($_POST['size']) || $_POST['size'] === '') {
             NotificationHelper::error('size', 'Size không được để trống');
             $is_valid = false;

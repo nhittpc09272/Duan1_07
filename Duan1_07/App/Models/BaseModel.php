@@ -51,7 +51,7 @@ abstract class BaseModel implements CrudInterface
             // Kiểm tra nếu có dữ liệu
             if ($query_result->num_rows > 0) {
                 $result = $query_result->fetch_assoc(); // Trả về kết quả tìm thấy
-            } 
+            }
             return $result;
         } catch (\Throwable $th) {
             // Xử lý lỗi khi truy vấn
