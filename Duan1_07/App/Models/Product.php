@@ -192,8 +192,95 @@ class Product extends BaseModel
         return $result; // Trả về danh sách sản phẩm tìm thấy
     }
 
-    public function getOneProduct($id) {
+    public function getOneProduct($id)
+    {
         $id = (int) $id; // Ép kiểu trước khi gọi getOne()
         return $this->getOne($id);
+    }
+
+    public function getOneProductByName($name)
+    {
+        return $this->getOneByName($name);
+    }
+
+    public function getAllProductJoinCategory()
+    {
+        $result = [];
+        try {
+            // $sql = "SELECT * FROM $this->table";
+            $sql = "SELECT 
+    products.*, 
+    categories.category_name AS category_name,
+    product_variants.size,
+    product_variants.color,
+    product_variants.status AS variant_status
+FROM 
+    products
+INNER JOIN 
+    categories ON products.category_id = categories.categories_id
+LEFT JOIN 
+    product_variants ON products.product_id = product_variants.product_id ";
+            $result = $this->_conn->MySQLi()->query($sql);
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi hiển thị tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+    public function deleteProduct($id)
+    {
+        return $this->delete($id);
+    }
+    public function createProduct($data)
+    {
+        return $this->create($data);
+    }
+    public function updateProduct($id, $data)
+    {
+        return $this->update($id, $data);
+    }
+
+    // Phương thức mới để lấy chi tiết sản phẩm
+    public function getProductDetails($productId)
+    {
+        $result = [];
+        try {
+            $sql = "SELECT 
+                        pvo.product_variant_option_id, 
+                        pvo.product_variant_name, 
+                        pv.variant_id, 
+                        pv.size, 
+                        pv.color, 
+                        pv.status AS variant_status,
+                        pvc.sku_id, 
+                        sk.sku, 
+                        sk.price
+                    FROM 
+                        product_variant_option_combinations pvc
+                    JOIN 
+                        product_variant_options pvo ON pvc.product_variant_option_id = pvo.product_variant_option_id
+                    JOIN 
+                        product_variants pv ON pvo.variant_id = pv.variant_id
+                    JOIN 
+                        skus sk ON pvc.sku_id = sk.sku_id
+                    WHERE 
+                        pvc.product_id = :productId";
+
+            // Kết nối và chuẩn bị câu lệnh
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            // Gán tham số
+            $stmt->bind_param(':productId', $productId);
+
+            // Thực thi truy vấn và trả về kết quả
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy chi tiết sản phẩm: ' . $th->getMessage());
+        }
+
+        return $result;
     }
 }

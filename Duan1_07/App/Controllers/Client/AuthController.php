@@ -439,54 +439,54 @@ class AuthController
     //     //     ChangePassword::render($data);
     //     //     Footer::render();
     //     // }
-        public static function changePasswordAction()
-        {
-            $is_valid = AuthValidation::changePassword();
-            if (!$is_valid) {
-                $_SESSION['notification'] = [
-                    'type' => 'error',
-                    'message' => 'Đổi mật khẩu thất bại, vui lòng kiểm tra lại thông tin.'
-                ];
-                header('Location: /change-password');
-                exit();
-            }
-
-            $id = $_SESSION['user']['user_id'];
-            $data = [
-                'old_password' => $_POST['old_password'],
-                'new_password' => $_POST['new_password'],
+    public static function changePasswordAction()
+    {
+        $is_valid = AuthValidation::changePassword();
+        if (!$is_valid) {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Đổi mật khẩu thất bại, vui lòng kiểm tra lại thông tin.'
             ];
-
-            $result = AuthHelper::changePassword($id, $data);
-            if ($result) {
-                $_SESSION['notification'] = [
-                    'type' => 'success',
-                    'message' => 'Đổi mật khẩu thành công!'
-                ];
-                header('Location: /login');
-            } else {
-                $_SESSION['notification'] = [
-                    'type' => 'error',
-                    'message' => 'Đổi mật khẩu thất bại, vui lòng thử lại.'
-                ];
-                header('Location: /change-password');
-            }
-
+            header('Location: /change-password');
             exit();
         }
 
+        $id = $_SESSION['user']['user_id'];
+        $data = [
+            'old_password' => $_POST['old_password'],
+            'new_password' => $_POST['new_password'],
+        ];
+
+        $result = AuthHelper::changePassword($id, $data);
+        if ($result) {
+            $_SESSION['notification'] = [
+                'type' => 'success',
+                'message' => 'Đổi mật khẩu thành công!'
+            ];
+            header('Location: /login');
+        } else {
+            $_SESSION['notification'] = [
+                'type' => 'error',
+                'message' => 'Đổi mật khẩu thất bại, vui lòng thử lại.'
+            ];
+            header('Location: /change-password');
+        }
+
+        exit();
+    }
 
 
 
-        // Hiển thị giao diện form lấy lại mật khẩu
-        public static function forgotPassword()
-        {
 
-            Header::render();
-            Notification::render();  // Hiển thị thông báo nếu có
-            NotificationHelper::unset();
-            ForgotPassword::render();
-            Footer::render();
+    // Hiển thị giao diện form lấy lại mật khẩu
+    public static function forgotPassword()
+    {
+
+        Header::render();
+        Notification::render();  // Hiển thị thông báo nếu có
+        NotificationHelper::unset();
+        ForgotPassword::render();
+        Footer::render();
     }
 
 

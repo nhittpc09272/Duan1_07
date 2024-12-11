@@ -8,6 +8,7 @@ ini_set('error_log', './logs/php/php-errors.log');
 
 use App\Route;
 
+
 require_once 'vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);

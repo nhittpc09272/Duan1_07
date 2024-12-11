@@ -51,7 +51,7 @@ abstract class BaseModel implements CrudInterface
             // Kiểm tra nếu có dữ liệu
             if ($query_result->num_rows > 0) {
                 $result = $query_result->fetch_assoc(); // Trả về kết quả tìm thấy
-            } 
+            }
             return $result;
         } catch (\Throwable $th) {
             // Xử lý lỗi khi truy vấn
@@ -176,6 +176,23 @@ abstract class BaseModel implements CrudInterface
             return $result->fetch_assoc();
         } catch (\Throwable $th) {
             error_log('Lỗi khi count tất cả dữ liệu: ' . $th->getMessage());
+            return $result;
+        }
+    }
+
+    public function getOneByName($name)
+    {
+        $result = [];
+        try {
+            $sql = "SELECT * FROM $this->table WHERE name=?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bind_param('s', $name);
+            $stmt->execute();
+            return $stmt->get_result()->fetch_assoc();
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lấy sản phẩm bằng tên: ' . $th->getMessage());
             return $result;
         }
     }
