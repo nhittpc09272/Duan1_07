@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Views\Client\Pages\Contacts;
 
 use App\Views\BaseView;
@@ -213,6 +212,40 @@ class Contact extends BaseView
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Thêm validate form
+        $(document).ready(function() {
+            $('#contactForm').on('submit', function(e) {
+                let isValid = true;
+                
+                // Validate name
+                if ($('#name').val().trim() === '') {
+                    isValid = false;
+                    Swal.fire('Lỗi', 'Vui lòng nhập tên', 'error');
+                }
+                
+                // Validate email
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test($('#email').val())) {
+                    isValid = false;
+                    Swal.fire('Lỗi', 'Email không hợp lệ', 'error');
+                }
+                
+                // Validate message
+                if ($('#message').val().trim() === '') {
+                    isValid = false;
+                    Swal.fire('Lỗi', 'Vui lòng nhập nội dung', 'error');
+                }
+                
+                if (!isValid) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 <?php
 	}
 }

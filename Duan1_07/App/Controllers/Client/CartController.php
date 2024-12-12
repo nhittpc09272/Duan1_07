@@ -235,7 +235,5 @@ class CartController
         // Chuyển hướng về trang sản phẩm
         header('location: /products');
         exit;
-
-        ob_end_flush(); // Kết thúc output buffering
     }
 }

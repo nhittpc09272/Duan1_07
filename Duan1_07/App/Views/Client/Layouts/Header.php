@@ -9,7 +9,7 @@ class Header extends BaseView
 {
     public static function render($data = null)
     {
-        ob_start();
+
         unset($_SESSION['users']);
         $is_login = AuthHelper::checkLogin();
 
@@ -94,7 +94,7 @@ class Header extends BaseView
 
             .border-inner * {
                 position: relative;
-                z-index: 1;
+z-index: 1;
             }
 
             .border-inner::before {
@@ -201,7 +201,7 @@ class Header extends BaseView
             }
 
             .btn-play:after {
-                content: "";
+content: "";
                 position: absolute;
                 z-index: 1;
                 left: 50%;
@@ -300,7 +300,7 @@ class Header extends BaseView
             }
 
             .contact::after {
-                background: linear-gradient(rgba(43, 40, 37, .5), rgba(43, 40, 37, .5)), url(../img/bg.jpg) center center no-repeat;
+background: linear-gradient(rgba(43, 40, 37, .5), rgba(43, 40, 37, .5)), url(../img/bg.jpg) center center no-repeat;
                 background-size: cover;
             }
 
@@ -382,7 +382,7 @@ class Header extends BaseView
                         <div class="d-inline-flex align-items-center justify-content-center">
                             <a href="index.html" class="navbar-brand">
                                 <!-- <h1 class="m-0 text-uppercase"><i class="fs-1 text-dark me-3"></i></h1> -->
-                                <img src="/public/assets/client//img/logo1.jpg" alt="">
+<img src="/public/assets/client//img/logo1.jpg" alt="">
                             </a>
                         </div>
                     </div>
@@ -432,7 +432,7 @@ class Header extends BaseView
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-color: orange;">
                                     Tài khoản
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+<div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
 
                                     <a class="dropdown-item" href="/users/<?= $_SESSION['user']['user_id'] ?>">
                                         <i class="bi bi-person-circle me-2"></i><?= $_SESSION['user']['username'] ?>
@@ -463,6 +463,31 @@ class Header extends BaseView
                     endif;
                     ?>
 
+                </div>
+                    </div>
+                    <!-- <div class="d-flex align-items-center">
+                        <a href="/cart"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            <i class="fa fa-shopping-cart me-2"></i>Giỏ Hàng
+                        </a>
+                        <a href="/register"
+                            class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Ký
+                        </a>
+                        <a href="/login"
+class="btn btn-outline-light me-2"
+                            style="border-color: orange;"
+                            onmouseover="this.style.backgroundColor='orange'; this.style.color='white'; this.style.borderColor='orange';"
+                            onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.borderColor='white';">
+                            Đăng Nhập.
+                        </a>
+                    </div> -->
                 </div>
                 </div>
             </nav>
@@ -508,7 +533,7 @@ class Header extends BaseView
                                     allow="autoplay"></iframe>
                             </div>
                         </div>
-                    </div>
+</div>
                 </div>
             </div>
             </header>
