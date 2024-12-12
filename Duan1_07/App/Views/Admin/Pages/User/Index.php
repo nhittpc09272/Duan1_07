@@ -20,13 +20,11 @@ class Index extends BaseView
                     timer: 1500
                 });
             </script>
-            <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
-            ?>
+            <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị ?>
         <?php endif; ?>
+
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+            <!-- Breadcrumb -->
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
@@ -42,28 +40,18 @@ class Index extends BaseView
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
+
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
-
-                        <div class="card">
+                        <div class="card shadow-sm">
                             <div class="card-body">
                                 <h5 class="card-title">Danh sách người dùng</h5>
-                                <?php
-                                if (count($data)) :
-                                ?>
+                                
+                                <?php if (count($data)): ?>
                                     <div class="table-responsive">
-                                        <table id="" class="table table-striped ">
-                                            <thead>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead class="thead-dark">
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Ảnh đại diện</th>
@@ -73,68 +61,44 @@ class Index extends BaseView
                                                     <th>Địa chỉ</th>
                                                     <th>Quyền</th>
                                                     <th>Trạng thái</th>
-                                                    <th></th>
+                                                    <th>Hành động</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                foreach ($data as $item) :
-                                                ?>
+                                                <?php foreach ($data as $item): ?>
                                                     <tr>
                                                         <td><?= $item['user_id'] ?></td>
                                                         <td>
-                                                            <img src="<?= APP_URL ?>/public/uploads/users/<?= $item['avatar'] ?>" alt="" width="100px">
+                                                            <img src="<?= APP_URL ?>/public/uploads/users/<?= $item['avatar'] ?>" alt="Avatar" width="100px" class="rounded-circle">
                                                         </td>
                                                         <td><?= $item['username'] ?></td>
                                                         <td><?= $item['email'] ?></td>
                                                         <td><?= $item['phone'] ?></td>
                                                         <td><?= $item['address'] ?></td>
                                                         <td><?= ($item['role'] == 1) ? 'Quản trị viên' : 'Khách hàng' ?></td>
-                                                        <td><?= ($item['status'] == 1) ? 'Hoạt động ' : 'Khoá' ?></td>
+                                                        <td><?= ($item['status'] == 1) ? 'Hoạt động' : 'Khoá' ?></td>
                                                         <td>
-                                                            <a href="/admin/users/<?= $item['user_id'] ?>" class="btn btn-primary ">Sửa</a>
-                                                            <form action="/admin/users/<?= $item['user_id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chưa?')">
-                                                                <input type="hidden" name="method" value="DELETE" id="">
-                                                                <button type="submit" class="btn btn-danger text-white">Xoá</button>
+                                                            <a href="/admin/users/<?= $item['user_id'] ?>" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i> Sửa</a>
+                                                            <form action="/admin/users/<?= $item['user_id'] ?>" method="post" style="display: inline-block;" onsubmit="return confirm('Chắc chắn xoá?')">
+                                                                <input type="hidden" name="method" value="DELETE">
+                                                                <button type="submit" class="btn btn-sm btn-danger text-white"><i class="bi bi-trash"></i> Xoá</button>
                                                             </form>
                                                         </td>
                                                     </tr>
-                                                <?php
-                                                endforeach;
-                                                ?>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
-                                <?php
-                                else :
-
-                                ?>
+                                <?php else: ?>
                                     <h4 class="text-center text-danger">Không có dữ liệu</h4>
-                                <?php
-                                endif;
-
-                                ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
+        </div>
 
-
-    <?php
+<?php
     }
 }

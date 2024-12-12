@@ -9,7 +9,7 @@ class Edit extends BaseView
     public static function render($data = null)
     {
 ?>
-        <!-- Kiểm tra và hiển thị thông báo -->
+        <!-- Hiển thị thông báo -->
         <?php if (isset($_SESSION['notification'])): ?>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
@@ -20,16 +20,12 @@ class Edit extends BaseView
                     timer: 1500
                 });
             </script>
-            <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
-            ?>
+            <?php unset($_SESSION['notification']); ?>
         <?php endif; ?>
 
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+        <!-- Page wrapper -->
+        <div class="page-wrapper" style="width: 100%;">
+            <!-- Breadcrumb -->
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
@@ -38,105 +34,112 @@ class Edit extends BaseView
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Sửa loại sản phẩm</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Sửa thông tin người dùng</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
+
+            <!-- Content -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="card shadow-sm">
                             <form class="form-horizontal" action="/admin/users/<?= $data['user_id'] ?>" method="POST" enctype="multipart/form-data">
                                 <div class="card-body">
-                                    <h4 class="card-title">Sửa người dùng</h4>
-                                    <input type="hidden" name="method" id="" value="PUT">
-                                    <div align="center">
-                                        <img src="<?= APP_URL ?>/public/uploads/users/<?= $data['avatar'] ?>" alt="" width="300px">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="id">ID</label>
-                                        <input type="text" class="form-control" id="id" name="id" value="<?= $data['user_id'] ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="username">Tên đăng nhập*</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Nhập tên loại sản phẩm..." name="username" value="<?= $data['username'] ?>" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email*</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Nhập tên loại sản phẩm..." name="email" value="<?= $data['email'] ?>" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Mật khẩu*</label>
-                                        <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu người dùng..." name="password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="re_password">Nhâp lại mật khẩu*</label>
-                                        <input type="password" class="form-control" id="re_password" placeholder="Nhập lại mật khẩu người dùng..." name="re_password">
+                                    <h4 class="card-title">Sửa thông tin người dùng</h4>
+                                    <input type="hidden" name="method" value="PUT">
+
+                                    <!-- Avatar -->
+                                    <div class="text-center mb-3">
+                                        <img src="<?= APP_URL ?>/public/uploads/users/<?= $data['avatar'] ?>" alt="Avatar" class="rounded-circle" width="150px">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="avatar">hình đại diện*</label>
-                                        <input type="file" class="form-control" id="avatar" placeholder="Chọn ảnh đại diện..." name="avatar" value="<?= $data['avatar'] ?>" required>
+                                    <!-- Tên đăng nhập -->
+                                    <div class="form-group row">
+                                        <label for="username" class="col-sm-3 col-form-label">Tên đăng nhập*</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="username" name="username" value="<?= $data['username'] ?>" required>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="role">Quyền*</label>
-                                        <input type="text" class="form-control" id="role" name="role" value="<?= ($data['role'] == 1) ? 'Quản trị viên' : 'Khách hàng' ?>" disabled>
-                                        <!-- <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="role" name="role" disabled>
-                                            <option value="" selected disabled>Vui lòng chọn...</option>
-                                            <option value="1" <?= ($data['role'] == 1 ? 'selected' : '') ?>>Quản trị viên</option>
-                                            <option value="0" <?= ($data['role'] == 0 ? 'selected' : '') ?>>Khách hàng</option>
-                                        </select>                                     -->
+
+                                    <!-- Email -->
+                                    <div class="form-group row">
+                                        <label for="email" class="col-sm-3 col-form-label">Email*</label>
+                                        <div class="col-sm-9">
+                                            <input type="email" class="form-control" id="email" name="email" value="<?= $data['email'] ?>" required>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="status">Trạng thái*</label>
-                                        <select class="select2 form-select shadow-none" style="width: 100%; height:36px;" id="status" name="status">
-                                            <option value="" selected disabled>Vui lòng chọn...</option>
-                                            <option value="1" <?= ($data['status'] == 1 ? 'selected' : '') ?>>Hiển thị</option>
-                                            <option value="0" <?= ($data['status'] == 0 ? 'selected' : '') ?>>Ẩn</option>
-                                        </select>
+
+                                    <!-- Mật khẩu -->
+                                    <div class="form-group row">
+                                        <label for="password" class="col-sm-3 col-form-label">Mật khẩu</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu mới nếu muốn thay đổi">
+                                        </div>
+                                    </div>
+
+                                    <!-- Nhập lại mật khẩu -->
+                                    <div class="form-group row">
+                                        <label for="re_password" class="col-sm-3 col-form-label">Nhập lại mật khẩu</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control" id="re_password" name="re_password" placeholder="Nhập lại mật khẩu mới">
+                                        </div>
+                                    </div>
+
+                                    <!-- Hình đại diện -->
+                                    <div class="form-group row">
+                                        <label for="avatar" class="col-sm-3 col-form-label">Hình đại diện</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" class="form-control" id="avatar" name="avatar">
+                                        </div>
+                                    </div>
+
+                                    <!-- Quyền -->
+                                    <div class="form-group row">
+                                        <label for="role" class="col-sm-3 col-form-label">Quyền*</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-select" id="role" name="role" required>
+                                                <option value="1" <?= ($data['role'] == 1) ? 'selected' : '' ?>>Quản trị viên</option>
+                                                <option value="0" <?= ($data['role'] == 0) ? 'selected' : '' ?>>Khách hàng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Trạng thái -->
+                                    <div class="form-group row">
+                                        <label for="status" class="col-sm-3 col-form-label">Trạng thái*</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-select" id="status" name="status" required>
+                                                <option value="1" <?= ($data['status'] == 1) ? 'selected' : '' ?>>Hoạt động</option>
+                                                <option value="0" <?= ($data['status'] == 0) ? 'selected' : '' ?>>Khoá</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="border-top">
-                                    <div class="card-body">
-                                        <button type="reset" class="btn btn-danger text-white" name="">Làm lại</button>
-                                        <button type="submit" class="btn btn-primary" name="">Cập nhật</button>
-                                    </div>
+
+                                <!-- Buttons -->
+                                <div class="card-footer text-end">
+                                    <button type="reset" class="btn btn-danger text-white">Làm lại</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
-
                 </div>
-
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
+        </div>
 
-    <?php
+        <!-- Optional JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#role, #status').select2();
+            });
+        </script>
+<?php
     }
 }

@@ -38,7 +38,7 @@ class UserController
         Notification::render();
         NotificationHelper::unset();
         UserIndex::render($data);
-        Footer::render();
+        // Footer::render();
     }
 
 
@@ -203,7 +203,7 @@ class UserController
         // hiển thị form sửa
         // Edit::render($data);
         UserEdit::render($data);
-        Footer::render();
+        // Footer::render();
     }
 
 

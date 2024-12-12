@@ -31,7 +31,7 @@ class Edit extends BaseView
           <?php if ($data && $data['avatar']) : ?>
             <img src="<?= APP_URL ?>/public/uploads/users/<?= $data['avatar'] ?>" alt="Avatar" class="rounded-circle img-fluid shadow" style="width: 500px; height: 500px;">
           <?php else : ?>
-            <img src="<?= APP_URL ?>/public/uploads/users/default-avatar.png" alt="Avatar" class="rounded-circle img-fluid shadow" style="width: 200px; height: 200px;">
+            <img src="<?= APP_URL ?>/public/uploads/users/default-avatar.png" alt="Avatar" class="rounded-circle img-fluid shadow" style="width: 500px; height: 500px;">
           <?php endif; ?>
         </div>
 

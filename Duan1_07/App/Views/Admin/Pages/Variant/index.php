@@ -20,96 +20,73 @@ class Index extends BaseView
                     timer: 1500
                 });
             </script>
-            <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị 
-            ?>
+            <?php unset($_SESSION['notification']); // Xóa thông báo sau khi hiển thị ?>
         <?php endif; ?>
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">QUẢN LÝ BIẾN THỂ</h4>
-                        <div class="ms-auto text-end">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Danh sách biến thể</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
+
+        <div class="container-fluid mt-3">
+            <!-- Breadcrumb -->
+            <div class="row mb-4">
+                <div class="col-md-12 d-flex justify-content-between align-items-center">
+                    <h4 class="page-title">Quản lý Biến thể</h4>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Danh sách biến thể</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Danh sách biến thể</h5>
-                                <?php if (count($data)): ?>
-                                    <div class="table-responsive">
-                                        <table id="" class="table table-striped ">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Size</th>
-                                                    <th>Màu</th>
-                                                    <th>Trạng thái</th>
-                                                    <th>Hành động</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($data as $item): ?>
-                                                    <tr>
-                                                        <td><?= isset($item['variant_id']) ? htmlspecialchars($item['variant_id']) : 'Không xác định' ?></td>
-                                                        <td><?= isset($item['size']) ? htmlspecialchars($item['size']) : 'Không xác định' ?></td>
-                                                        <td><?= isset($item['color']) ? htmlspecialchars($item['color']) : 'Không xác định' ?></td>
-                                                        <td><?= isset($item['status']) && $item['status'] == 1 ? 'Hiển thị' : 'Ẩn' ?></td>
-                                                        <td>
-                                                            <a href="/admin/variants/<?= isset($item['variant_id']) ? htmlspecialchars($item['variant_id']) : '#' ?>" class="btn btn-primary">Sửa</a>
-                                                            <form action="/admin/variants/<?= isset($item['variant_id']) ? htmlspecialchars($item['variant_id']) : '#' ?>" method="POST" style="display: inline-block;" onsubmit="return confirm('Chắc chắn muốn xóa?')">
-                                                                <input type="hidden" name="method" value="DELETE">
-                                                                <button type="submit" class="btn btn-danger text-white">Xoá</button>
-                                                            </form>
 
-
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-
-                                        </table>
-                                    </div>
-                                <?php else: ?>
-                                    <h4 class="text-center text-danger">Không có dữ liệu</h4>
-                                <?php endif; ?>
-
-                            </div>
+            <!-- Danh sách biến thể -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Danh sách biến thể</h5>
+                    <?php if (count($data)): ?>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Size</th>
+                                        <th>Màu</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data as $item): ?>
+                                        <tr>
+                                            <td><?= isset($item['variant_id']) ? htmlspecialchars($item['variant_id']) : 'Không xác định' ?></td>
+                                            <td><?= isset($item['size']) ? htmlspecialchars($item['size']) : 'Không xác định' ?></td>
+                                            <td><?= isset($item['color']) ? htmlspecialchars($item['color']) : 'Không xác định' ?></td>
+                                            <td>
+                                                <!-- Trạng thái hiển thị theo mẫu của loại sản phẩm -->
+                                                <span class="badge bg-<?= isset($item['status']) && $item['status'] == 1 ? 'success' : 'secondary' ?>">
+                                                    <?= isset($item['status']) && $item['status'] == 1 ? 'Hiển thị' : 'Ẩn' ?>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <a href="/admin/variants/<?= isset($item['variant_id']) ? htmlspecialchars($item['variant_id']) : '#' ?>" class="btn btn-primary btn-sm">Sửa</a>
+                                                <form action="/admin/variants/<?= isset($item['variant_id']) ? htmlspecialchars($item['variant_id']) : '#' ?>" method="POST" style="display: inline-block;" onsubmit="return confirm('Chắc chắn muốn xóa?')">
+                                                    <input type="hidden" name="method" value="DELETE">
+                                                    <button type="submit" class="btn btn-danger btn-sm">Xoá</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
+                    <?php else: ?>
+                        <p class="text-center text-danger">Không có dữ liệu</p>
+                    <?php endif; ?>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
+        </div>
 
-
-
-
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <?php
     }
 }

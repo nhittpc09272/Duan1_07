@@ -67,6 +67,7 @@ class Edit extends BaseView
                                         <label for="variant_id">ID</label>
                                         <input type="text" class="form-control" id="variant_id" name="variant_id" value="<?= $data['variant_id'] ?>" disabled>
                                     </div>
+                                    
                                     <!-- ID sản phẩm -->
                                     <div class="form-group">
                                         <label for="product_id">ID Sản phẩm*</label>
@@ -83,6 +84,7 @@ class Edit extends BaseView
                                         <label for="color">Màu*</label>
                                         <input type="text" class="form-control" id="color" placeholder="Nhập màu..." name="color" value="<?= $data['color'] ?>" required>
                                     </div>
+
                                     <!-- Trạng thái -->
                                     <div class="form-group">
                                         <label for="status">Trạng thái*</label>
@@ -114,7 +116,14 @@ class Edit extends BaseView
             <!-- ============================================================== -->
         </div>
 
-
+        <!-- Optional JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#status').select2();
+            });
+        </script>
 <?php
     }
 }

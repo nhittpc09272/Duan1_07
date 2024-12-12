@@ -33,7 +33,7 @@ class Register extends BaseView
         <link rel="stylesheet" href="/public/assets/client/css/magnific-popup.css">
 
         <!-- Nền ảnh và form -->
-        <div class="container-fluid p-0" style="height: 100vh; background: url('/public/uploads/products/z3944035496045_7834495bfa6a8f27d727d0f5cdffef66_ef0d37945a124f3483a34e81dd348069_master.jpg') no-repeat center center fixed; background-size: cover;">
+        <!-- <div class="container-fluid p-0" style="height: 100vh; background: url('/public/uploads/products/z3944035496045_7834495bfa6a8f27d727d0f5cdffef66_ef0d37945a124f3483a34e81dd348069_master.jpg') no-repeat center center fixed; background-size: cover;">
             <div class="d-flex justify-content-center align-items-center h-100" style="background: rgba(0, 0, 0, 0.5);">
                 <div class="card border-0 shadow-lg p-4" style="backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.8); border-radius: 15px; max-width: 450px; width: 100%;">
                     <h3 class="text-center text-outline-danger mb-4">Đăng ký tài khoản</h3>
@@ -72,8 +72,51 @@ class Register extends BaseView
 
                         <div class="d-flex justify-content-between">
                             <button type="reset" class="btn btn-outline-danger btn-lg">Nhập lại</button>
-                            <!-- Nút đăng ký màu cam đậm -->
+                            
                             <button type="submit" class="btn btn-outline-warning btn-lg" style="background-color: #FF6600; color: white;">Đăng ký</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+        <div class="bg-image" style="background-image: url('/public/uploads/products/z3944035496045_7834495bfa6a8f27d727d0f5cdffef66_ef0d37945a124f3483a34e81dd348069_master.jpg'); background-size: cover; background-position: center; height: 100vh; position: relative; z-index: 0; ">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <!-- Form đăng ký -->
+                <div class="card p-5 shadow-lg" style="width: 500px; background-color: rgba(255, 255, 255, 0.9); border-radius: 15px; position: relative; z-index: 10;">
+                    <h3 class="text-center mb-4" style="color: #333; font-weight: bold;">Đăng ký</h3>
+                    <form action="/register" method="post">
+                        <input type="hidden" name="method" value="POST">
+                        <div class="form-group">
+                            <label for="username" style="color: #333;">Tên đăng nhập</label>
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Nhập tên đăng nhập" style="border: 1px solid #ff4747; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" style="color: #333;">Mật khẩu</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Nhập mật khẩu" style="border: 1px solid #ff4747; border-radius: 4px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="re_password" style="color: #333;">Nhập lại mật khẩu</label>
+                            <input type="password" name="re_password" id="re_password" class="form-control" placeholder="Nhập lại mật khẩu" style="border: 1px solid #ff4747; border-radius: 4px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Nhập email" style="border: 1px solid #ff4747; border-radius: 4px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="text" name="phone" id="phone" class="form-control " placeholder="Nhập số điện thoại" style="border: 1px solid #ff4747; border-radius: 4px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Địa chỉ</label>
+                            <input type="text" name="address" id="address" class="form-control " placeholder="Nhập địa chỉ" style="border: 1px solid #ff4747; border-radius: 4px;">
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button type="reset" class="btn btn-outline-danger btn-lg" style="border-color: #ff4747; color: #000; font-weight: bold;">Nhập lại</button>
+                            <button type="submit" class="btn btn-outline-warning btn-lg" style="z-index: 20; position: relative;">Đăng Ký</button>
                         </div>
                     </form>
                 </div>
