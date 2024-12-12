@@ -8,7 +8,7 @@ use App\Views\Client\Layouts\Footer;
 use App\Views\Client\Layouts\Header;
 use App\Views\Client\Pages\Product\Search; // View hiển thị kết quả tìm kiếm
 
-class searchController
+class SearchController
 {
     // Hiển thị kết quả tìm kiếm
     public static function search()

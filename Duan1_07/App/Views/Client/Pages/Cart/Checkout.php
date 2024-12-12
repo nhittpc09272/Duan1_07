@@ -83,7 +83,7 @@ class Checkout extends BaseView
                                         <img src="img/product/card.jpg" alt="">
                                         <div class="check"></div>
                                     </div>
-                                    <form action="/App/Views/Client/Pages/Checkouts/congThanhToanvnpay.php" method="POST">
+                                    <form action="/pays" method="POST">
                                         <input type="hidden" name="total_congthanhtoan" value="<?php echo htmlspecialchars($priceInVND); ?>">
                                         <button class="btn btn-danger" name="redirect" id="redirect">Thanh toán VnPay</button>
                                     </form>

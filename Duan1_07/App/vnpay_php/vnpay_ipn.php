@@ -14,10 +14,10 @@ require_once("./config.php");
 $inputData = array();
 $returnData = array();
 foreach ($_GET as $key => $value) {
-            if (substr($key, 0, 4) == "vnp_") {
-                $inputData[$key] = $value;
-            }
-        }
+    if (substr($key, 0, 4) == "vnp_") {
+        $inputData[$key] = $value;
+    }
+}
 
 $vnp_SecureHash = $inputData['vnp_SecureHash'];
 unset($inputData['vnp_SecureHash']);
@@ -36,7 +36,7 @@ foreach ($inputData as $key => $value) {
 $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
 $vnpTranId = $inputData['vnp_TransactionNo']; //Mã giao dịch tại VNPAY
 $vnp_BankCode = $inputData['vnp_BankCode']; //Ngân hàng thanh toán
-$vnp_Amount = $inputData['vnp_Amount']/100; // Số tiền thanh toán VNPAY phản hồi
+$vnp_Amount = $inputData['vnp_Amount'] / 100; // Số tiền thanh toán VNPAY phản hồi
 
 $Status = 0; // Là trạng thái thanh toán của giao dịch chưa có IPN lưu tại hệ thống của merchant chiều khởi tạo URL thanh toán.
 $orderId = $inputData['vnp_TxnRef'];
@@ -51,7 +51,7 @@ try {
 
         $order = NULL;
         if ($order != NULL) {
-            if($order["Amount"] == $vnp_Amount) //Kiểm tra số tiền thanh toán của giao dịch: giả sử số tiền kiểm tra là đúng. //$order["Amount"] == $vnp_Amount
+            if ($order["Amount"] == $vnp_Amount) //Kiểm tra số tiền thanh toán của giao dịch: giả sử số tiền kiểm tra là đúng. //$order["Amount"] == $vnp_Amount
             {
                 if ($order["Status"] != NULL && $order["Status"] == 0) {
                     if ($inputData['vnp_ResponseCode'] == '00' && $inputData['vnp_TransactionStatus'] == '00') {
@@ -70,8 +70,7 @@ try {
                     $returnData['RspCode'] = '02';
                     $returnData['Message'] = 'Order already confirmed';
                 }
-            }
-            else {
+            } else {
                 $returnData['RspCode'] = '04';
                 $returnData['Message'] = 'invalid amount';
             }

@@ -103,7 +103,108 @@ class ContactController
             // Nội dung email
             $mail->isHTML(true);
             $mail->Subject = "Liên hệ từ $name - $subject";
-            $mail->Body = "<p>Bạn đã nhận được tin nhắn từ <strong>$name</strong> ($email):</p><p>Chủ đề: $subject</p><p>Nội dung: $message</p>";
+            $mail->Body = "
+            <!DOCTYPE html>
+            <html lang='vi'>
+            <head>
+                <meta charset='UTF-8'>
+                <style>
+                    body {
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        background-color: #f4f4f4;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 600px;
+                        margin: 20px auto;
+                        background-color: #ffffff;
+                        border-radius: 12px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                        overflow: hidden;
+                    }
+                    .email-header {
+                        background: linear-gradient(135deg, #007bff, #0056b3);
+                        color: white;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    .email-header h1 {
+                        margin: 0;
+                        font-size: 24px;
+                        font-weight: 300;
+                    }
+                    .email-content {
+                        padding: 25px;
+                    }
+                    .contact-details {
+                        background-color: #f9f9f9;
+                        border-radius: 8px;
+                        padding: 15px;
+                        margin-bottom: 20px;
+                        border: 1px solid #e0e0e0;
+                    }
+                    .contact-details p {
+                        margin: 10px 0;
+                        color: #555;
+                    }
+                    .contact-details strong {
+                        color: #333;
+                        display: inline-block;
+                        width: 100px;
+                    }
+                    .message-content {
+                        background-color: #f1f7ff;
+                        border-left: 4px solid #007bff;
+                        padding: 15px;
+                        margin-top: 20px;
+                        font-style: italic;
+                    }
+                    .email-footer {
+                        background-color: #f4f4f4;
+                        text-align: center;
+                        padding: 15px;
+                        font-size: 12px;
+                        color: #777;
+                    }
+                    @media only screen and (max-width: 600px) {
+                        .email-container {
+                            width: 100%;
+                            margin: 0;
+                            border-radius: 0;
+                        }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class='email-container'>
+                    <div class='email-header'>
+                        <h1>🌟 Thông Báo Liên Hệ Mới</h1>
+                    </div>
+            
+                    <div class='email-content'>
+                        <div class='contact-details'>
+                            <p><strong>Họ và Tên:</strong> " . htmlspecialchars($name) . "</p>
+                            <p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>
+                            <p><strong>Chủ Đề:</strong> " . htmlspecialchars($subject) . "</p>
+                        </div>
+            
+                        <div class='message-content'>
+                            <h3>Nội Dung Tin Nhắn</h3>
+                            <p>" . nl2br(htmlspecialchars($message)) . "</p>
+                        </div>
+                    </div>
+            
+                    <div class='email-footer'>
+                        <p>📅 Nhận được lúc: " . date('H:i:s d/m/Y') . "</p>
+                        <p>© " . date('Y') . " Bản Quyền Thuộc Về Hệ Thống</p>
+                        <p>🌐 Được gửi từ Trang Liên Hệ</p>
+                    </div>
+                </div>
+            </body>
+            </html>";
             $mail->CharSet = 'UTF-8';
     
             // Gửi email
