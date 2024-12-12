@@ -6,6 +6,11 @@ use App\Helpers\NotificationHelper;
 use App\Views\Client\Components\Notification;
 use App\Views\Client\Layouts\Footer;
 use App\Views\Client\Pages\Checkouts\Checkout;
+use App\vnpay_php\vnpay_pay;
+use App\vnpay_php\vnpay_create_payment;
+use App\vnpay_php\vnpay_return;
+use App\Models\Order;
+use App\Validations\OrderValidation;
 use App\Views\Client\Layouts\Header;
 
 class CheckoutController
