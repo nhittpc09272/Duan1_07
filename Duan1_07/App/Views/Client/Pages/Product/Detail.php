@@ -13,97 +13,102 @@ class Detail extends BaseView
 
 ?>
 
-        <div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5">
 
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="<?= APP_URL ?>/public/assets/client/img/image/<?= $data['product']['image'] ?>" alt="" width="100%">
-                </div>
-                <div class="col-md-6">
-                    <h5><?= isset($data['product']['product_name']) ? $data['product']['product_name'] : 'Tên sản phẩm không có' ?></h5>
-                    <p>
-                        <?= isset($data['product']['description']) ? $data['product']['description'] : 'Mô tả sản phẩm không có' ?>
-                    </p>
-                    <?php
-                    if (isset($data['product']['discount_price']) && $data['product']['discount_price'] > 0) :
-                    ?>
-                        <h6>Giá gốc: <strike><?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá tiền' ?> đ</strike></h6>
-                        <h6>Giá giảm: <strong class="text-danger"><?= isset($data['product']['price'], $data['product']['discount_price']) ? number_format($data['product']['price'] - $data['product']['discount_price']) : 'Chưa có giá' ?> đ</strong></h6>
-                    <?php
-                    else :
-                    ?>
-                        <h6>Giá tiền: <?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá tiền' ?> đ</h6>
-                    <?php
-                    endif;
-                    ?>
-                    <h6>Số lượt xem: <?= isset($data['product']['view']) ? $data['product']['view'] : 'Chưa có lượt xem' ?></h6>
-                    <h6>Danh mục: <?= isset($data['product']['category_name']) ? $data['product']['category_name'] : 'Chưa có danh mục' ?></h6>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="<?= APP_URL ?>/public/assets/client/img/image/<?= $data['product']['image'] ?>" alt="" width="100%">
+        </div>
+        <div class="col-md-6">
+            <h5><?= isset($data['product']['product_name']) ? $data['product']['product_name'] : 'Tên sản phẩm không có' ?></h5>
+            <p>
+                <?= isset($data['product']['description']) ? $data['product']['description'] : 'Mô tả sản phẩm không có' ?>
+            </p>
+            <?php
+            if (isset($data['product']['discount_price']) && $data['product']['discount_price'] > 0) :
+            ?>
+                <h6>Giá gốc: <strike><?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá tiền' ?> đ</strike></h6>
+                <h6>Giá giảm: <strong class="text-danger"><?= isset($data['product']['price'], $data['product']['discount_price']) ? number_format($data['product']['price'] - $data['product']['discount_price']) : 'Chưa có giá' ?> đ</strong></h6>
+            <?php
+            else :
+            ?>
+                <h6>Giá tiền: <?= isset($data['product']['price']) ? number_format($data['product']['price']) : 'Chưa có giá tiền' ?> đ</h6>
+            <?php
+            endif;
+            ?>
+            <h6>Số lượt xem: <?= isset($data['product']['view']) ? $data['product']['view'] : 'Chưa có lượt xem' ?></h6>
+            <h6>Danh mục: <?= isset($data['product']['category_name']) ? $data['product']['category_name'] : 'Chưa có danh mục' ?></h6>
 
-                    <!-- Hiển thị nút màu sắc -->
-                    <h5>Chọn màu sắc:</h5>
-                    <div class="color-buttons">
-                        <button type="button" class="btn btn-danger text-white">Đỏ</button>
-                        <button type="button" class="btn btn-primary text-white">Xanh</button>
-                        <button type="button" class="btn btn-success text-white">Lục</button>
-                        <button type="button" class="btn btn-dark text-white">Đen</button>
-                    </div>
+            <!-- Hiển thị nút màu sắc -->
+            <h5>Chọn màu sắc:</h5>
+            <div class="color-buttons">
+                <?php foreach ($data['colors'] as $color): ?>
+                    <button type="button" class="btn" style="background-color: <?= $color ?>;" title="<?= $color ?>"></button>
+                <?php endforeach; ?>
+            </div>
 
-                    <!-- Hiển thị nút kích thước -->
-                    <h5 class="mt-3">Chọn kích thước:</h5>
-                    <div class="size-buttons">
-                        <button type="button" class="btn btn-outline-dark">38</button>
-                        <button type="button" class="btn btn-outline-dark">39</button>
-                        <button type="button" class="btn btn-outline-dark">40</button>
-                        <button type="button" class="btn btn-outline-dark">41</button>
-                    </div>
+            <!-- Hiển thị nút kích thước -->
+            <h5 class="mt-3">Chọn kích thước:</h5>
+            <div class="size-buttons">
+                <?php foreach ($data['sizes'] as $size): ?>
+                    <button type="button" class="btn btn-outline-dark"><?= $size ?></button>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-                    <!-- Form thêm vào giỏ hàng -->
-                    <form action="/cart/add" method="post" class="mt-3">
-                        <input type="hidden" name="method" value="POST">
-                        <input type="hidden" name="id" value="<?= isset($data['product']['product_id']) ? $data['product']['product_id'] : '' ?>" required>
-                        <button type="submit" class="btn btn-sm btn-outline-success">Thêm vào giỏ hàng</button>
-                    </form>
 
-                    <body>
-                        <div class="container mt-5">
-                            <h2 class="text-center mb-4">Shoe Size Chart</h2>
-                            <table class="table table-bordered table-hover text-center">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col">US Size</th>
-                                        <th scope="col">EU Size</th>
-                                        <th scope="col">UK Size</th>
-                                        <th scope="col">Foot Length (cm)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    // Dữ liệu bảng size giày
-                                    $shoe_sizes = [
-                                        ['us' => 6, 'eu' => 39, 'uk' => 5.5, 'length' => 24.1],
-                                        ['us' => 7, 'eu' => 40, 'uk' => 6.5, 'length' => 24.8],
-                                        ['us' => 8, 'eu' => 41, 'uk' => 7.5, 'length' => 25.4],
-                                        ['us' => 9, 'eu' => 42, 'uk' => 8.5, 'length' => 26.0],
-                                        ['us' => 10, 'eu' => 43, 'uk' => 9.5, 'length' => 26.7],
-                                        ['us' => 11, 'eu' => 44, 'uk' => 10.5, 'length' => 27.3],
-                                    ];
+            <!-- Form thêm vào giỏ hàng -->
+            <form action="/cart/add" method="post" class="mt-3">
+                <input type="hidden" name="method" value="POST">
+                <input type="hidden" name="id" value="<?= isset($data['product']['product_id']) ? $data['product']['product_id'] : '' ?>" required>
+                <input type="hidden" name="variant_id" id="variant_id" value="">
+                <button type="submit" class="btn btn-sm btn-outline-success">Thêm vào giỏ hàng</button>
+            </form>
 
-                                    // Lặp qua mảng và hiển thị dữ liệu
-                                    foreach ($shoe_sizes as $size) {
-                                        echo "<tr>
-                            <td>{$size['us']}</td>
-                            <td>{$size['eu']}</td>
-                            <td>{$size['uk']}</td>
-                            <td>{$size['length']}</td>
-                          </tr>";
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
+            <div class="container mt-5">
+                <h2 class="text-center mb-4">Shoe Size Chart</h2>
+                <table class="table table-bordered table-hover text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">US Size</th>
+                            <th scope="col">EU Size</th>
+                            <th scope="col">UK Size</th>
+                            <th scope="col">Foot Length (cm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Dữ liệu bảng size giày
+                        $shoe_sizes = [
+                            ['us' => 6, 'eu' => 39, 'uk' => 5.5, 'length' => 24.1],
+                            ['us' => 7, 'eu' => 40, 'uk' => 6.5, 'length' => 24.8],
+                            ['us' => 8, 'eu' => 41, 'uk' => 7.5, 'length' => 25.4],
+                            ['us' => 9, 'eu' => 42, 'uk' => 8.5, 'length' => 26.0],
+                            ['us' => 10, 'eu' => 43, 'uk' => 9.5, 'length' => 26.7],
+                            ['us' => 11, 'eu' => 44, 'uk' => 10.5, 'length' => 27.3],
+                        ];
 
-                </div>
+                        // Lặp qua mảng và hiển thị dữ liệu
+                        foreach ($shoe_sizes as $size) {
+                            echo "<tr>
+                                <td>{$size['us']}</td>
+                                <td>{$size['eu']}</td>
+                                <td>{$size['uk']}</td>
+                                <td>{$size['length']}</td>
+                            </tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 
                 <div class="row d-flex justify-content-center mt-100 mb-100">
