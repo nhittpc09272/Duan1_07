@@ -172,31 +172,33 @@ class Header extends BaseView
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
                   <i class="icon-grid-2 menu-icon"></i>
                   <span class="menu-title">quản lý sản phẩm </span>
                   <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="auth">
+                <div class="collapse" id="products">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="/admin/products"> sản phẩm </a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/products/create"> thêm sản phẩm </a></li>
                   </ul>
                 </div>
               </li>
+
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#end" aria-expanded="false" aria-controls="end">
+                <a class="nav-link" data-bs-toggle="collapse" href="#variants" aria-expanded="false" aria-controls="variants">
                   <i class="icon-grid-2 menu-icon"></i>
                   <span class="menu-title">quản lý biến thể </span>
                   <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="end">
+                <div class="collapse" id="variants">
                   <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="/admin/variants"> biến thể </a></li>
                     <li class="nav-item"> <a class="nav-link" href="/admin/variants/create"> thêm biến thế </a></li>
                   </ul>
                 </div>
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#user" aria-expanded="false" aria-controls="user">
                   <i class="icon-head menu-icon"></i>
