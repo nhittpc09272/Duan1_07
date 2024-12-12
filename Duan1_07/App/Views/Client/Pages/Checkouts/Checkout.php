@@ -34,6 +34,20 @@ class Checkout extends BaseView
         <?php endif; ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <section class="banner-area organic-breadcrumb">
+            <div class="container">
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Xác nhận đơn hàng</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="index.php">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="checkout.php">Đơn hàng</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Banner Area -->
 
         <link rel="stylesheet" href="/App/Views/Client/css/linearicons.css">
 
@@ -48,30 +62,38 @@ class Checkout extends BaseView
         <link rel="stylesheet" href="/App/Views/Client/css/magnific-popup.css">
         <link rel="stylesheet" href="/App/Views/Client/css/main.css">
         <style>
+            .col-md-6 {
+                min-height: 300px;
+                /* Đảm bảo cột không bị thu hẹp quá mức */
+                overflow: visible;
+                /* Đảm bảo phần tử không bị ẩn */
+            }
 
-.col-md-6 {
-    min-height: 300px;  /* Đảm bảo cột không bị thu hẹp quá mức */
-    overflow: visible;  /* Đảm bảo phần tử không bị ẩn */
-}
-.checkout_area {
-    display: flex;
-    flex-wrap: wrap;   /* Đảm bảo các phần tử không bị chồng lên nhau */
-}
+            .checkout_area {
+                display: flex;
+                flex-wrap: wrap;
+                /* Đảm bảo các phần tử không bị chồng lên nhau */
+            }
 
-.payment-option {
-    position: relative;  /* Đảm bảo phần tử này không bị chồng lên các phần tử khác */
-    z-index: 10;
-}
-#redirect {
-    position: relative;
-    z-index: 9999; /* Đảm bảo nút không bị chồng lên */
-}
-.col-md-6, .payment-option, #redirect {
-    display: block;  /* Đảm bảo các phần tử này không bị ẩn */
-    visibility: visible;
-}
+            .payment-option {
+                position: relative;
+                /* Đảm bảo phần tử này không bị chồng lên các phần tử khác */
+                z-index: 10;
+            }
 
+            #redirect {
+                position: relative;
+                z-index: 9999;
+                /* Đảm bảo nút không bị chồng lên */
+            }
 
+            .col-md-6,
+            .payment-option,
+            #redirect {
+                display: block;
+                /* Đảm bảo các phần tử này không bị ẩn */
+                visibility: visible;
+            }
         </style>
         <div class="container mt-5 mb-5">
             <h1 class="text-center mb-5" style="margin-top: 100px;">Thanh toán</h1>
@@ -250,7 +272,7 @@ class Checkout extends BaseView
     </div>
     </div>
 
-   
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 <?php
