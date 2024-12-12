@@ -34,101 +34,117 @@ class Index extends BaseView
 
         <body>
             <div class="container py-5">
-                <h1 class="text-center mb-4">Giỏ hàng (<?= $item_count ?> sản phẩm)</h1>
-                <div class="d-flex justify-content-between mb-4">
-                    <a href="/products" class="btn btn-primary">Tiếp tục mua sắm</a>
-                </div>
+                <form action="/checkout" method="post">
+                    <input type="hidden" id="" name="method" value="POST">
+                    <h1 class="text-center mb-4">Giỏ hàng (<?= $item_count ?> sản phẩm)</h1>
+                    <div class="d-flex justify-content-between mb-4">
+                        <a href="/products" class="btn btn-primary">Tiếp tục mua sắm</a>
+                    </div>
 
-                <div class="row">
-                    <!-- Danh sách sản phẩm -->
-                    <div class="col-lg-8">
-                        <?php foreach ($data as $cart): ?>
-                            <?php if ($cart['data']): ?>
-                                <div class="card mb-3">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="<?= APP_URL ?>/public/assets/client/img/image/<?= $cart['data']['image'] ?>"
-                                                class="img-fluid rounded-start"
-                                                alt="<?= $cart['data']['product_name'] ?>">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><?= $cart['data']['product_name'] ?></h5>
-                                                <p class="card-text">Mã sản phẩm: <?= $cart['data']['product_id'] ?></p>
+                    <div class="row">
+                        <!-- Danh sách sản phẩm -->
+                        <div class="col-lg-8">
+                            <?php foreach ($data as $cart): ?>
+                                <?php if ($cart['data']): ?>
+                                    <div class="card mb-4 shadow-sm border-0">
+                                        <div class="row g-0 align-items-center">
+                                            <!-- Checkbox và Hình ảnh sản phẩm -->
+                                            <div class="col-md-4 d-flex align-items-center">
+                                                <div class="form-check me-3">
+                                                    <input type="checkbox"
+                                                        class="form-check-input"
+                                                        name="check[]"
+                                                        value="<?= $cart['data']['product_id'] ?>"
+                                                        />
 
-                                                <!-- Cập nhật số lượng -->
-                                                <form action="/cart/update" method="post" class="d-flex align-items-center">
-                                                    <input type="hidden" name="method" value="PUT">
-                                                    <input type="number" name="quantity" value="<?= $cart['quantity'] ?>"
-                                                        min="1" max="99" class="form-control mx-2" style="width: 70px;"
-                                                        onchange="this.form.submit()">
-                                                    <input type="hidden" name="id" value="<?= $cart['data']['product_id'] ?>">
-                                                </form>
+                                                    <!-- Các trường ẩn -->
+                                                    <input type="hidden"
+                                                        name="id[]"
+                                                        value="<?= $cart['data']['product_id'] ?>" />
+                                                    <input type="hidden"
+                                                        name="name[]"
+                                                        value="<?= htmlspecialchars($cart['data']['product_name']) ?>" />
+                                                    <input type="hidden"
+                                                        name="price[]"
+                                                        value="<?= $cart['data']['price'] - $cart['data']['discount_price'] ?>" />
+                                                    <input type="hidden"
+                                                        name="quantity[]"
+                                                        value="<?= $cart['quantity'] ?>" />
+                                                    <input type="hidden" name="variant[]" value="" />
+                                                    <input type="hidden" name="variant2[]" value="" />
+                                                </div>
+                                                <img src="<?= APP_URL ?>/public/assets/client/img/image/<?= $cart['data']['image'] ?>"
+                                                    class="img-fluid rounded-start"
+                                                    alt="<?= htmlspecialchars($cart['data']['product_name']) ?>"
+                                                    style="object-fit: cover; height: 150px;">
+                                            </div>
 
-                                                <!-- Xóa sản phẩm -->
-                                                <form action="/cart/delete" method="post" class="mt-2">
-                                                    <input type="hidden" name="method" value="DELETE">
-                                                    <input type="hidden" name="id" value="<?= $cart['data']['product_id'] ?>">
-                                                    <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
-                                                </form>
+                                            <!-- Thông tin sản phẩm -->
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title fw-bold text-primary"><?= $cart['data']['product_name'] ?></h5>
+                                                    <p class="card-text text-muted mb-2">
+                                                        Mã sản phẩm: <span class="fw-semibold"><?= $cart['data']['product_id'] ?></span>
+                                                    </p>
 
-                                                <!-- Giá sản phẩm -->
-                                                <div class="mt-3">
-                                                    <?php if ($cart['data']['discount_price'] > 0): ?>
-                                                        <div class="text-muted text-decoration-line-through">
-                                                            <?= number_format($cart['data']['price']) ?>đ
-                                                        </div>
-                                                        <div class="text-success fw-bold">
-                                                            <?= number_format($cart['data']['price'] - $cart['data']['discount_price']) ?>đ
-                                                        </div>
-                                                    <?php else: ?>
-                                                        <div class="fw-bold"><?= number_format($cart['data']['price']) ?>đ</div>
-                                                    <?php endif; ?>
+                                                    <!-- Giá sản phẩm -->
+                                                    <div class="mt-3">
+                                                        <?php if ($cart['data']['discount_price'] > 0): ?>
+                                                            <div class="text-muted text-decoration-line-through mb-1">
+                                                                <?= number_format($cart['data']['price']) ?>đ
+                                                            </div>
+                                                            <div class="text-success fw-bold fs-5">
+                                                                <?= number_format($cart['data']['price'] - $cart['data']['discount_price']) ?>đ
+                                                            </div>
+                                                        <?php else: ?>
+                                                            <div class="fw-bold fs-5 text-dark">
+                                                                <?= number_format($cart['data']['price']) ?>đ
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
 
-                    <!-- Tóm tắt đơn hàng -->
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Tóm tắt đơn hàng</h5>
-                                <div class="d-flex justify-content-between">
-                                    <span>Tạm tính:</span>
-                                    <span><?= number_format($total_price) ?>đ</span>
-                                </div>
-                                <div class="d-flex justify-content-between mt-2">
-                                    <span>Phí vận chuyển:</span>
-                                    <span>30,000đ</span>
-                                </div>
-                                <hr>
-                                <div class="d-flex justify-content-between fw-bold">
-                                    <span>Tổng cộng:</span>
-                                    <span><?= number_format($total_price + 30000) ?>đ</span>
-                                </div>
-                                <div class="mt-4">
-                                    <form action="/cart/delete-all" method="post">
-                                        <input type="hidden" name="method" value="DELETE">
-                                        <button class="btn btn-danger w-100 mb-2">Xóa giỏ hàng</button>
-                                    </form>
-                                    <?php if ($is_login): ?>
-                                        <a href="/checkout" class="btn btn-success w-100">Tiến hành thanh toán</a>
-                                    <?php else: ?>
-                                        <div class="text-center text-danger">
-                                            <p>Vui lòng đăng nhập để thanh toán</p>
-                                            <a href="/login" class="btn btn-outline-dark">Đăng nhập</a>
-                                        </div>
-                                    <?php endif; ?>
+                        <!-- Tóm tắt đơn hàng -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tóm tắt đơn hàng</h5>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Tạm tính:</span>
+                                        <span><?= number_format($total_price) ?>đ</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <span>Phí vận chuyển:</span>
+                                        <span>30,000đ</span>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between fw-bold">
+                                        <span>Tổng cộng:</span>
+                                        <span><?= number_format($total_price + 30000) ?>đ</span>
+                                    </div>
+                                    <div class="mt-4">
+                                        <?php if ($is_login): ?>
+                                            <button type="submit" class="btn btn-success w-100">
+                                                Tiến hành thanh toán
+                                            </button>
+                                        <?php else: ?>
+                                            <div class="text-center text-danger">
+                                                <p>Vui lòng đăng nhập để thanh toán</p>
+                                                <a href="/login" class="btn btn-outline-dark">Đăng nhập</a>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
         </body>

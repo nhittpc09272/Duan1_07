@@ -51,7 +51,7 @@ abstract class BaseModel implements CrudInterface
             // Kiểm tra nếu có dữ liệu
             if ($query_result->num_rows > 0) {
                 $result = $query_result->fetch_assoc(); // Trả về kết quả tìm thấy
-            } 
+            }
             return $result;
         } catch (\Throwable $th) {
             // Xử lý lỗi khi truy vấn
@@ -195,4 +195,33 @@ abstract class BaseModel implements CrudInterface
             return $result;
         }
     }
+    public function savePayment($orderId, $amount, $orderInfo, $bankCode, $transactionNo, $payDate)
+    {
+        $result = false; // Biến để lưu trạng thái thành công hay thất bại
+        try {
+            // Câu lệnh SQL để chèn dữ liệu vào bảng payments
+            $sql = "INSERT INTO payments (order_id, amount, order_info, bank_code, transaction_no, pay_date) VALUES (?, ?, ?, ?, ?, ?)";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+
+            // Liên kết các tham số với câu lệnh SQL
+            $stmt->bind_param('sdssss', $orderId, $amount, $orderInfo, $bankCode, $transactionNo, $payDate);
+
+            // Thực thi câu lệnh
+            $result = $stmt->execute();
+
+            if ($result) {
+                // Nếu thành công, có thể lấy ID của bản ghi vừa chèn
+                $lastId = $conn->insert_id; // Lấy ID của bản ghi mới
+                return $lastId; // Trả về ID của bản ghi mới
+            }
+        } catch (\Throwable $th) {
+            error_log('Lỗi khi lưu dữ liệu vào bảng payments: ' . $th->getMessage());
+            $result = false; // Đặt lại kết quả thành false nếu có lỗi
+        }
+
+        return $result; // Trả về true nếu thành công, false nếu thất bại
+    }
+
+    
 }
