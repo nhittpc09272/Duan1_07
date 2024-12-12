@@ -9,9 +9,24 @@ class Index extends BaseView
 {
     public static function render($data = null)
     {
+        // Lấy dữ liệu lọc giá từ request
+        $minPrice = isset($_GET['min_price']) ? (int)$_GET['min_price'] : 0;
+        $maxPrice = isset($_GET['max_price']) ? (int)$_GET['max_price'] : PHP_INT_MAX;
 
+        // Lọc sản phẩm theo giá
+        $filteredProducts = array_filter($data['products'], function ($product) use ($minPrice, $maxPrice) {
+            return $product['price'] >= $minPrice && $product['price'] <= $maxPrice;
+        });
+
+        // Lọc sản phẩm theo từ khóa tìm kiếm
+        $query = isset($_GET['query']) ? trim($_GET['query']) : '';
+        if ($query !== '') {
+            $filteredProducts = array_filter($filteredProducts, function ($product) use ($query) {
+                return stripos($product['product_name'], $query) !== false;
+            });
+        }
 ?>
-        <?php if (isset($_SESSION['notification'])): ?>
+        <?php if (isset($_SESSION['notification'])) : ?>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>
                 Swal.fire({
@@ -40,8 +55,6 @@ class Index extends BaseView
                     </div>
                 </div>
 
-
-
                 <!-- Product Display Area -->
                 <div class="col-xl-9 col-lg-8 col-md-7">
                     <!-- Transparent Wrapper -->
@@ -51,36 +64,27 @@ class Index extends BaseView
                         <div class="filter-bar shadow-sm"
                             style="background-color: #FFA87A; border: 1px solid #F8BBD0;">
                             <div class="d-flex gap-3">
-                                <!-- Sorting Dropdown -->
-                                <div class="sorting">
-                                    <select class="form-select mt-3" style="flex: 1; background-color: #FFF6F6; color: #555; border: 1px solid #FEC5E5; height: 40px; border-radius: 5px; margin-right: 10px;">
-
-                                        <option value="1">Sắp xếp theo mặc định</option>
-                                        <option value="2">Sắp xếp theo giá: Thấp đến Cao</option>
-                                        <option value="3">Sắp xếp theo giá: Cao đến Thấp</option>
-                                        <option value="4">Sắp xếp theo đánh giá</option>
-                                        <option value="5">Sắp xếp theo phổ biến</option>
-                                    </select>
-                                </div>
-                                <!-- Products per Page Dropdown -->
-                                <div class="sorting">
-                                    <select class="form-select mt-3" style="flex: 1; background-color: #FFF6F6; color: #555; border: 1px solid #FEC5E5; height: 40px; border-radius: 5px; margin-right: 10px;">
-
-                                        <option value="12">12 sản phẩm</option>
-                                        <option value="24">24 sản phẩm</option>
-                                        <option value="36">36 sản phẩm</option>
-                                    </select>
-                                </div>
+                                <!-- Form Lọc Giá -->
+                                <form action="" method="GET" class="d-flex align-items-center gap-2 mt-3">
+                                    <input type="number" name="min_price" placeholder="Giá từ"
+                                        value="<?= isset($_GET['min_price']) ? $_GET['min_price'] : '' ?>"
+                                        style="background-color: #FFF6F6; color: #555; border: 1px solid #FEC5E5; height: 40px; padding: 5px 10px; border-radius: 5px; margin-right: 10px;">
+                                    <input type="number" name="max_price" placeholder="Giá đến"
+                                        value="<?= isset($_GET['max_price']) ? $_GET['max_price'] : '' ?>"
+                                        style="background-color: #FFF6F6; color: #555; border: 1px solid #FEC5E5; height: 40px; padding: 5px 10px; border-radius: 5px; margin-right: 10px;">
+                                    <button type="submit" class="btn" style="background-color: #F48FB1; color: white; border: none; height: 40px; padding: 5px 20px; border-radius: 5px; cursor: pointer;">
+                                        Lọc
+                                    </button>
+                                </form>
+                                <!-- Tìm kiếm sản phẩm -->
                                 <div class="search-bar">
-                                    <form class="d-flex mt-4" style="flex: 1;" action="/search" method="GET">
-                                        <input type="text"
-                                            placeholder="Tìm kiếm sản phẩm..."
-                                            name="query"
+                                    <form class="d-flex mt-3" style="flex: 1;" action="" method="GET">
+                                        <input type="text" placeholder="Tìm kiếm sản phẩm..." name="query"
+                                            value="<?= isset($_GET['query']) ? $_GET['query'] : '' ?>"
                                             style="flex: 1; background-color: #FFF6F6; color: #555; border: 1px solid #FEC5E5; height: 40px; padding: 5px 10px; border-radius: 5px; margin-right: 10px;">
-                                        <input type="submit"
-                                            name="submit"
-                                            value="Tìm kiếm"
-                                            style="background-color: #F48FB1; color: white; border: none; height: 40px; padding: 5px 20px; border-radius: 5px; cursor: pointer;">
+                                        <button type="submit" class="btn" style="background-color: #F48FB1; color: white; border: none; height: 40px; padding: 5px 20px; border-radius: 5px; cursor: pointer;">
+                                            Tìm kiếm
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -90,8 +94,8 @@ class Index extends BaseView
                     <!-- Start Product List -->
                     <div class="row">
                         <?php
-                        if (count($data) && count($data['products'])) :
-                            foreach ($data['products'] as $item) :
+                        if (count($filteredProducts)) :
+                            foreach ($filteredProducts as $item) :
                         ?>
                                 <div class="col-md-4 mb-4">
                                     <div class="card border-0 rounded-lg shadow-sm"
@@ -99,21 +103,25 @@ class Index extends BaseView
                                         onmouseover="this.style.transform='scale(1.05)';"
                                         onmouseout="this.style.transform='scale(1)';">
                                         <!-- Hình ảnh sản phẩm -->
+                                         <!-- đã chỉnh thêm hiệu ứng phóng to và viền xam -->
                                         <img class="img-fluid card-img-top"
                                             src="<?= APP_URL ?>/public/assets/client/img/image/<?= $item['image'] ?>"
                                             alt="<?= $item['product_name'] ?>"
-                                            style="height: 250px; object-fit: cover;">
+                                            style="height: 250px; object-fit: cover; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; border: 5px solid transparent;"
+                                            onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 10px 20px rgba(0, 0, 0, 0.2)'; this.style.border='5px solid orange';"
+                                            onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'; this.style.border='5px solid transparent';">
+
 
                                         <!-- Nội dung sản phẩm -->
                                         <div class="card-body">
                                             <h5 class="card-title text-dark font-weight-bold"><?= $item['product_name'] ?></h5>
                                             <div class="price">
-                                                <?php if (isset($item['discount_price']) && $item['discount_price'] > 0): ?>
+                                                <?php if (isset($item['discount_price']) && $item['discount_price'] > 0) : ?>
                                                     <p>
                                                         <span class="text-danger font-weight-bold"><?= number_format($item['price'] - $item['discount_price']) ?> đ</span>
                                                         <del class="text-muted"><?= number_format($item['price']) ?> đ</del>
                                                     </p>
-                                                <?php else: ?>
+                                                <?php else : ?>
                                                     <p class="text-success font-weight-bold">Giá: <?= number_format($item['price']) ?> đ</p>
                                                 <?php endif; ?>
                                             </div>
@@ -150,7 +158,7 @@ class Index extends BaseView
                             endforeach;
                         else :
                             ?>
-                            <h3 class="text-center text-danger">Không có sản phẩm</h3>
+                            <h3 class="text-center text-danger">Không có sản phẩm nào phù hợp.</h3>
                         <?php endif; ?>
                     </div>
                     <!-- End Product List -->
