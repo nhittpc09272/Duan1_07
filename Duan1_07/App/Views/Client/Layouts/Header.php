@@ -9,6 +9,7 @@ class Header extends BaseView
 {
     public static function render($data = null)
     {
+        ob_start();
 
         unset($_SESSION['users']);
         $is_login = AuthHelper::checkLogin();

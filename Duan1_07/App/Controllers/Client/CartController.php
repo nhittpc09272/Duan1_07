@@ -57,53 +57,53 @@ class CartController
     }
     public static function add()
     {
-        ob_start(); // Bắt đầu output buffering
-
+        ob_start(); // Start output buffering
+    
         $product = new Product();
         Header::render();
         Footer::render();
-
+    
         $product_id = $_POST['id'];
-
-        if (isset($_COOKIE['cart'])) {
-            // Nếu đã tồn tại cookie cart, lấy giá trị của cookie cart
-            $cookie_data = $_COOKIE['cart'];
-            $cart_data = json_decode($cookie_data, true);
-        } else {
-            $cart_data = [];
+    
+        // Start session if not already started
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
-
-        $product_id_arr = array_column($cart_data, 'product_id');
-
+    
+        // Initialize cart if not already set
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+    
+        // Check if product already exists in the cart
+        $product_id_arr = array_column($_SESSION['cart'], 'product_id');
+    
         if (in_array($product_id, $product_id_arr)) {
-            foreach ($cart_data as $key => $value) {
-                // Nếu đã có thì tăng số lượng sản phẩm
-                if ($cart_data[$key]['product_id'] == $product_id) {
-                    $cart_data[$key]['quantity'] = $cart_data[$key]['quantity'] + 1;
+            // If product is already in the cart, increase the quantity
+            foreach ($_SESSION['cart'] as $key => $value) {
+                if ($_SESSION['cart'][$key]['product_id'] == $product_id) {
+                    $_SESSION['cart'][$key]['quantity'] += 1;
                 }
             }
         } else {
-            // Nếu chưa có thì thêm vào cookie cart
+            // If product is not in the cart, add it
             $product_array = [
                 'product_id' => $product_id,
                 'quantity' => 1,
             ];
-            $cart_data[] = $product_array;
+            $_SESSION['cart'][] = $product_array;
         }
-        // Chuyển array thành string để lưu vào cookie cart
-        $product_data = json_encode($cart_data);
-
-        // Lưu cookie
-        setcookie('cart', $product_data, time() + 3600 * 24 * 30 * 12, '/');
-
-        // NotificationHelper::success('cart', 'Đã thêm sản phẩm vào giỏ hàng');
-
-        // Sau khi lưu cookie, chuyển trang
-        header('location: /cart');
+    
+        // Optionally, you can store a success notification (uncomment if needed)
+        // NotificationHelper::success('cart', 'Product added to cart successfully.');
+    
+        // Redirect to the cart page after adding the item
+        header('Location: /cart');
         exit;
-
-        ob_end_flush(); // Kết thúc output buffering
+    
+        ob_end_flush(); // End output buffering
     }
+    
 
 
 

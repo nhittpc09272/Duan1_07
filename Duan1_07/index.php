@@ -36,7 +36,7 @@ Route::get('/contact', controllerMethod: 'App\Controllers\Client\ContactControll
 Route::get('/about', controllerMethod: 'App\Controllers\Client\AboutController@about');
 
 // Chuyển đến trang Checkout
-Route::get('/checkout', controllerMethod: 'App\Controllers\Client\CheckoutController@checkout');
+Route::post('/checkout', controllerMethod: 'App\Controllers\Client\CheckoutController@checkout');
 Route::get('/checkout/placeOrder', controllerMethod: 'App\Controllers\Client\CheckoutController@placeOrder');
 
 
@@ -98,6 +98,12 @@ Route::post('/forgot-password', 'App\Controllers\Client\AuthController@forgotPas
 Route::get('/reset-password', 'App\Controllers\Client\AuthController@resetPassword');
 Route::put('/reset-password', 'App\Controllers\Client\AuthController@resetPasswordAction');
 
+Route::post('/thanhtoan', 'App\Controllers\Client\PayController@checkOut');
+Route::post('/pays', 'App\Controllers\Client\PayController@pay');
+Route::post('/createpay', 'App\Controllers\Client\PayController@createpay');
+Route::get('/returnPayment', 'App\Controllers\Client\PayController@returnPayment');
+Route::get('/returnpay', 'App\Controllers\Client\PayController@returnPay');
+Route::post('/createOrders',  'App\Controllers\Client\CheckoutController@createOrder');
 
 // *** Admin
 
