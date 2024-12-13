@@ -276,11 +276,45 @@ LEFT JOIN
             // Thực thi truy vấn và trả về kết quả
             $stmt->execute();
             $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-
         } catch (\Throwable $th) {
             error_log('Lỗi khi lấy chi tiết sản phẩm: ' . $th->getMessage());
         }
 
         return $result;
     }
+
+    // public function getVariantById($variantId)
+    // {
+    //     $result = null;
+    //     try {
+    //         // Update to use the correct table for variant_id (product_variants)
+    //         $sql = "SELECT variant_id, size, color, status FROM product_variants WHERE variant_id = ?";
+    //         $conn = $this->_conn->MySQLi();
+    //         $stmt = $conn->prepare($sql);
+    //         $stmt->bind_param("i", $variantId);
+    //         $stmt->execute();
+    //         $query_result = $stmt->get_result();
+    //         $result = $query_result->fetch_assoc();
+    //     } catch (\Throwable $th) {
+    //         error_log('Error fetching product variant by ID: ' . $th->getMessage());
+    //     }
+    //     return $result;
+    // }
+    public function getVariantById($variant_id)
+    {
+        $result = null;
+        try {
+            $sql = "SELECT variant_id, color, size, price, discount_price, status FROM product_variants WHERE variant_id = ?";
+            $conn = $this->_conn->MySQLi();
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $variant_id);  // Assuming variant_id is an integer
+            $stmt->execute();
+            $query_result = $stmt->get_result();
+            $result = $query_result->fetch_assoc();
+        } catch (\Throwable $th) {
+            error_log('Error fetching variant details: ' . $th->getMessage());
+        }
+        return $result;
+    }
+    
 }

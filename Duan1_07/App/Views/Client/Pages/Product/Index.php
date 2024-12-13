@@ -65,7 +65,7 @@ class Index extends BaseView
                             style="background-color: #FFA87A; border: 1px solid #F8BBD0;">
                             <div class="d-flex gap-3">
                                 <!-- Form Lọc Giá -->
-<form action="" method="GET" class="d-flex align-items-center gap-2 mt-3">
+                                <form action="" method="GET" class="d-flex align-items-center gap-2 mt-3">
                                     <input type="number" name="min_price" placeholder="Giá từ"
                                         value="<?= isset($_GET['min_price']) ? $_GET['min_price'] : '' ?>"
                                         style="background-color: #FFF6F6; color: #555; border: 1px solid #FEC5E5; height: 40px; padding: 5px 10px; border-radius: 5px; margin-right: 10px;">
@@ -101,9 +101,9 @@ class Index extends BaseView
                                     <div class="card border-0 rounded-lg shadow-sm"
                                         style="transition: transform 0.3s ease; overflow: hidden;"
                                         onmouseover="this.style.transform='scale(1.05)';"
-onmouseout="this.style.transform='scale(1)';">
+                                        onmouseout="this.style.transform='scale(1)';">
                                         <!-- Hình ảnh sản phẩm -->
-                                         <!-- đã chỉnh thêm hiệu ứng phóng to và viền xam -->
+                                        <!-- đã chỉnh thêm hiệu ứng phóng to và viền xam -->
                                         <img class="img-fluid card-img-top"
                                             src="<?= APP_URL ?>/public/assets/client/img/image/<?= $item['image'] ?>"
                                             alt="<?= $item['product_name'] ?>"
@@ -133,7 +133,7 @@ onmouseout="this.style.transform='scale(1)';">
                                                     style="background-color: #A7C7E7; width: 45px; height: 45px;"
                                                     onmouseover="this.style.transform='scale(1.2)';"
                                                     onmouseout="this.style.transform='scale(1)';">
-<i class="bi bi-bag-fill"></i>
+                                                    <i class="bi bi-bag-fill"></i>
                                                 </a>
                                                 <a href="#"
                                                     class="btn rounded-circle d-flex align-items-center justify-content-center shadow-sm"
