@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Models;
+
+
+class Cart
+{
+    private $db;
+
+    public function __construct($db)
+    {
+        $this->db = $db;
+    }
+
+    public function getCartByUserId($userId)
+    {
+        // Lấy kết nối MySQLi
+        $conn = $this->db->MySQLi();
+
+        // Chuẩn bị câu truy vấn
+        $query = "SELECT 
+                    c.cart_id, 
+                    cd.cart_detail_id, 
+                    cd.variant_id, 
+                    cd.quantity, 
+                    pv.size, 
+                    pv.color, 
+                    p.product_name, 
+                    p.price 
+                  FROM 
+                    carts c
+                  JOIN 
+                    cart_details cd ON c.cart_id = cd.cart_id
+                  JOIN 
+                    product_variants pv ON cd.variant_id = pv.variant_id
+                  JOIN 
+                    products p ON pv.product_id = p.product_id
+                  WHERE 
+                    c.user_id = ?";
+
+        $stmt = $conn->prepare($query);
+
+        if (!$stmt) {
+            die("Error in preparing statement: " . $conn->error);
+        }
+
+        // Liên kết tham số
+        $stmt->bind_param("i", $userId);
+
+        // Thực thi câu truy vấn
+        $stmt->execute();
+
+        // Lấy kết quả
+        $result = $stmt->get_result();
+
+        // Nếu có kết quả, trả về dữ liệu, nếu không trả về null
+        if ($result->num_rows > 0) {
+            return $result->fetch_all(MYSQLI_ASSOC); // Trả về kết quả dưới dạng mảng
+        } else {
+            return null;
+        }
+    }
+}

@@ -9,11 +9,24 @@ class Index extends BaseView
 {
     public static function render($data = null)
     {
+
         $is_login = AuthHelper::checkLogin();
         $total_price = 0;
         $item_count = 0;
 
-        // Tính tổng giá và số lượng sản phẩm
+        // Kiểm tra nếu không có dữ liệu giỏ hàng được truyền vào, lấy giỏ hàng từ session
+        if (!$data) {
+            // Kiểm tra giỏ hàng trong session
+            $data = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+        }
+
+        // Kiểm tra giỏ hàng trống
+        if (empty($data)) {
+            echo '<div class="container py-5"><h3 class="text-center">Giỏ hàng của bạn hiện đang trống!</h3></div>';
+            return;
+        }
+
+        // Tính tổng giá trị giỏ hàng và số lượng sản phẩm
         foreach ($data as $cart) {
             if ($cart['data']) {
                 $unit_price = $cart['quantity'] * ($cart['data']['price'] - $cart['data']['discount_price']);
@@ -40,9 +53,12 @@ class Index extends BaseView
                 </div>
 
                 <div class="row">
-                    <!-- Danh sách sản phẩm -->
+                    <!-- Product List -->
                     <div class="col-lg-8">
                         <?php foreach ($data as $cart): ?>
+                            <pre>
+        <!-- <?php print_r($cart); ?> -->
+    </pre>
                             <?php if ($cart['data']): ?>
                                 <div class="card mb-3">
                                     <div class="row g-0">
@@ -56,23 +72,27 @@ class Index extends BaseView
                                                 <h5 class="card-title"><?= $cart['data']['product_name'] ?></h5>
                                                 <p class="card-text">Mã sản phẩm: <?= $cart['data']['product_id'] ?></p>
 
-                                                <!-- Cập nhật số lượng -->
+                                                <!-- Selected Variants (Color & Size) -->
+                                                <p class="card-text"><strong>Màu sắc:</strong> <?=$cart['color']  ?></p>
+                                                <p class="card-text"><strong>Kích thước:</strong> <?= $cart['size'] ?></p>
+
+
+                                                <!-- Quantity Update -->
                                                 <form action="/cart/update" method="post" class="d-flex align-items-center">
                                                     <input type="hidden" name="method" value="PUT">
-                                                    <input type="number" name="quantity" value="<?= $cart['quantity'] ?>"
-                                                        min="1" max="99" class="form-control mx-2" style="width: 70px;"
-                                                        onchange="this.form.submit()">
+                                                    <input type="number" name="quantity" value="<?= $cart['quantity'] ?>" min="1" max="99" class="form-control mx-2" style="width: 70px;" onchange="this.form.submit()">
                                                     <input type="hidden" name="id" value="<?= $cart['data']['product_id'] ?>">
                                                 </form>
 
-                                                <!-- Xóa sản phẩm -->
+
+                                                <!-- Delete Product -->
                                                 <form action="/cart/delete" method="post" class="mt-2">
                                                     <input type="hidden" name="method" value="DELETE">
                                                     <input type="hidden" name="id" value="<?= $cart['data']['product_id'] ?>">
-                                                    <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" aria-label="Xóa sản phẩm">Xóa</button>
                                                 </form>
 
-                                                <!-- Giá sản phẩm -->
+                                                <!-- Price Display -->
                                                 <div class="mt-3">
                                                     <?php if ($cart['data']['discount_price'] > 0): ?>
                                                         <div class="text-muted text-decoration-line-through">
@@ -93,7 +113,7 @@ class Index extends BaseView
                         <?php endforeach; ?>
                     </div>
 
-                    <!-- Tóm tắt đơn hàng -->
+                    <!-- Order Summary -->
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
@@ -114,14 +134,14 @@ class Index extends BaseView
                                 <div class="mt-4">
                                     <form action="/cart/delete-all" method="post">
                                         <input type="hidden" name="method" value="DELETE">
-                                        <button class="btn btn-danger w-100 mb-2">Xóa giỏ hàng</button>
+                                        <button class="btn btn-danger w-100 mb-2" aria-label="Xóa toàn bộ giỏ hàng">Xóa giỏ hàng</button>
                                     </form>
                                     <?php if ($is_login): ?>
-                                        <a href="/checkout" class="btn btn-success w-100">Tiến hành thanh toán</a>
+                                        <a href="/checkout" class="btn btn-success w-100" aria-label="Tiến hành thanh toán">Tiến hành thanh toán</a>
                                     <?php else: ?>
                                         <div class="text-center text-danger">
                                             <p>Vui lòng đăng nhập để thanh toán</p>
-                                            <a href="/login" class="btn btn-outline-dark">Đăng nhập</a>
+                                            <a href="/login" class="btn btn-outline-dark" aria-label="Đăng nhập">Đăng nhập</a>
                                         </div>
                                     <?php endif; ?>
                                 </div>
