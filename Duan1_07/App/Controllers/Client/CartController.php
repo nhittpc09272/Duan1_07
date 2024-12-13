@@ -63,54 +63,53 @@ class CartController
 
     public static function add()
     {
-        ob_start();
-
-        // Lấy thông tin từ POST (sản phẩm, biến thể, số lượng)
+        ob_start(); // Start output buffering
+    
+        $product = new Product();
+        Header::render();
+        Footer::render();
+    
         $product_id = $_POST['id'];
-        $variant_id = $_POST['variant_id'] ?? null; // Nhận variant_id (nếu có)
-        $quantity = $_POST['quantity'] ?? 1;
-        $selected_color = $_POST['selected_color'] ?? null; // Màu sắc đã chọn
-        $selected_size = $_POST['selected_size'] ?? null; // Kích thước đã chọn
-
-        // Kiểm tra xem giỏ hàng có tồn tại trong cookie không
-        if (isset($_COOKIE['cart'])) {
-            $cookie_data = $_COOKIE['cart'];
-            $cart_data = json_decode($cookie_data, true);
-        } else {
-            $cart_data = [];
+    
+        // Start session if not already started
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
         }
-
-        $found = false;
-
-        // Kiểm tra nếu sản phẩm với biến thể đã tồn tại trong giỏ hàng
-        foreach ($cart_data as &$item) {
-            if ($item['product_id'] == $product_id && $item['variant_id'] == $variant_id) {
-                $item['quantity'] += $quantity; // Cập nhật số lượng
-                $found = true;
-                break;
+    
+        // Initialize cart if not already set
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+    
+        // Check if product already exists in the cart
+        $product_id_arr = array_column($_SESSION['cart'], 'product_id');
+    
+        if (in_array($product_id, $product_id_arr)) {
+            // If product is already in the cart, increase the quantity
+            foreach ($_SESSION['cart'] as $key => $value) {
+                if ($_SESSION['cart'][$key]['product_id'] == $product_id) {
+                    $_SESSION['cart'][$key]['quantity'] += 1;
+                }
             }
-        }
-
-        // Nếu không tìm thấy, thêm sản phẩm vào giỏ hàng
-        if (!$found) {
-            $cart_data[] = [
+        } else {
+            // If product is not in the cart, add it
+            $product_array = [
                 'product_id' => $product_id,
-                'variant_id' => $variant_id,
-                'quantity' => $quantity,
-                'color' => $selected_color,  // Màu sắc đã chọn
-                'size' => $selected_size     // Kích thước đã chọn
+                'quantity' => 1,
             ];
+            $_SESSION['cart'][] = $product_array;
         }
-
-        // Lưu lại giỏ hàng vào cookie
-        setcookie('cart', json_encode($cart_data), time() + 3600 * 24 * 30 * 12, '/');
-
-        // Chuyển hướng về trang giỏ hàng
-        header('location: /cart');
+    
+        // Optionally, you can store a success notification (uncomment if needed)
+        // NotificationHelper::success('cart', 'Product added to cart successfully.');
+    
+        // Redirect to the cart page after adding the item
+        header('Location: /cart');
         exit;
-
-        ob_end_flush();
+    
+        ob_end_flush(); // End output buffering
     }
+    
 
 
 
