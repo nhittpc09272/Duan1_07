@@ -184,23 +184,21 @@ class Home extends BaseView
                                     nghiệm tuyệt vời và phong cách riêng biệt.
                                     Hãy nhanh tay sở hữu ngay!</p>
                             </div>
-
                         </div>
-                    </div>
+                    </div> <br>
                     <div class="row">
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/public/assets/client/img/product/p1.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/image-1733047876131.webp"
                                     alt>
                                 <div class="product-details">
-                                    <h6>addidas New Hammer sole cho vận động
-                                        viên thể thao</h6>
+                                    <a href="http://127.0.0.1:8081/products/13">Giày sneaker nữ adidas runfalcon 3.0 "green spark" ie0750 - hàng chính hãng</a>
                                     <div class="price">
-                                        <h6>₫3,750,000</h6>
-                                        <h6 class="l-through">₫5,250,000</h6>
+                                        <h6>1.050.000 VND</h6>
+                                        <h6 class="l-through">5.250.000 VND</h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ
@@ -219,23 +217,23 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/public/assets/client/img/product/p2.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/image-1732457721932.webp"
                                     alt>
                                 <div class="product-details">
-                                    <h6>addidas New Hammer sole cho vận động
-                                        viên thể thao</h6>
+                                    <a href="http://127.0.0.1:8081/products/15">Giày thời trang adidas samba og unisex ”cloud white/night indigo" if3814
+                                    </a>
                                     <div class="price">
-                                        <h6>₫3,750,000</h6>
-                                        <h6 class="l-through">₫5,250,000</h6>
+                                        <h6>1.890.000 VND</h6>
+                                        <h6 class="l-through">3.200.000 VND</h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ
@@ -254,23 +252,22 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/public/assets/client/img/product/p3.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/giay-nike-jordan-1-low-hf5753-22-6-1731905829554.webp" style="width:800px; height:305px;"
                                     alt>
                                 <div class="product-details">
-                                    <h6>addidas New Hammer sole cho vận động
-                                        viên thể thao</h6>
+                                    <a href="http://127.0.0.1:8081/products/16">Giày sneaker nam nike air jordan 1 low "brown/white" hf5753-221 - chính hãng</a>
                                     <div class="price">
-                                        <h6>₫3,750,000</h6>
-                                        <h6 class="l-through">₫5,250,000</h6>
+                                        <h6>3.200.000 VND</h6>
+                                        <h6 class="l-through">4.250.000 VND</h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ
@@ -289,23 +286,21 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/public/assets/client/img/product/p4.jpg"
-                                    alt>
+                                <img class="img-fluid" src="/public/assets/client/img/giay-nike-air-jordan-1-low-55355-7.webp" style="width:800px; height:305px;" alt="">
                                 <div class="product-details">
-                                    <h6>addidas New Hammer sole cho vận động
-                                        viên thể thao</h6>
+                                    <a href="http://127.0.0.1:8081/products/17">Giày sneaker nam nike air jordan 1 low "blue/white" 553558-007</a>
                                     <div class="price">
-                                        <h6>₫3,750,000</h6>
-                                        <h6 class="l-through">₫5,250,000</h6>
+                                        <h6>2.800.000 VND</h6>
+                                        <h6 class="l-through">4.100.000 VND</h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ
@@ -324,23 +319,21 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/public/assets/client/img/product/p5.jpg"
-                                    alt>
+                                <img class="img-fluid" src="/public/assets/client/img/image-1731902747769.webp" style="width:800px; height:305px;" alt="">
                                 <div class="product-details">
-                                    <h6>addidas New Hammer sole cho vận động
-                                        viên thể thao</h6>
+                                    <a href="http://127.0.0.1:8081/products/18">Giày sneaker nike air jordan nữ 1 low "grey/white" cz0858-110 - chính hãng</a>
                                     <div class="price">
-                                        <h6>₫3,750,000</h6>
-                                        <h6 class="l-through">₫5,250,000</h6>
+                                        <h6>2.600.000 VND</h6>
+                                        <h6 class="l-through">3.500.000 VND</h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ
@@ -359,23 +352,22 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/public/assets/client/img/product/p6.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/db0fcd476ffc22a1dfd1e6e6b4f7ffc5-1731901424150.webp" style="width:800px; height:305px;"
                                     alt>
                                 <div class="product-details">
-                                    <h6>addidas New Hammer sole cho vận động
-                                        viên thể thao</h6>
+                                    <a href="http://127.0.0.1:8081/products/19">Giày sneakers nike nữ air jordan 1 low "grey" 553560-172 - hàng chính hãng</a>
                                     <div class="price">
-                                        <h6>₫3,750,000</h6>
-                                        <h6 class="l-through">₫5,250,000</h6>
+                                        <h6>2.500.000 VND</h6>
+                                        <h6 class="l-through">3.500.000 VND</h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ
@@ -394,23 +386,23 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/public/assets/client/img/product/p7.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/image-1731482400410.webp"
                                     alt>
                                 <div class="product-details">
-                                    <h6>addidas New Hammer sole cho vận động
-                                        viên thể thao</h6>
+                                    <a href="http://127.0.0.1:8081/products/20">
+                                    Giày thể thao nữ adidas ultrabounce "black white" hp5787 - chính hãng</a>
                                     <div class="price">
-                                        <h6>₫3,750,000</h6>
-                                        <h6 class="l-through">₫5,250,000</h6>
+                                        <h6>1.190.000 VND</h6>
+                                        <h6 class="l-through">2.220.000 VND</h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ
@@ -429,23 +421,22 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-3 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="/public/assets/client/img/product/p8.jpg"
+                                <img class="img-fluid" src="/public/assets/client/img/image-1731482740789.webp" style="width:800px; height:305px;"
                                     alt>
                                 <div class="product-details">
-                                    <h6>addidas New Hammer sole cho vận động
-                                        viên thể thao</h6>
+                                    <a href="http://127.0.0.1:8081/products/21">Giày thể thao nam nike men`s initiator " white/ metallic cool grey" 394055-101</a>
                                     <div class="price">
-                                        <h6>₫3,750,000</h6>
-                                        <h6 class="l-through">₫5,250,000</h6>
+                                        <h6>1.150.000 VND</h6>
+                                        <h6 class="l-through">3.100.000 VND</h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ
@@ -464,7 +455,7 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -712,7 +703,7 @@ class Home extends BaseView
             </div>
         </section>
         <!-- end product Area -->
-
+        <br>
         <!-- Start exclusive deal Area -->
         <div class="single-product-slider">
             <div class="container">
@@ -736,15 +727,15 @@ class Home extends BaseView
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-4 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/682ac73599d94dbe93e5de76e30ae858_9366/Giay_Cloudfoam_Comfy_Hong_IH6049_01_standard.jpg" alt="">
+                                <img class="img-fluid" src="/public/assets/client/img/image-1731482178402.webp" alt="">
                                 <div class="product-details">
-                                    <h6>Giày Cloudfoam Comfy</h6>
+                                    <a href="http://127.0.0.1:8081/products/22">Giày thể thao adidas alphacomfy "clear pink" id0352 - hàng chính hãng</a>
                                     <div class="price">
-                                        <h6>Giá giảm: 3,600,000 VND</h6>
-                                        <h6><del>Giá gốc: 5,040,000 VND</del></h6>
+                                        <h6>Giá giảm: 1.250.000 VND</h6>
+                                        <h6><del>Giá gốc: 1.500.000 VND</del></h6>
                                     </div>
-                                    <div class="prd-bottom">
-                                        <a href="" class="social-info">
+                                    <!-- <div class="prd-bottom">
+                                        <a href="/cart" class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ</p>
                                         </a>
@@ -760,21 +751,21 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-4 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/e5783cc3b92d4eb08feeff8f1b7f3399_9366/Giay_Cloudfoam_Comfy_trang_IH3612_01_standard.jpg" alt="">
+                                <img class="img-fluid" src="/public/assets/client/img/giay-nike-jordan-1-fj3458-160-1-1731905189827.webp" style="width:800px; height:417px" alt="">
                                 <div class="product-details">
-                                    <h6>Giày Cloudfoam Comfy</h6>
+                                    <a href="http://127.0.0.1:8081/products/24">Giày sneaker nam nike air jordan 1 mid se "red/white" fj3458-160 - hàng chính hãng</a>
                                     <div class="price">
-                                        <h6>Giá giảm: 3,900,000 VND</h6>
-                                        <h6 class="l-through"><del>Giá gốc: 4,040,000 VND</del></h6>
+                                        <h6>Giá giảm: 2.500.000 VND</h6>
+                                        <h6 class="l-through"><del>Giá gốc: 4.040.000 VND</del></h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href="" class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ</p>
@@ -791,21 +782,21 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-4 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/260eb2a54e394aa3ba3367008ab82c31_9366/Giay_Chay_Bo_Pureboost_5_Mau_xanh_da_troi_IF9194_01_00_standard.jpg" alt="">
+                                <img class="img-fluid" src="/public/assets/client/img/image-1731482297851.webp" alt="">
                                 <div class="product-details">
-                                    <h6>Giày Chạy Bộ Pureboost 5</h6>
+                                    <a href="http://127.0.0.1:8081/products/23">Giày thể thao nữ adidas ultrabounce "cloud white" hp5788 - hàng chính hãng</a>
                                     <div class="price">
-                                        <h6>Giá giảm: 2,500,000 VND</h6>
-                                        <h6 class="l-through"><del>Giá gốc: 3,800,000 VND</del></h6>
+                                        <h6>Giá giảm: 1.050.000 VND</h6>
+                                        <h6 class="l-through"><del>Giá gốc: 2.500.000 VND</del></h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href="" class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ</p>
@@ -822,21 +813,21 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                         <!-- sản phẩm đơn -->
                         <div class="col-lg-4 col-md-6">
                             <div class="single-product">
-                                <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/980edbe553334c3db661505b91ba0742_9366/Giay_Chay_Bo_Questar_3_DJen_ID6320_01_standard.jpg" alt="">
+                                <img class="img-fluid" src="/public/assets/client/img/image-1731379213340.webp" alt="">
                                 <div class="product-details">
-                                    <h6>Giày Chạy Bộ Questar 3</h6>
+                                    <a href="http://127.0.0.1:8081/products/25">Giày sneaker adidas forum mod low "charcoal" ig3761 - hàng chính hãng</a>
                                     <div class="price">
-                                        <h6>Giá giảm: 3,300,000 VND</h6>
-                                        <h6 class="l-through"><del>Giá gốc: 4,400,000 VND</del></h6>
+                                        <h6>Giá giảm: 1.350.000 VND</h6>
+                                        <h6 class="l-through"><del>Giá gốc: 2.800.000 VND</del></h6>
                                     </div>
-                                    <div class="prd-bottom">
+                                    <!-- <div class="prd-bottom">
                                         <a href="" class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">Thêm vào giỏ</p>
@@ -853,7 +844,7 @@ class Home extends BaseView
                                             <span class="lnr lnr-move"></span>
                                             <p class="hover-text">Xem thêm</p>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -862,7 +853,7 @@ class Home extends BaseView
                             <div class="single-product">
                                 <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/28e6310b7f2b4733a1c26858e14e0e00_9366/Giay_Chay_Bo_Ultrarun_5_Nu_Hong_IE8802_01_standard.jpg" alt="">
                                 <div class="product-details">
-                                    <h6>Giày Chạy Bộ Ultrarun 5 Nữ</h6>
+                                    <a href="http://127.0.0.1:8081/products/19">Giày Chạy Bộ Ultrarun 5 Nữ</a>
                                     <div class="price">
                                         <h6>Giá giảm: 2,900,000 VND</h6>
                                         <h6 class="l-through"><del>Giá gốc: 3,660,000 VND</del></h6>
@@ -893,7 +884,7 @@ class Home extends BaseView
                             <div class="single-product">
                                 <img class="img-fluid" src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/c8d44dde09d84475b4b3cb7b098798f5_9366/Giay_Chay_Bo_adidas_Switch_Fwd_2_Hong_IE5887_01_standard.jpg" alt="">
                                 <div class="product-details">
-                                    <h6>Giày Chạy Bộ adidas Switch Fwd 2</h6>
+                                    <a href="http://127.0.0.1:8081/products/20">Giày Chạy Bộ adidas Switch Fwd 2</a>
                                     <div class="price">
                                         <h6>Giá giảm: 2,290,000 VND</h6>
                                         <h6 class="l-through"><del>Giá gốc: 3,330,000 VND</del></h6>
